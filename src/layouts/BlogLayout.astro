@@ -72,9 +72,9 @@ while ((match = headingRegex.exec(headings)) !== null) {
 }
 
 // Site information for schema
-const siteUrl = Astro.site ? Astro.site.toString() : 'https://vacuum-expert-reviews.com';
+const siteUrl = Astro.site ? Astro.site.toString() : 'https://bestofvacuum.com';
 const siteName = 'Vacuum Expert Reviews';
-const logoUrl = `${siteUrl}/images/logo.png`;
+const logoUrl = `${siteUrl}/images/logo.svg`;
 ---
 
 <MainLayout
@@ -108,7 +108,7 @@ const logoUrl = `${siteUrl}/images/logo.png`;
     {/* Category link */}
     <div class="my-4">
       <a
-        href={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+        href={`/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
         class="text-blue-600 font-medium hover:underline text-sm uppercase tracking-wider"
       >
         {category}
@@ -135,7 +135,7 @@ const logoUrl = `${siteUrl}/images/logo.png`;
       <div class="flex flex-wrap gap-2 mb-6">
         {tags.map(tag => (
           <a
-            href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+            href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
             class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition-colors duration-200"
           >
             {tag}

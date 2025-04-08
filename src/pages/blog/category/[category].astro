@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from '../../../layouts/MainLayout.astro';
 
 export async function getStaticPaths() {
   const allBlogPosts = await getCollection('blog');
@@ -73,7 +73,7 @@ const description = `Explore our collection of expert ${category.toLowerCase()} 
             {relatedCategories.map(cat => (
               <li>
                 <a
-                  href={`/category/${cat.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/blog/category/${cat.toLowerCase().replace(/\s+/g, '-')}`}
                   class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200 flex items-center"
                 >
                   <span class="mr-2">→</span>
