@@ -1,0 +1,92 @@
+---
+import { generateOrganizationSchema, generateBreadcrumbSchema, generateFAQSchema } from '../utils/schema';
+
+interface Props {
+  companyName?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  faqs?: Array<{
+    question: string;
+    answer: string;
+  }>;
+}
+
+const {
+  companyName = "Vacuum Expert Reviews",
+  email = "contact@vacuum-expert-reviews.com",
+  phone = "+1 (555) 123-4567",
+  address = "123 Vacuum Testing Lab, Suite 456, New York, NY 10001",
+  faqs = []
+} = Astro.props;
+
+// Organization schema with contact details
+const organizationSchema = {
+  ...generateOrganizationSchema(),
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: phone,
+    contactType: "customer service",
+    email: email,
+    availableLanguage: "English"
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: address.split(',')[0],
+    addressLocality: address.includes('New York') ? 'New York' : '',
+    addressRegion: address.includes('NY') ? 'NY' : '',
+    postalCode: address.match(/\d{5}/) ? address.match(/\d{5}/)[0] : '',
+    addressCountry: "US"
+  }
+};
+
+// Breadcrumb schema
+const breadcrumbSchema = generateBreadcrumbSchema([
+  {
+    name: 'Home',
+    url: new URL('/', Astro.site || 'https://vacuum-expert-reviews.com').toString()
+  },
+  {
+    name: 'Contact Us',
+    url: new URL('/contact', Astro.site || 'https://vacuum-expert-reviews.com').toString()
+  }
+]);
+
+// FAQ schema if FAQs are provided
+const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : null;
+
+// ContactPage schema
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Vacuum Expert Reviews",
+  "description": "Contact our team of vacuum cleaner experts for review requests, technical questions, or partnership opportunities.",
+  "url": new URL('/contact', Astro.site || 'https://vacuum-expert-reviews.com').toString(),
+  "mainEntity": {
+    "@type": "Organization",
+    "name": companyName,
+    "telephone": phone,
+    "email": email,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": address.split(',')[0],
+      "addressLocality": address.includes('New York') ? 'New York' : '',
+      "addressRegion": address.includes('NY') ? 'NY' : '',
+      "postalCode": address.match(/\d{5}/) ? address.match(/\d{5}/)[0] : '',
+      "addressCountry": "US"
+    }
+  }
+};
+
+// Combine all schemas
+const allSchemas = [
+  organizationSchema,
+  breadcrumbSchema,
+  contactPageSchema,
+  ...(faqSchema ? [faqSchema] : [])
+];
+---
+
+{allSchemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

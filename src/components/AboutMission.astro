@@ -1,0 +1,67 @@
+---
+interface Props {
+  companyName?: string;
+  foundedYear?: number;
+}
+
+const {
+  companyName = "Vacuum Expert Reviews",
+  foundedYear = 2010
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+const yearsOfExperience = currentYear - foundedYear;
+---
+
+<section id="mission" class="py-16 bg-white">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="mb-6">Our Mission & Values</h2>
+        <p class="mb-4 text-lg">
+          Founded in {foundedYear}, {companyName} has spent {yearsOfExperience} years helping consumers make informed decisions about vacuum cleaners and cleaning technology.
+        </p>
+        <p class="mb-6">
+          Our mission is to provide the most thorough, unbiased, and scientifically-backed vacuum cleaner reviews on the internet. We believe that everyone deserves a clean home without the frustration of ineffective cleaning tools.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary-500">
+            <h3 class="text-xl mb-3">Scientific Testing</h3>
+            <p>Every review is backed by rigorous laboratory and real-world testing using standardized methodologies.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-secondary-500">
+            <h3 class="text-xl mb-3">Editorial Independence</h3>
+            <p>We never accept payment for reviews and maintain strict separation between testing and monetization.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="bg-gray-200 rounded-lg aspect-[4/3] overflow-hidden">
+          <img
+            src="/images/lab-testing.jpg"
+            alt="Vacuum cleaner laboratory testing environment"
+            class="w-full h-full object-cover"
+            width="600"
+            height="450"
+          />
+        </div>
+
+        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg max-w-xs">
+          <div class="flex items-center">
+            <div class="bg-primary-100 text-primary-700 rounded-full p-3 mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold">{yearsOfExperience}+ Years</h4>
+              <p class="text-sm text-gray-600">Of vacuum testing experience</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import VacuumCategories from '../components/VacuumCategories.astro';
+import RecentReviews from '../components/RecentReviews.astro';
+import AboutTeam from '../components/AboutTeam.astro';
+import BuyingGuidePreview from '../components/BuyingGuidePreview.astro';
+import CTAs from '../components/CTAs.astro';
+import { generateWebsiteSchema, generateOrganizationSchema } from '../utils/schema';
+
+// Create structured data
+const websiteSchema = generateWebsiteSchema();
+const organizationSchema = generateOrganizationSchema();
+
+// Combine schemas for the page
+const schemas = [websiteSchema, organizationSchema];
+---
+
+<MainLayout
+  title="Expert Vacuum Cleaner Reviews & Buying Guides"
+  description="Find the perfect vacuum cleaner with in-depth, unbiased reviews and comparisons from certified cleaning experts. Our detailed testing helps you make the right choice."
+  schemaData={schemas}
+>
+  <Hero />
+  <FeaturedProducts />
+  <VacuumCategories />
+  <RecentReviews />
+  <BuyingGuidePreview />
+  <AboutTeam />
+  <CTAs />
+</MainLayout>

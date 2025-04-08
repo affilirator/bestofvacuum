@@ -1,0 +1,205 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import ReviewDetail from '../../components/ReviewDetail.astro';
+
+// Sample review data
+const review = {
+  title: "Dyson V15 Detect Review: Laser-Guided Deep Cleaning Revolution",
+  slug: "dyson-v15-detect-review",
+  subtitle: "Featuring revolutionary laser dust detection technology and smart particle counting",
+  excerpt: "The Dyson V15 Detect introduces groundbreaking laser dust detection technology that reveals hidden dust particles on hard floors. Is this innovation worth the premium price? We tested it extensively to find out.",
+  content: `
+    <h2>Introduction: The Next Generation of Dyson Vacuums</h2>
+    <p>The Dyson V15 Detect represents the latest evolution in Dyson's cordless vacuum lineup, featuring a suite of innovative technologies designed to transform how we clean our homes. The headline feature is undoubtedly the green laser dust detection system, which illuminates particles invisible to the naked eye on hard floors, but there's much more to this premium vacuum than just clever lighting.</p>
+
+    <p>After putting the V15 Detect through over 40 hours of rigorous testing across multiple floor types and real-world cleaning scenarios, we can confidently say this is one of the most technically advanced vacuum cleaners we've ever reviewed. But innovation comes at a price – is it worth the significant investment? Let's break it down.</p>
+
+    <h2>Design and Build Quality</h2>
+    <p>The V15 Detect follows Dyson's established cordless stick vacuum design language but with several refinements. The overall construction feels premium, with high-quality plastics and metal components that should stand up to years of use. At 6.8 pounds, it's slightly heavier than the previous V11 model, but the weight distribution is well-balanced, making it comfortable to use for extended cleaning sessions.</p>
+
+    <p>The dust bin capacity remains at 0.2 gallons (0.76 liters), which is adequate for most cleaning sessions but may require emptying during whole-house cleaning. The bin emptying mechanism has been improved, with a more hygienic "point and shoot" system that reduces contact with dust and debris.</p>
+
+    <h2>Performance and Cleaning Power</h2>
+    <p>The V15 Detect is powered by Dyson's Hyperdymium motor, which spins at up to 125,000 RPM to generate powerful suction. In our testing, the vacuum delivered exceptional cleaning performance across all floor types:</p>
+
+    <ul>
+      <li><strong>Hard Floors:</strong> The laser-equipped Fluffy cleaner head is a game-changer for hard floors, revealing dust that would otherwise be missed. The vacuum picked up 99.8% of the test debris on hardwood floors in our controlled tests.</li>
+      <li><strong>Carpets:</strong> The High Torque cleaner head with anti-tangle technology performed admirably on both low and high-pile carpets, removing embedded pet hair and fine dust with ease. It retrieved 96.4% of test debris from medium-pile carpet.</li>
+      <li><strong>Edge Cleaning:</strong> The vacuum showed excellent edge cleaning capabilities, picking up debris from corners and along baseboards more effectively than most competitors.</li>
+    </ul>
+
+    <p>One of the most impressive innovations is the piezo sensor, which counts and sizes particles as they're sucked up, displaying the information on the LCD screen. The vacuum automatically increases suction power when it detects a high concentration of dust, optimizing both cleaning performance and battery life.</p>
+
+    <h2>Battery Life and Charging</h2>
+    <p>The V15 Detect is equipped with a 7-cell lithium-ion battery that provides up to 60 minutes of runtime in Eco mode. In our real-world testing, we found the following run times:</p>
+
+    <ul>
+      <li>Eco mode: 58-62 minutes (depending on floor type)</li>
+      <li>Medium/Auto mode: 30-35 minutes</li>
+      <li>Boost mode: 8-10 minutes</li>
+    </ul>
+
+    <p>The battery is removable, allowing for easy replacement or the option to purchase an additional battery for extended cleaning sessions. A full charge takes approximately 4.5 hours.</p>
+
+    <h2>Filtration System</h2>
+    <p>Dyson has equipped the V15 Detect with a whole-machine HEPA filtration system that traps 99.97% of particles as small as 0.3 microns, making it an excellent choice for allergy sufferers. In our particle emission testing, the vacuum showed no measurable leakage of fine dust, confirming Dyson's claims of sealed filtration.</p>
+
+    <h2>Attachments and Versatility</h2>
+    <p>The V15 Detect comes with an impressive array of attachments:</p>
+
+    <ul>
+      <li>Laser Slim Fluffy cleaner head for hard floors</li>
+      <li>High Torque cleaner head with anti-tangle comb for carpets</li>
+      <li>Hair screw tool for pet hair (particularly impressive in our tests)</li>
+      <li>Combination tool</li>
+      <li>Crevice tool</li>
+      <li>Stubborn dirt brush</li>
+      <li>Mini soft dusting brush</li>
+    </ul>
+
+    <p>This comprehensive set of tools makes the V15 Detect one of the most versatile vacuum cleaners on the market, capable of handling everything from floor cleaning to car interiors and upholstery.</p>
+
+    <h2>Noise Levels</h2>
+    <p>We measured the following noise levels during operation:</p>
+
+    <ul>
+      <li>Eco mode: 72 dB</li>
+      <li>Medium/Auto mode: 76 dB</li>
+      <li>Boost mode: 82 dB</li>
+    </ul>
+
+    <p>While not the quietest vacuum we've tested, the noise is not uncomfortably loud and is in line with what we expect from a high-performance cordless vacuum.</p>
+
+    <h2>Value for Money</h2>
+    <p>At $749.99, the Dyson V15 Detect represents a significant investment. However, given its exceptional cleaning performance, innovative features, and comprehensive attachment set, we believe it offers good value for those who can afford the premium price. The vacuum's durability and Dyson's 2-year warranty further enhance its long-term value proposition.</p>
+
+    <h2>Final Verdict</h2>
+    <p>The Dyson V15 Detect sets a new standard for cordless vacuum cleaners with its innovative laser dust detection, intelligent particle counting, and exceptional cleaning performance. While its high price will put it out of reach for some consumers, those who can afford it will be rewarded with a premium cleaning experience and the satisfaction of knowing their floors are genuinely clean.</p>
+
+    <p>If you're particular about cleanliness, suffer from allergies, or simply appreciate cutting-edge technology that delivers tangible benefits, the V15 Detect is absolutely worth considering. It's not just a vacuum cleaner; it's a cleaning system that transforms how you perceive and maintain cleanliness in your home.</p>
+  `,
+  date: "2025-03-15T08:00:00Z",
+  author: {
+    name: "Dr. Sarah Johnson",
+    slug: "sarah-johnson",
+    image: "/images/team/sarah-johnson.jpg",
+    title: "Lead Product Tester",
+    bio: "With over 15 years of experience in product testing and mechanical engineering, Sarah founded Vacuum Expert Reviews to provide consumers with scientifically-backed vacuum cleaner recommendations. She previously worked as a product development engineer for Dyson."
+  },
+  category: {
+    name: "Stick Vacuums",
+    slug: "stick"
+  },
+  product: {
+    name: "Dyson V15 Detect",
+    brand: "Dyson",
+    model: "V15 Detect",
+    image: "/images/dyson-v15-detect.png",
+    description: "Cordless stick vacuum with laser dust detection, piezo sensor, and HEPA filtration for deep cleaning of all floor types.",
+    price: 749.99,
+    salePrice: 699.99,
+    url: "https://www.amazon.com/dp/B0925VDWK2?tag=vacuumexpert-20",
+    features: [
+      "Laser Dust Detection Technology",
+      "Piezo sensor counts and sizes particles",
+      "Anti-tangle Hair Screw Tool",
+      "Up to 60 minutes run time",
+      "Whole-machine HEPA filtration",
+      "LCD screen with cleaning data reporting",
+      "Easily converts to handheld mode",
+      "Multiple specialized attachments included"
+    ],
+    specs: {
+      "Dimensions": "49.6 x 9.8 x 10.5 inches",
+      "Weight": "6.8 pounds",
+      "Suction Power": "230 AW",
+      "Bin Capacity": "0.2 gallons (0.76 liters)",
+      "Battery Type": "7-cell lithium-ion",
+      "Battery Life": "Up to 60 minutes (Eco mode)",
+      "Charging Time": "4.5 hours",
+      "Filtration": "Whole-machine HEPA filtration",
+      "Noise Level": "72-82 dB (depending on mode)",
+      "Warranty": "2-year limited warranty"
+    }
+  },
+  rating: {
+    overall: 4.8,
+    suction: 5.0,
+    maneuverability: 4.6,
+    noise: 4.2,
+    batteryLife: 4.5,
+    filtration: 5.0,
+    valueForMoney: 4.3
+  },
+  pros: [
+    "Revolutionary laser dust detection reveals hidden dust",
+    "Exceptional suction power for deep cleaning",
+    "Advanced particle counting provides cleaning insights",
+    "Effective anti-tangle technology for hair",
+    "Excellent filtration for allergy sufferers",
+    "Versatile with multiple specialized attachments",
+    "Responsive auto-mode adjusts suction as needed",
+    "High-quality construction and premium feel"
+  ],
+  cons: [
+    "Premium price point",
+    "Slightly heavier than previous models",
+    "Dust bin could be larger for whole-house cleaning",
+    "Boost mode significantly reduces battery life",
+    "Laser only works on hard floors",
+    "Some attachments can be tricky to store"
+  ],
+  verdict: "An exceptional premium cordless vacuum with innovative features that justify its high price for those who want the absolute best in cleaning technology.",
+  alternatives: [
+    {
+      name: "Shark Vertex Pro",
+      slug: "shark-vertex-pro-review",
+      image: "/images/shark-vertex-pro.png",
+      rating: 4.6,
+      price: 349.99
+    },
+    {
+      name: "Samsung Bespoke Jet",
+      slug: "samsung-bespoke-jet-review",
+      image: "/images/samsung-bespoke-jet.png",
+      rating: 4.7,
+      price: 599.99
+    },
+    {
+      name: "Dyson V11 Outsize",
+      slug: "dyson-v11-outsize-review",
+      image: "/images/dyson-v11-outsize.png",
+      rating: 4.5,
+      price: 649.99
+    }
+  ],
+  faqs: [
+    {
+      question: "How effective is the laser dust detection feature?",
+      answer: "The laser dust detection is remarkably effective at revealing fine dust particles that are typically invisible to the naked eye, especially on hard floors. It works best in low-light conditions and can help you ensure you're not missing spots during cleaning. It's particularly useful for homes with allergy sufferers."
+    },
+    {
+      question: "Is the Dyson V15 Detect good for pet hair?",
+      answer: "Yes, the V15 Detect excels at picking up pet hair thanks to its powerful suction and the specialized Hair Screw Tool, which is designed to prevent hair tangling. During our tests, it removed pet hair from carpets, upholstery, and hard floors with excellent efficiency."
+    },
+    {
+      question: "Can I buy replacement batteries for the V15 Detect?",
+      answer: "Yes, Dyson offers replacement batteries for the V15 Detect. The battery is user-replaceable, making it easy to swap out when needed or to purchase an additional battery for extended cleaning sessions."
+    },
+    {
+      question: "How does the V15 Detect compare to the V11?",
+      answer: "The V15 Detect offers several advantages over the V11, including the laser dust detection technology, particle counting piezo sensor, and improved anti-tangle technology. It also has slightly more powerful suction. However, the V11 is lighter and less expensive, so your choice may depend on whether these new features justify the price difference for your needs."
+    }
+  ]
+};
+---
+
+<MainLayout
+  title={review.title}
+  description={review.excerpt}
+  type="article"
+  image={review.product.image}
+  pubDate={review.date}
+>
+  <ReviewDetail review={review} />
+</MainLayout>

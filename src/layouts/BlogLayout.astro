@@ -1,0 +1,283 @@
+---
+// BlogLayout.astro - Comprehensive blog layout for vacuum reviews
+import { ViewTransitions } from 'astro:transitions';
+import MainLayout from './MainLayout.astro';
+import ArticleHeader from '../components/ArticleHeader.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+import BlogSchemaMarkup from '../components/BlogSchemaMarkup.astro';
+import SearchInput from '../components/SearchInput.astro';
+import AuthorInfo from '../components/AuthorInfo.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate: Date;
+  modDate: Date;
+  author: string;
+  authorBio: string;
+  authorImage: string;
+  authorImageAlt: string;
+  image: string;
+  coverAlt: string;
+  readingTime?: string;
+  category: string;
+  tags?: string[];
+  keywords?: string[];
+  seo?: string;
+  showTableOfContents?: boolean;
+  showShareButtons?: boolean;
+  relatedPosts?: any[];
+  canonicalUrl?: string;
+  showAuthorBox?: boolean;
+}
+
+const {
+  title,
+  description = '',
+  pubDate,
+  modDate,
+  author,
+  authorBio,
+  authorImage,
+  authorImageAlt,
+  image,
+  coverAlt,
+  readingTime,
+  category,
+  tags = [],
+  keywords = [],
+  seo,
+  showTableOfContents = true,
+  showShareButtons = true,
+  relatedPosts = [],
+  canonicalUrl,
+  showAuthorBox = true,
+} = Astro.props;
+
+// Get current URL for canonical link and schema
+const currentUrl = Astro.url.href;
+const finalCanonicalUrl = canonicalUrl || currentUrl;
+
+// Extract headings from the content
+const headings = await Astro.slots.render('default');
+const headingRegex = /<h([2-3])[^>]*id=\"([^\"]*)\"[^>]*>([^<]*)<\/h[2-3]>/g;
+const extractedHeadings = [];
+let match;
+while ((match = headingRegex.exec(headings)) !== null) {
+  extractedHeadings.push({
+    depth: parseInt(match[1]),
+    slug: match[2],
+    text: match[3].trim(),
+  });
+}
+
+// Site information for schema
+const siteUrl = Astro.site ? Astro.site.toString() : 'https://vacuum-expert-reviews.com';
+const siteName = 'Vacuum Expert Reviews';
+const logoUrl = `${siteUrl}/images/logo.png`;
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  image={image}
+  canonicalUrl={finalCanonicalUrl}
+  keywords={keywords}
+>
+  <ViewTransitions slot="head" />
+
+  {/* Add schema markup for SEO */}
+  <BlogSchemaMarkup
+    title={title}
+    description={description}
+    pubDate={pubDate}
+    modDate={modDate}
+    author={author}
+    authorBio={authorBio}
+    authorImage={authorImage}
+    image={image}
+    url={currentUrl}
+    category={category}
+    tags={tags}
+    siteUrl={siteUrl}
+    siteName={siteName}
+    logoUrl={logoUrl}
+  />
+
+  <article class="blog-article max-w-4xl mx-auto px-4">
+    {/* Category link */}
+    <div class="my-4">
+      <a
+        href={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+        class="text-blue-600 font-medium hover:underline text-sm uppercase tracking-wider"
+      >
+        {category}
+      </a>
+    </div>
+
+    {/* Integrated Article Header Component */}
+    <ArticleHeader
+      title={title}
+      image={image}
+      imageAlt={coverAlt}
+      publishDate={pubDate}
+      author={{
+        name: author,
+        image: authorImage,
+      }}
+      readTime={readingTime}
+      headings={extractedHeadings}
+      showTableOfContents={showTableOfContents}
+    />
+
+    {/* Tags */}
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-6">
+        {tags.map(tag => (
+          <a
+            href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+            class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition-colors duration-200"
+          >
+            {tag}
+          </a>
+        ))}
+      </div>
+    )}
+
+    {/* Social Sharing */}
+    {showShareButtons && (
+      <ShareButtons
+        url={currentUrl}
+        title={title}
+        description={description}
+      />
+    )}
+
+    {/* Main Content */}
+    <div class="blog-content prose prose-lg max-w-none mx-auto mt-8">
+      <slot />
+    </div>
+
+    {/* Bottom Social Sharing */}
+    {showShareButtons && (
+      <div class="mt-12">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Share This Article</h3>
+        <ShareButtons
+          url={currentUrl}
+          title={title}
+          description={description}
+        />
+      </div>
+    )}
+
+    {/* Search Other Articles */}
+    <div class="mt-12 p-6 bg-gray-50 rounded-lg border border-gray-200">
+      <h3 class="text-lg font-semibold text-gray-800 mb-4">Search More Articles</h3>
+      <form action="/search" method="get" class="flex flex-col sm:flex-row gap-3">
+        <div class="flex-grow">
+          <SearchInput placeholder="Search for more vacuum reviews and guides..." />
+        </div>
+        <button
+          type="submit"
+          class="whitespace-nowrap px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+
+    {/* Bottom Author Bio */}
+    {showAuthorBox && (
+      <div class="mt-12">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">About the Author</h3>
+        <AuthorInfo
+          name={author}
+          bio={authorBio}
+          image={authorImage}
+          imageAlt={authorImageAlt}
+          pubDate={pubDate}
+          modDate={modDate}
+        />
+      </div>
+    )}
+
+    {/* Related Posts */}
+    <slot name="related-posts" />
+  </article>
+</MainLayout>
+
+<style is:global>
+  .blog-content {
+    /* Override default styles for a better reading experience */
+    color: #374151;
+    line-height: 1.8;
+  }
+
+  .blog-content h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+    scroll-margin-top: 100px;
+  }
+
+  .blog-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    scroll-margin-top: 100px;
+  }
+
+  .blog-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-content a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .blog-content a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .blog-content ul, .blog-content ol {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .blog-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-content img {
+    border-radius: 0.5rem;
+    margin: 2rem auto;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .blog-content blockquote {
+    border-left: 4px solid #3b82f6;
+    padding-left: 1rem;
+    color: #4b5563;
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .blog-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .blog-content h3 {
+      font-size: 1.25rem;
+    }
+  }
+</style>

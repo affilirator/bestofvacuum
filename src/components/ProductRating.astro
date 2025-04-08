@@ -1,0 +1,107 @@
+---
+// ProductRating.astro - Component for displaying product ratings
+interface RatingCriteria {
+  name: string;
+  score: number;
+  maxScore?: number;
+}
+
+interface Props {
+  overallScore: number;
+  maxScore?: number;
+  criteria?: RatingCriteria[];
+}
+
+const {
+  overallScore,
+  maxScore = 10,
+  criteria = []
+} = Astro.props;
+
+// Calculate percentage for the rating bar
+const calculatePercentage = (score: number, max: number = maxScore) => {
+  return (score / max) * 100;
+};
+
+// Determine color based on the score percentage
+const getColorClass = (percentage: number) => {
+  if (percentage >= 80) return 'bg-green-500';
+  if (percentage >= 60) return 'bg-blue-500';
+  if (percentage >= 40) return 'bg-yellow-500';
+  if (percentage >= 20) return 'bg-orange-500';
+  return 'bg-red-500';
+};
+
+const overallPercentage = calculatePercentage(overallScore);
+const overallColorClass = getColorClass(overallPercentage);
+---
+
+<div class="product-rating my-8 p-6 bg-white rounded-lg shadow-md border border-gray-200">
+  <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+    <h3 class="text-xl font-bold text-gray-800 mb-2 md:mb-0">Overall Rating</h3>
+    <div class="flex items-center">
+      <div class="text-3xl font-bold text-gray-900 mr-2">{overallScore.toFixed(1)}</div>
+      <div class="text-gray-500">/ {maxScore}</div>
+    </div>
+  </div>
+
+  <div class="relative h-4 bg-gray-200 rounded-full overflow-hidden mb-6">
+    <div
+      class={`absolute top-0 left-0 h-full ${overallColorClass} rounded-full`}
+      style={`width: ${overallPercentage}%`}
+      role="progressbar"
+      aria-valuenow={overallScore}
+      aria-valuemin="0"
+      aria-valuemax={maxScore}
+    ></div>
+  </div>
+
+  {criteria.length > 0 && (
+    <div class="criteria mt-6">
+      <h4 class="text-lg font-semibold text-gray-800 mb-4">Rating Criteria</h4>
+      <div class="space-y-4">
+        {criteria.map(criterion => {
+          const criterionPercentage = calculatePercentage(criterion.score, criterion.maxScore || maxScore);
+          const criterionColorClass = getColorClass(criterionPercentage);
+          return (
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-700">{criterion.name}</span>
+                <span class="text-gray-900 font-medium">{criterion.score}/{criterion.maxScore || maxScore}</span>
+              </div>
+              <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  class={`absolute top-0 left-0 h-full ${criterionColorClass} rounded-full`}
+                  style={`width: ${criterionPercentage}%`}
+                  role="progressbar"
+                  aria-valuenow={criterion.score}
+                  aria-valuemin="0"
+                  aria-valuemax={criterion.maxScore || maxScore}
+                ></div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .product-rating {
+    background-image: linear-gradient(to bottom, white, #f9fafb);
+    border-left: 4px solid #3b82f6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-rating {
+      background-image: linear-gradient(to bottom, #1f2937, #111827);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .product-rating {
+      padding: 1rem;
+    }
+  }
+</style>

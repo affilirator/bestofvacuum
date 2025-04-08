@@ -1,0 +1,142 @@
+---
+const buyingFactors = [
+  {
+    title: "Cleaning Needs",
+    description: "Consider the surfaces you clean most often. Different vacuum types excel on different surfaces - upright vacuums for carpets, stick models for hard floors.",
+    icon: "M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z M3 17a1 1 0 10-2 0v2a3 3 0 003 3h1a1 1 0 100-2H4a1 1 0 01-1-1v-2z M21 6a1 1 0 10-2 0v2a1 1 0 01-1 1h-1a1 1 0 100 2h1a3 3 0 003-3V6z M20 17a1 1 0 10-2 0v2a1 1 0 01-1 1h-1a1 1 0 100 2h1a3 3 0 003-3v-2z",
+  },
+  {
+    title: "Home Size & Layout",
+    description: "For larger homes, consider battery life for cordless models or robot vacuums with room mapping. Canister vacuums work well for homes with stairs.",
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+  {
+    title: "Pet Considerations",
+    description: "If you have pets, look for specialized pet hair attachments, tangle-free brush rolls, and advanced filtration to capture dander and allergens.",
+    icon: "M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11",
+  },
+  {
+    title: "Special Features",
+    description: "Modern vacuums offer HEPA filtration, app control, automated charging, and specialized brush heads. Identify which features matter most to you.",
+    icon: "M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z",
+  },
+  {
+    title: "Maintenance Requirements",
+    description: "Consider dust bin capacity, filter replacement cost, and maintenance needs. Some models require more regular cleaning than others.",
+    icon: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
+  },
+  {
+    title: "Budget Considerations",
+    description: "Price ranges vary dramatically. Consider long-term value, warranty coverage, and durability alongside initial purchase cost.",
+    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+];
+---
+
+<section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+  <div class="container">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="mb-4">How to Choose the Perfect Vacuum Cleaner</h2>
+      <p class="text-lg text-gray-600">
+        Finding the right vacuum for your home doesn't have to be complicated. We've distilled our expertise into a comprehensive buying guide to help you make an informed decision.
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- Left Side - Buying Factors -->
+      <div>
+        <div class="bg-white rounded-xl shadow-md p-8">
+          <h3 class="text-xl font-bold mb-6 text-gray-900">Key Factors to Consider</h3>
+
+          <div class="space-y-6">
+            {buyingFactors.map((factor) => (
+              <div class="flex gap-4">
+                <div class="shrink-0">
+                  <div class="rounded-full bg-primary-100 p-3 text-primary-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={factor.icon} />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-gray-900 mb-1">{factor.title}</h4>
+                  <p class="text-gray-600 text-sm">{factor.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-8">
+            <a href="/buying-guide" class="btn-primary w-full text-center">
+              Read the Full Buying Guide
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - FAQ & Quick Tips -->
+      <div class="flex flex-col gap-8">
+        <!-- FAQ Teaser -->
+        <div class="bg-white rounded-xl shadow-md p-8">
+          <h3 class="text-xl font-bold mb-6 text-gray-900">Common Questions</h3>
+
+          <div class="space-y-4">
+            <div>
+              <h4 class="text-lg font-semibold text-primary-700 mb-2">What's better: bagged or bagless vacuums?</h4>
+              <p class="text-gray-600 text-sm">
+                Bagged vacuums offer better dust containment and are preferred for allergy sufferers, while bagless models save on recurring costs and let you see when they need emptying.
+                <a href="/buying-guide#bagged-vs-bagless" class="text-primary-600 font-medium hover:underline">Learn more →</a>
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold text-primary-700 mb-2">Are cordless vacuums as powerful as corded?</h4>
+              <p class="text-gray-600 text-sm">
+                Modern premium cordless vacuums now match mid-range corded models in power, but with limited runtime. For deep cleaning of large carpeted areas, corded models still have an edge.
+                <a href="/buying-guide#corded-vs-cordless" class="text-primary-600 font-medium hover:underline">Learn more →</a>
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold text-primary-700 mb-2">What does suction power measured in "AW" mean?</h4>
+              <p class="text-gray-600 text-sm">
+                Air Watts (AW) measures cleaning power, combining airflow and suction. Most homes need 100-200 AW for effective cleaning, with higher ratings needed for deep carpets.
+                <a href="/buying-guide#understanding-specifications" class="text-primary-600 font-medium hover:underline">Learn more →</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Tips -->
+        <div class="bg-secondary-50 border-l-4 border-secondary-500 rounded-r-xl p-6">
+          <h3 class="text-lg font-bold mb-3 text-secondary-800">Expert Tip</h3>
+          <p class="text-gray-700">
+            When choosing between similar models, pay close attention to the warranty terms. Vacuums with 5+ year warranties often reflect manufacturer confidence in their product's durability, potentially saving you money in the long run.
+          </p>
+          <div class="mt-4 flex">
+            <img
+              src="/images/placeholder.svg"
+              alt="Dr. Sarah Johnson"
+              class="w-10 h-10 rounded-full mr-3"
+            />
+            <div>
+              <p class="font-medium text-gray-900">Dr. Sarah Johnson</p>
+              <p class="text-xs text-gray-600">Lead Product Tester</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center">
+      <a href="/comparison" class="btn-outline inline-flex items-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg>
+        Compare Top Vacuum Models
+      </a>
+    </div>
+  </div>
+</section>

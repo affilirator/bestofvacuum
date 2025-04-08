@@ -1,0 +1,66 @@
+---
+// SearchHelp.astro - Component for displaying search help information
+---
+
+<div class="search-help bg-white rounded-lg p-6 shadow-md border border-gray-200">
+  <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    Search Tips
+  </h3>
+
+  <div class="space-y-4 text-sm text-gray-700">
+    <p>
+      Our search supports several advanced operators to help you find exactly what you're looking for:
+    </p>
+
+    <div class="space-y-2">
+      <div>
+        <h4 class="font-medium text-gray-900 mb-1">Exact Phrase Matching</h4>
+        <div class="flex items-center">
+          <code class="bg-gray-100 px-2 py-1 rounded text-blue-700 font-mono">"cordless vacuum"</code>
+          <span class="ml-3">Finds articles containing the exact phrase "cordless vacuum"</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-medium text-gray-900 mb-1">Category Search</h4>
+        <div class="flex items-center">
+          <code class="bg-gray-100 px-2 py-1 rounded text-blue-700 font-mono">category:cordless</code>
+          <span class="ml-3">Finds articles in the "cordless" category</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-medium text-gray-900 mb-1">Tag Search</h4>
+        <div class="flex items-center">
+          <code class="bg-gray-100 px-2 py-1 rounded text-blue-700 font-mono">tag:dyson</code>
+          <span class="ml-3">Finds articles tagged with "dyson"</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-medium text-gray-900 mb-1">Author Search</h4>
+        <div class="flex items-center">
+          <code class="bg-gray-100 px-2 py-1 rounded text-blue-700 font-mono">author:emma</code>
+          <span class="ml-3">Finds articles written by authors whose name contains "emma"</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-medium text-gray-900 mb-1">Combined Search</h4>
+        <div class="flex flex-col">
+          <code class="bg-gray-100 px-2 py-1 rounded text-blue-700 font-mono">
+            "battery life" tag:cordless category:upright
+          </code>
+          <span class="mt-1">Finds upright cordless vacuums with content about battery life</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-gray-500 italic mt-4">
+      You can use these operators in any combination to narrow down your search results.
+    </p>
+  </div>
+</div>

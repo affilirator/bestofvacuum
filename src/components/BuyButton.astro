@@ -1,0 +1,130 @@
+---
+// BuyButton.astro - Component for buy buttons with affiliate link tracking
+interface Retailer {
+  name: string;
+  url: string;
+  price?: string;
+  logo?: string;
+  logoAlt?: string;
+  discount?: string;
+  trackingId?: string;
+}
+
+interface Props {
+  retailers: Retailer[];
+  productName: string;
+  compact?: boolean;
+  highlight?: string;
+  buttonText?: string;
+  centered?: boolean;
+}
+
+const {
+  retailers,
+  productName,
+  compact = false,
+  highlight = "Best Deal",
+  buttonText = "Check Price",
+  centered = false
+} = Astro.props;
+
+// Function to get final URL with tracking
+const getTrackingUrl = (retailer: Retailer) => {
+  const url = new URL(retailer.url);
+
+  // Add tracking ID if available
+  if (retailer.trackingId) {
+    url.searchParams.append('tag', retailer.trackingId);
+  }
+
+  // Add product info for analytics
+  url.searchParams.append('product', encodeURIComponent(productName));
+  url.searchParams.append('source', 'vacuum-reviews');
+
+  return url.toString();
+};
+
+// Sort retailers by price if available
+const sortedRetailers = [...retailers].sort((a, b) => {
+  if (!a.price || !b.price) return 0;
+  return parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, ''));
+});
+
+// Highlight the first retailer as best deal if it has a price
+const hasPricedRetailers = sortedRetailers.some(r => r.price);
+---
+
+<div class={`buy-buttons my-6 ${centered ? 'text-center' : ''}`}>
+  <div class={`retailers-grid ${compact ? 'grid grid-cols-1 gap-4' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'}`}>
+    {sortedRetailers.map((retailer, index) => (
+      <div class="retailer-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-200 transition-all duration-300 hover:shadow-lg">
+        {index === 0 && hasPricedRetailers && (
+          <div class="bg-blue-600 text-white text-xs font-bold py-1 text-center">
+            {highlight}
+          </div>
+        )}
+
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-3">
+            {retailer.logo ? (
+              <img
+                src={retailer.logo}
+                alt={retailer.logoAlt || `${retailer.name} logo`}
+                class="h-8 object-contain"
+                width="100"
+                height="32"
+              />
+            ) : (
+              <span class="font-semibold text-gray-800">{retailer.name}</span>
+            )}
+
+            {retailer.price && (
+              <div class="text-right">
+                <div class="font-bold text-lg text-gray-900">{retailer.price}</div>
+                {retailer.discount && (
+                  <div class="text-green-600 text-sm font-medium">{retailer.discount}</div>
+                )}
+              </div>
+            )}
+          </div>
+
+          <a
+            href={getTrackingUrl(retailer)}
+            target="_blank"
+            rel="nofollow noopener sponsored"
+            class="block w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white text-center font-medium rounded-md transition-colors duration-200"
+            data-retailer={retailer.name.toLowerCase().replace(/\s+/g, '-')}
+          >
+            {buttonText}
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <p class="text-xs text-gray-500 mt-4">
+    Prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed at the time of purchase will apply.
+    <span class="block mt-1">We may earn a commission for purchases made through our links.</span>
+  </p>
+</div>
+
+<script>
+  // Track clicks on buy buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    const buyButtons = document.querySelectorAll('.buy-buttons a');
+
+    buyButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const retailer = button.getAttribute('data-retailer');
+        // Send tracking event (can be connected to Google Analytics or other analytics platforms)
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'click', {
+            'event_category': 'affiliate',
+            'event_label': retailer,
+            'value': 1
+          });
+        }
+      });
+    });
+  });
+</script>

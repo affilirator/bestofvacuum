@@ -1,0 +1,165 @@
+---
+import { getCollection, getEntryBySlug } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import ProsConsTable from '../../components/ProsConsTable.astro';
+import ProductRating from '../../components/ProductRating.astro';
+import BuyButton from '../../components/BuyButton.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+
+// Define props type with params
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the blog post from the slug
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Get related posts (same category, excluding current post)
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(post => post.data.category === entry.data.category && post.slug !== entry.slug)
+  .slice(0, 3);
+
+// Extract pros and cons from markdown if available
+let pros = [];
+let cons = [];
+
+if (entry.body.includes('### Pros') && entry.body.includes('### Cons')) {
+  const prosMatch = entry.body.match(/### Pros\s+([\s\S]*?)(?=###|$)/);
+  const consMatch = entry.body.match(/### Cons\s+([\s\S]*?)(?=###|$)/);
+
+  if (prosMatch) {
+    pros = prosMatch[1]
+      .split('\n')
+      .filter(line => line.trim().startsWith('- '))
+      .map(line => line.trim().replace('- ', ''));
+  }
+
+  if (consMatch) {
+    cons = consMatch[1]
+      .split('\n')
+      .filter(line => line.trim().startsWith('- '))
+      .map(line => line.trim().replace('- ', ''));
+  }
+}
+
+// Extract overall rating if available
+let overallRating = 0;
+const ratingMatch = entry.body.match(/Overall Rating: (\d+\.?\d*)/);
+if (ratingMatch) {
+  overallRating = parseFloat(ratingMatch[1]);
+}
+
+// Create buy links if this is a product review
+const isDysonReview = entry.data.tags?.includes('Dyson');
+const retailers = isDysonReview ? [
+  {
+    name: 'Amazon',
+    url: 'https://www.amazon.com/Dyson-Detect-Absolute-Cordless-Cleaner/dp/B092JYF33V/',
+    price: '$749.99',
+    logo: '/images/retailers/amazon.svg',
+    logoAlt: 'Amazon logo',
+    trackingId: 'vacuumreviews-20'
+  },
+  {
+    name: 'Dyson',
+    url: 'https://www.dyson.com/vacuum-cleaners/cordless/v15/detect-absolute',
+    price: '$769.99',
+    logo: '/images/retailers/dyson.svg',
+    logoAlt: 'Dyson logo'
+  },
+  {
+    name: 'Best Buy',
+    url: 'https://www.bestbuy.com/site/dyson-v15-detect-absolute-cordless-vacuum/6453298.p',
+    price: '$749.99',
+    logo: '/images/retailers/bestbuy.svg',
+    logoAlt: 'Best Buy logo',
+    discount: 'Free shipping'
+  }
+] : [];
+
+const productName = entry.data.title.split(':')[0];
+---
+
+<BlogLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  pubDate={entry.data.pubDate}
+  modDate={entry.data.modDate}
+  author={entry.data.author}
+  authorBio={entry.data.authorBio}
+  authorImage={entry.data.authorImage}
+  authorImageAlt={entry.data.authorImageAlt}
+  image={entry.data.image}
+  coverAlt={entry.data.coverAlt}
+  readingTime={entry.data.readingTime}
+  category={entry.data.category}
+  tags={entry.data.tags}
+  keywords={entry.data.keywords}
+  seo={entry.data.seo}
+  canonicalUrl={entry.data.canonicalUrl}
+>
+  {/* Add product rating if review post */}
+  {overallRating > 0 && (
+    <div class="mb-8">
+      <ProductRating
+        overallScore={overallRating}
+        criteria={[
+          { name: 'Build Quality', score: Math.min(overallRating + 0.3, 10) },
+          { name: 'Cleaning Performance', score: Math.min(overallRating + 0.5, 10) },
+          { name: 'Features', score: Math.min(overallRating + 0.2, 10) },
+          { name: 'Value for Money', score: Math.min(overallRating - 0.8, 10) },
+          { name: 'Ease of Use', score: Math.min(overallRating - 0.2, 10) }
+        ]}
+      />
+    </div>
+  )}
+
+  {/* Add buy buttons if product review */}
+  {retailers.length > 0 && (
+    <div class="my-8">
+      <h2 id="where-to-buy" class="text-2xl font-bold text-gray-800 mb-4">Where to Buy {productName}</h2>
+      <BuyButton
+        retailers={retailers}
+        productName={productName}
+      />
+    </div>
+  )}
+
+  {/* Main content */}
+  <Content />
+
+  {/* Add pros/cons table if available */}
+  {pros.length > 0 && cons.length > 0 && (
+    <div class="my-10">
+      <ProsConsTable pros={pros} cons={cons} />
+    </div>
+  )}
+
+  {/* Buy button at bottom */}
+  {retailers.length > 0 && (
+    <div class="my-12 p-6 bg-blue-50 rounded-lg border border-blue-100">
+      <h2 class="text-2xl font-bold text-gray-800 mb-2">Ready to Experience {productName}?</h2>
+      <p class="text-gray-600 mb-6">Get yours today from these trusted retailers with fast shipping and excellent customer service.</p>
+      <BuyButton
+        retailers={retailers}
+        productName={productName}
+        buttonText="Buy Now"
+        centered={true}
+      />
+    </div>
+  )}
+
+  {/* Related posts */}
+  {relatedPosts.length > 0 && (
+    <div slot="related-posts">
+      <RelatedPosts posts={relatedPosts} />
+    </div>
+  )}
+</BlogLayout>

@@ -1,0 +1,124 @@
+---
+// SearchFilters.astro - Component for search filters (categories and tags)
+interface FilterItem {
+  name: string;
+  slug: string;
+  count: number;
+}
+
+interface Props {
+  categories: FilterItem[];
+  tags: FilterItem[];
+  selectedCategory?: string;
+  selectedTag?: string;
+}
+
+const {
+  categories = [],
+  tags = [],
+  selectedCategory = "",
+  selectedTag = ""
+} = Astro.props;
+---
+
+<div class="search-filters space-y-8">
+  <!-- Categories Filter -->
+  <div class="filter-section">
+    <h3 class="text-lg font-semibold text-gray-800 mb-3">Categories</h3>
+    <div class="space-y-2">
+      <div class="flex items-center">
+        <input
+          type="radio"
+          id="category-all"
+          name="category"
+          value=""
+          class="h-4 w-4 text-blue-600 focus:ring-blue-500"
+          checked={selectedCategory === ""}
+        />
+        <label for="category-all" class="ml-2 text-gray-700 font-medium">
+          All Categories
+        </label>
+      </div>
+
+      {categories.map(category => (
+        <div class="flex items-center">
+          <input
+            type="radio"
+            id={`category-${category.slug}`}
+            name="category"
+            value={category.slug}
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500"
+            checked={selectedCategory === category.slug}
+          />
+          <label for={`category-${category.slug}`} class="ml-2 text-gray-700">
+            {category.name} <span class="text-gray-500 text-sm">({category.count})</span>
+          </label>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Tags Filter -->
+  <div class="filter-section">
+    <h3 class="text-lg font-semibold text-gray-800 mb-3">Tags</h3>
+    <div class="flex flex-wrap gap-2">
+      <button
+        type="button"
+        data-tag=""
+        class={`tag-filter px-3 py-1 rounded-full text-sm ${selectedTag === "" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+        data-active={selectedTag === ""}
+      >
+        All
+      </button>
+
+      {tags.map(tag => (
+        <button
+          type="button"
+          data-tag={tag.slug}
+          class={`tag-filter px-3 py-1 rounded-full text-sm ${selectedTag === tag.slug ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+          data-active={selectedTag === tag.slug}
+        >
+          {tag.name} <span class="text-xs">({tag.count})</span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Hidden inputs to store selected values for form submission -->
+  <input type="hidden" id="selected-tag" name="tag" value={selectedTag} />
+</div>
+
+<script>
+  // Handle tag button clicks
+  document.addEventListener('DOMContentLoaded', () => {
+    const tagButtons = document.querySelectorAll('.tag-filter');
+    const selectedTagInput = document.getElementById('selected-tag');
+
+    tagButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active state
+        tagButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-600', 'text-white');
+          btn.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+          btn.setAttribute('data-active', 'false');
+        });
+
+        button.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        button.classList.add('bg-blue-600', 'text-white');
+        button.setAttribute('data-active', 'true');
+
+        // Update hidden input
+        const tagValue = button.getAttribute('data-tag');
+        if (selectedTagInput) {
+          selectedTagInput.value = tagValue || '';
+        }
+
+        // Auto-submit the form
+        const form = button.closest('form');
+        if (form) {
+          form.submit();
+        }
+      });
+    });
+  });
+</script>

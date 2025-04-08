@@ -1,0 +1,177 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+  const allBlogPosts = await getCollection('blog');
+
+  // Get unique categories
+  const categories = [...new Set(allBlogPosts.map(post => post.data.category))];
+
+  return categories.map(category => {
+    // Filter posts by this category
+    const filteredPosts = allBlogPosts.filter(post =>
+      post.data.category === category
+    );
+
+    return {
+      params: { category: category.toLowerCase().replace(/\s+/g, '-') },
+      props: { category, posts: filteredPosts },
+    };
+  });
+}
+
+const { category, posts } = Astro.props;
+
+// Sort posts by date (newest first)
+const sortedPosts = [...posts].sort((a, b) => {
+  return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+});
+
+// Format date
+const formatDate = (date) => {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+};
+
+// Get related categories
+const allPosts = await getCollection('blog');
+const allCategories = [...new Set(allPosts.map(post => post.data.category))];
+const relatedCategories = allCategories.filter(cat => cat !== category).slice(0, 5);
+
+// SEO metadata
+const title = `${category} Reviews, Guides & Comparisons`;
+const description = `Explore our collection of expert ${category.toLowerCase()} reviews, buying guides, and tips to help you make an informed purchase decision.`;
+---
+
+<MainLayout
+  title={title}
+  description={description}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <header class="text-center mb-12">
+      <div class="flex items-center justify-center mb-4 text-blue-600">
+        <a href="/blog" class="text-sm font-medium hover:underline">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-sm font-medium text-gray-600">Category</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">{category}</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Expert reviews, buying guides, and tips about {category.toLowerCase()} from our testing team.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+      <!-- Sidebar -->
+      <aside class="lg:col-span-1">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8 sticky top-24">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Other Categories</h2>
+          <ul class="space-y-2">
+            {relatedCategories.map(cat => (
+              <li>
+                <a
+                  href={`/category/${cat.toLowerCase().replace(/\s+/g, '-')}`}
+                  class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200 flex items-center"
+                >
+                  <span class="mr-2">→</span>
+                  {cat}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <h2 class="text-xl font-bold text-gray-900 mb-4 mt-8">Return to Blog</h2>
+          <a
+            href="/blog"
+            class="flex items-center text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            <span class="mr-2">←</span>
+            View all blog posts
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        {sortedPosts.length === 0 ? (
+          <div class="text-center py-12">
+            <h2 class="text-2xl font-medium text-gray-700">No posts found in this category</h2>
+            <p class="mt-2 text-gray-500">Try checking out another category or return to the blog home page.</p>
+            <a href="/blog" class="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+              Back to Blog
+            </a>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {sortedPosts.map(post => (
+              <article class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                <a href={`/blog/${post.slug}/`} class="block">
+                  <div class="relative pb-[56.25%]">
+                    <img
+                      src={post.data.image}
+                      alt={post.data.coverAlt}
+                      width="400"
+                      height="225"
+                      class="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <span class="absolute top-2 right-2 bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded">
+                      {post.data.category}
+                    </span>
+                  </div>
+
+                  <div class="p-5">
+                    <h2 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600">
+                      {post.data.title}
+                    </h2>
+
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                      {post.data.description}
+                    </p>
+
+                    <div class="flex items-start mt-4">
+                      <img
+                        src={post.data.authorImage}
+                        alt={post.data.authorImageAlt}
+                        width="32"
+                        height="32"
+                        class="w-8 h-8 rounded-full mr-3 object-cover"
+                        loading="lazy"
+                      />
+                      <div>
+                        <p class="text-sm font-medium text-gray-900">{post.data.author}</p>
+                        <p class="text-xs text-gray-500">
+                          {formatDate(post.data.pubDate)}
+                          {post.data.readingTime && <span> · {post.data.readingTime}</span>}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

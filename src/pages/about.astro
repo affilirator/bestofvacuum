@@ -1,0 +1,48 @@
+---
+import { getEntry } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import AboutHero from '../components/AboutHero.astro';
+import AboutMission from '../components/AboutMission.astro';
+import TeamDisplay from '../components/TeamDisplay.astro';
+import AboutMethodology from '../components/AboutMethodology.astro';
+import AboutEEAT from '../components/AboutEEAT.astro';
+import AboutFAQ from '../components/AboutFAQ.astro';
+import AboutSEOSchema from '../components/AboutSEOSchema.astro';
+
+// Get the about page content from the CMS
+const aboutPage = await getEntry('pages', 'about');
+const { title, description, foundedYear } = aboutPage.data;
+// Render the markdown content
+const { Content } = await aboutPage.render();
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonicalURL={new URL('/about', Astro.site).toString()}
+>
+  <AboutSEOSchema />
+
+  <AboutHero
+    title={title}
+    subtitle={description}
+  />
+
+  <AboutMission
+    foundedYear={foundedYear}
+  />
+
+  <div class="container py-16 bg-white">
+    <div class="prose prose-lg mx-auto">
+      <Content />
+    </div>
+  </div>
+
+  <TeamDisplay />
+
+  <AboutMethodology />
+
+  <AboutEEAT />
+
+  <AboutFAQ />
+</MainLayout>

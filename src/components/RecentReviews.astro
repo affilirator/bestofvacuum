@@ -1,0 +1,227 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get blog posts
+const allBlogPosts = await getCollection('blog');
+
+// Sort by date (newest first) and take top 3
+const recentPosts = allBlogPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+// Format date
+const formatDate = (date) => {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  }).format(date);
+};
+
+// Sample reviews (these would normally come from your content collection)
+const reviews = [
+  {
+    title: "Dyson V15 Detect Review",
+    image: "/images/reviews/dyson-v15-detect-complete.jpg",
+    score: 9.5,
+    path: "/reviews/dyson-v15-detect-review",
+    date: "Apr 15, 2023",
+    excerpt: "Dyson's latest cordless vacuum sets a new standard with its innovative laser cleaning head and powerful suction.",
+    category: "Cordless Vacuums"
+  },
+  {
+    title: "Shark Vertex Pro Powered Lift-Away Review",
+    image: "/public/images/placeholder.svg",
+    score: 8.8,
+    path: "/reviews/shark-vertex-pro-review",
+    date: "Mar 20, 2023",
+    excerpt: "Shark's premium upright offers exceptional performance at a more affordable price than many competitors.",
+    category: "Upright Vacuums"
+  },
+  {
+    title: "Miele Complete C3 Cat & Dog Review",
+    image: "/public/images/placeholder.svg",
+    score: 9.2,
+    path: "/reviews/miele-complete-c3-review",
+    date: "Feb 18, 2023",
+    excerpt: "German engineering at its finest - this canister vacuum excels on all flooring types and handles pet hair with ease.",
+    category: "Canister Vacuums"
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Latest Vacuum Reviews & Blog Posts</h2>
+      <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+        Discover our most recent in-depth vacuum reviews, buying guides, and cleaning tips, tested and written by our cleaning experts.
+      </p>
+    </div>
+
+    <!-- Tabs for Reviews/Blog -->
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex rounded-md shadow-sm" role="group">
+        <button
+          type="button"
+          id="reviews-tab"
+          class="active-tab px-6 py-3 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+        >
+          Reviews
+        </button>
+        <button
+          type="button"
+          id="blog-tab"
+          class="px-6 py-3 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+        >
+          Blog Posts
+        </button>
+      </div>
+    </div>
+
+    <!-- Reviews Content -->
+    <div id="reviews-content" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {reviews.map(review => (
+        <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:shadow-lg hover:-translate-y-1">
+          <a href={review.path} class="block">
+            <div class="relative">
+              <img src={review.image} alt={review.title} class="w-full h-56 object-cover" />
+
+              <div class="absolute top-2 right-2 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-md">
+                <span class="text-lg font-bold text-gray-900">{review.score}</span>
+              </div>
+
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-6 px-4">
+                <span class="text-white text-sm font-medium bg-blue-600 px-2 py-1 rounded-md">
+                  {review.category}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{review.title}</h3>
+              <div class="text-sm text-gray-500 mb-3">{review.date}</div>
+              <p class="text-gray-700">{review.excerpt}</p>
+
+              <div class="mt-4 flex justify-end">
+                <span class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800">
+                  Read full review
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Blog Content (hidden by default) -->
+    <div id="blog-content" class="hidden grid grid-cols-1 md:grid-cols-3 gap-8">
+      {recentPosts.map(post => (
+        <article class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+          <a href={`/blog/${post.slug}/`} class="block">
+            <div class="relative pb-[56.25%]">
+              <img
+                src={post.data.image}
+                alt={post.data.coverAlt}
+                class="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+              <span class="absolute top-2 right-2 bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded">
+                {post.data.category}
+              </span>
+            </div>
+
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2">
+                {post.data.title}
+              </h3>
+
+              <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                {post.data.description}
+              </p>
+
+              <div class="flex items-start mt-4">
+                <img
+                  src={post.data.authorImage}
+                  alt={post.data.authorImageAlt}
+                  class="w-8 h-8 rounded-full mr-3 object-cover"
+                  loading="lazy"
+                />
+                <div>
+                  <p class="text-sm font-medium text-gray-900">{post.data.author}</p>
+                  <p class="text-xs text-gray-500">
+                    {formatDate(post.data.pubDate)}
+                    {post.data.readingTime && <span> · {post.data.readingTime}</span>}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a
+        href="/blog"
+        class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+      >
+        Visit Our Blog
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple tab functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const reviewsTab = document.getElementById('reviews-tab');
+    const blogTab = document.getElementById('blog-tab');
+    const reviewsContent = document.getElementById('reviews-content');
+    const blogContent = document.getElementById('blog-content');
+
+    if (reviewsTab && blogTab && reviewsContent && blogContent) {
+      reviewsTab.addEventListener('click', () => {
+        reviewsTab.classList.add('active-tab');
+        blogTab.classList.remove('active-tab');
+        reviewsContent.classList.remove('hidden');
+        blogContent.classList.add('hidden');
+      });
+
+      blogTab.addEventListener('click', () => {
+        blogTab.classList.add('active-tab');
+        reviewsTab.classList.remove('active-tab');
+        blogContent.classList.remove('hidden');
+        reviewsContent.classList.add('hidden');
+      });
+    }
+  });
+</script>
+
+<style>
+  .active-tab {
+    color: white;
+    background-color: #2563eb;
+    border-color: #2563eb;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -1,0 +1,82 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publication Date", name: "pubDate", widget: "datetime"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Category", name: "category", widget: "select", options: ["Upright", "Stick", "Robot", "Canister", "Handheld", "Wet/Dry", "Commercial"]}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Show Table of Contents", name: "showTableOfContents", widget: "boolean", default: true}
+
+  - name: "reviews"
+    label: "Vacuum Reviews"
+    folder: "src/content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publication Date", name: "pubDate", widget: "datetime"}
+      - {label: "Rating", name: "rating", widget: "number", min: 1, max: 5, step: 0.1}
+      - {label: "Product Image", name: "image", widget: "image"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Brand", name: "brand", widget: "string"}
+      - {label: "Model", name: "model", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Upright", "Stick", "Robot", "Canister", "Handheld", "Wet/Dry", "Commercial"]}
+      - {label: "Price", name: "price", widget: "number", required: false}
+      - {label: "Pros", name: "pros", widget: "list"}
+      - {label: "Cons", name: "cons", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+
+  - name: "team"
+    label: "Team Members"
+    folder: "src/content/team"
+    create: true
+    slug: "{{fields.name | slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Credentials", name: "credentials", widget: "string"}
+      - {label: "Bio", name: "bio", widget: "text"}
+      - {label: "Image", name: "image", widget: "image", required: false, default: "/images/placeholder.svg"}
+      - {label: "Expertise", name: "expertise", widget: "list"}
+      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/content/pages/about.md"
+        label: "About Page"
+        name: "about"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Founded Year", name: "foundedYear", widget: "number"}
+          - {label: "Content", name: "body", widget: "markdown"}
+
+      - file: "src/content/pages/contact.md"
+        label: "Contact Page"
+        name: "contact"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "Address", name: "address", widget: "string"}
+          - {label: "Office Hours", name: "officeHours", widget: "list", fields: [
+              {label: "Day", name: "day", widget: "string"},
+              {label: "Hours", name: "hours", widget: "string"}
+            ]}

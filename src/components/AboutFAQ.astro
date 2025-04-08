@@ -1,0 +1,88 @@
+---
+import FAQ, { type FAQItem } from './FAQ.astro';
+import QuestionSubmission from './QuestionSubmission.astro';
+
+// FAQ items
+const aboutFaqs: FAQItem[] = [
+  {
+    question: "How do you test vacuum cleaners?",
+    answer: "We test each vacuum cleaner through a rigorous 20+ hour process that evaluates suction power, filtration efficiency, noise levels, battery life, ergonomics, and cleaning performance across multiple floor types. We use standardized tests with calibrated equipment and controlled testing environments to ensure consistent, reliable results."
+  },
+  {
+    question: "Are your reviews independent and unbiased?",
+    answer: "Yes, we maintain strict editorial independence. We never accept payment for reviews or allow manufacturers to influence our testing results. When we use affiliate links, we clearly disclose this relationship, but it never impacts our ratings or recommendations. Our testing methodology remains consistent across all products regardless of brand or price point."
+  },
+  {
+    question: "What qualifications does your testing team have?",
+    answer: "Our testing team includes certified professionals with academic credentials in relevant fields including mechanical engineering, electrical engineering, and indoor air quality. Team members have prior experience working for vacuum manufacturers, consumer testing labs, and academic research institutions, bringing both theoretical knowledge and practical expertise to our evaluations."
+  },
+  {
+    question: "How do you determine your ratings and recommendations?",
+    answer: "Our rating system is based on a weighted scoring methodology that evaluates performance across key categories: cleaning effectiveness (40%), build quality & durability (20%), usability & ergonomics (15%), noise level (10%), features & accessories (10%), and value (5%). We test each vacuum against competitors in its price range and category to provide fair comparisons."
+  },
+  {
+    question: "Do you conduct long-term durability testing?",
+    answer: "Yes. While our initial reviews are based on 20+ hours of testing, we select several models each quarter for extended 6-month durability testing. This involves continued regular use, monitoring of battery degradation, filter effectiveness over time, and assessment of any developing issues. We update our reviews with this information when significant findings emerge."
+  },
+  {
+    question: "How often do you update your reviews?",
+    answer: "We update our reviews in three circumstances: 1) When manufacturers release significant firmware/software updates or design changes, 2) When our long-term testing reveals noteworthy durability insights, and 3) When we conduct an annual category-wide reassessment to ensure our recommendations remain current. All updates are clearly dated in the review."
+  },
+  {
+    question: "Can I request a specific vacuum cleaner to be reviewed?",
+    answer: "We welcome review suggestions from our readers! While we can't guarantee we'll review every requested model, we consider reader suggestions when planning our testing schedule. You can submit review requests through our <a href='/contact' class='text-primary-600 hover:text-primary-800'>contact form</a>."
+  }
+];
+
+// HowTo Schema for submitting questions
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Submit a Vacuum Cleaner Question",
+  "description": "Submit your vacuum cleaner questions to get expert answers from our team.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Fill in your details",
+      "text": "Enter your name and email address in the form fields."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Write your question",
+      "text": "Type your vacuum cleaner or testing methodology question in the text area."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Provide consent",
+      "text": "Check the consent box to allow us to email you with an answer."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Submit your question",
+      "text": "Click the Submit Question button to send your inquiry to our team of experts."
+    }
+  ],
+  "tool": {
+    "@type": "HowToTool",
+    "name": "Question submission form"
+  }
+};
+---
+
+<section id="about-faq" class="py-16 bg-white">
+  <div class="container">
+    <FAQ
+      title="Frequently Asked Questions About Our Review Process"
+      subtitle="Learn more about how we test, who we are, and why you can trust our vacuum cleaner reviews"
+      faqs={aboutFaqs}
+      bgColor="white"
+      includeSchema={true}
+    />
+
+    <div class="max-w-3xl mx-auto">
+      <QuestionSubmission />
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+</section>

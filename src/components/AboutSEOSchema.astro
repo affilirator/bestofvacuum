@@ -1,0 +1,69 @@
+---
+import { generateOrganizationSchema, generatePersonSchema, generateBreadcrumbSchema } from '../utils/schema';
+
+interface Props {
+  companyName?: string;
+  companyDescription?: string;
+  companyLogo?: string;
+  teamMembers?: Array<{
+    name: string;
+    jobTitle: string;
+    description: string;
+    image: string;
+  }>;
+}
+
+const {
+  companyName = "Vacuum Expert Reviews",
+  companyDescription = "Unbiased vacuum cleaner reviews, guides, and cleaning tips from certified experts",
+  companyLogo = "/logo.png",
+  teamMembers = [
+    {
+      name: "Dr. Sarah Johnson",
+      jobTitle: "Founder & Lead Product Tester",
+      description: "PhD in Mechanical Engineering with 15 years of experience in product testing",
+      image: "/images/placeholder.svg"
+    },
+    {
+      name: "Michael Chen",
+      jobTitle: "Technical Director",
+      description: "MSc in Electrical Engineering specializing in evaluating electronic components",
+      image: "/images/placeholder.svg"
+    }
+  ]
+} = Astro.props;
+
+// Create organization schema
+const organizationSchema = generateOrganizationSchema();
+
+// Create person schemas for team members
+const teamSchemas = teamMembers.map(member =>
+  generatePersonSchema({
+    name: member.name,
+    description: member.description,
+    image: new URL(member.image, Astro.site || 'https://vacuum-expert-reviews.com').toString(),
+    url: new URL('/about', Astro.site || 'https://vacuum-expert-reviews.com').toString(),
+    jobTitle: member.jobTitle,
+    sameAs: []
+  })
+);
+
+// Create breadcrumb schema
+const breadcrumbSchema = generateBreadcrumbSchema([
+  {
+    name: 'Home',
+    url: new URL('/', Astro.site || 'https://vacuum-expert-reviews.com').toString()
+  },
+  {
+    name: 'About Us',
+    url: new URL('/about', Astro.site || 'https://vacuum-expert-reviews.com').toString()
+  }
+]);
+
+// Combine all schemas into a single array
+const allSchemas = [organizationSchema, ...teamSchemas, breadcrumbSchema];
+---
+
+{allSchemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

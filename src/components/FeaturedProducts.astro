@@ -1,0 +1,181 @@
+---
+// This would typically come from a CMS or data file
+const featuredProducts = [
+  {
+    id: 1,
+    name: "Dyson V15 Detect",
+    slug: "dyson-v15-detect",
+    category: "Stick",
+    rating: 4.8,
+    reviewCount: 256,
+    image: "/images/placeholder.svg",
+    price: 749.99,
+    salePrice: 699.99,
+    description: "Latest Dyson with laser dust detection technology for efficient deep cleaning",
+    features: ["Laser dust detection", "150% more suction", "Up to 60 minutes run time", "LCD screen"],
+    bestFor: "Pet owners, Allergy sufferers",
+    affiliateLink: "https://www.amazon.com/dp/B0925VDWK2?tag=vacuumexpert-20",
+  },
+  {
+    id: 2,
+    name: "Shark Vertex Pro",
+    slug: "shark-vertex-pro",
+    category: "Upright",
+    rating: 4.6,
+    reviewCount: 198,
+    image: "/images/placeholder.svg",
+    price: 399.99,
+    salePrice: 349.99,
+    description: "Powerful upright vacuum with DuoClean PowerFins and self-cleaning brushroll",
+    features: ["Self-cleaning brushroll", "HEPA filtration", "Lift-away feature", "LED headlights"],
+    bestFor: "Large homes, Pet owners",
+    affiliateLink: "https://www.amazon.com/dp/B08R5JZXPY?tag=vacuumexpert-20",
+  },
+  {
+    id: 3,
+    name: "Roborock S7 MaxV Ultra",
+    slug: "roborock-s7-maxv-ultra",
+    category: "Robot",
+    rating: 4.7,
+    reviewCount: 173,
+    image: "/images/placeholder.svg",
+    price: 1399.99,
+    salePrice: 1299.99,
+    description: "All-in-one robot vacuum and mop with auto-empty dock and self-cleaning",
+    features: ["3D mapping", "Auto-empty dock", "Self-cleaning mop", "Object recognition"],
+    bestFor: "Smart homes, Busy professionals",
+    affiliateLink: "https://www.amazon.com/dp/B09JNMKN2C?tag=vacuumexpert-20",
+  },
+  {
+    id: 4,
+    name: "Miele Complete C3 Cat & Dog",
+    slug: "miele-complete-c3-cat-dog",
+    category: "Canister",
+    rating: 4.9,
+    reviewCount: 145,
+    image: "/images/placeholder.svg",
+    price: 999.99,
+    salePrice: null,
+    description: "Premium canister vacuum with specialized tools for pet hair and odor control",
+    features: ["Active AirClean filter", "Turbo brush", "Parquet Twister", "6-stage suction"],
+    bestFor: "Pet owners, Premium homes",
+    affiliateLink: "https://www.amazon.com/dp/B00R43I3KU?tag=vacuumexpert-20",
+  },
+];
+---
+
+<section class="py-12 md:py-20 bg-gray-50">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="mb-4">Our Top-Rated Vacuum Cleaners</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Based on our extensive testing and real-world use, these are the vacuum cleaners that offer the best performance, value, and features in 2025.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {featuredProducts.map((product) => (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1">
+          <!-- Sale badge if there's a sale price -->
+          {product.salePrice && (
+            <div class="absolute top-4 right-4 bg-secondary-500 text-white text-sm font-bold px-2 py-1 rounded">
+              SALE
+            </div>
+          )}
+
+          <!-- Product Image -->
+          <a href={`/reviews/${product.slug}`} class="block p-6 bg-gray-100">
+            <div class="aspect-square flex items-center justify-center">
+              <img
+                src={product.image}
+                alt={product.name}
+                class="max-h-48 w-auto object-contain mix-blend-multiply"
+              />
+            </div>
+          </a>
+
+          <!-- Product Info -->
+          <div class="p-6">
+            <!-- Category -->
+            <div class="text-xs text-gray-500 mb-2">{product.category} Vacuum</div>
+
+            <!-- Title -->
+            <h3 class="text-lg font-semibold mb-2">
+              <a href={`/reviews/${product.slug}`} class="text-gray-900 hover:text-primary-600">
+                {product.name}
+              </a>
+            </h3>
+
+            <!-- Rating -->
+            <div class="flex items-center mb-2">
+              <div class="flex mr-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg
+                    class={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-secondary-500' : 'text-gray-300'}`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                ))}
+              </div>
+              <span class="text-sm text-gray-600">
+                {product.rating.toFixed(1)} ({product.reviewCount} reviews)
+              </span>
+            </div>
+
+            <!-- Price -->
+            <div class="flex items-center gap-2 mb-4">
+              {product.salePrice ? (
+                <>
+                  <span class="text-lg font-bold text-primary-700">${product.salePrice}</span>
+                  <span class="text-sm text-gray-500 line-through">${product.price}</span>
+                </>
+              ) : (
+                <span class="text-lg font-bold text-primary-700">${product.price}</span>
+              )}
+            </div>
+
+            <!-- Description (short version) -->
+            <p class="text-sm text-gray-600 mb-4 line-clamp-2">
+              {product.description}
+            </p>
+
+            <!-- Best For -->
+            <div class="mb-4">
+              <span class="text-xs font-medium text-gray-700">BEST FOR:</span>
+              <span class="text-sm text-gray-600 ml-1">{product.bestFor}</span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex gap-2 flex-wrap">
+              <a
+                href={product.affiliateLink}
+                target="_blank"
+                rel="nofollow noopener sponsored"
+                class="btn-primary flex-grow text-center text-sm"
+              >
+                Check Price
+              </a>
+              <a
+                href={`/reviews/${product.slug}`}
+                class="btn-outline flex-grow text-center text-sm"
+              >
+                Read Review
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/reviews" class="btn-outline">
+        View All Vacuum Reviews
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

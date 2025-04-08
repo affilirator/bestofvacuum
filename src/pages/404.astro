@@ -1,0 +1,176 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
+
+// Get a list of recommended posts/pages for user navigation
+const recommendations = [
+  { title: "Best Cordless Vacuums for 2024", url: "/blog" },
+  { title: "Dyson V15 Detect Review", url: "/reviews/dyson-v15-detect-review" },
+  { title: "Vacuum Buying Guide", url: "/buying-guide" }
+];
+
+// Generate random positions for dust particles
+const generateDustParticles = (count) => {
+  const particles = [];
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      size: Math.random() * 3 + 1,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: Math.random() * 3 + 2,
+    });
+  }
+  return particles;
+};
+
+const dustParticles = generateDustParticles(15);
+---
+
+<MainLayout
+  title="Page Not Found"
+  description="Oops! The page you're looking for has vanished like dust in a HEPA filter. Check out our recommended content or use search to find what you need."
+>
+  <section class="bg-gray-50 py-16 md:py-24">
+    <div class="container text-center">
+      <!-- Vacuum 404 illustration with animated dust -->
+      <div class="mb-6 mx-auto w-64 h-64 relative vacuum-container">
+        <svg class="w-full h-full text-primary-600 vacuum-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Vacuum cleaner body -->
+          <path d="M140 100C140 122.09 122.09 140 100 140C77.9086 140 60 122.09 60 100C60 77.9086 77.9086 60 100 60C122.09 60 140 77.9086 140 100Z" fill="currentColor" opacity="0.2"/>
+          <!-- Vacuum handle -->
+          <path d="M100 40V60" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <!-- Vacuum cleaner head -->
+          <path d="M60 100H30C25.5817 100 22 103.582 22 108V112C22 116.418 25.5817 120 30 120H60" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <!-- 404 text inside vacuum -->
+          <text x="84" y="108" font-family="Inter, sans-serif" font-size="24" font-weight="bold" fill="currentColor">404</text>
+        </svg>
+
+        <!-- Animated dust particles -->
+        {dustParticles.map(particle => (
+          <div
+            class="dust-particle"
+            style={`
+              width: ${particle.size}px;
+              height: ${particle.size}px;
+              left: ${particle.x}%;
+              top: ${particle.y}%;
+              animation-delay: ${particle.delay}s;
+              animation-duration: ${particle.duration}s;
+            `}
+          ></div>
+        ))}
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Oops! Page Not Found</h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Seems like this page has been sucked up into a vacuum cleaner. Let's help you find what you're looking for!
+      </p>
+
+      <!-- Search bar -->
+      <div class="mb-12 max-w-md mx-auto">
+        <a href="/search" class="w-full flex items-center justify-center px-6 py-3 border border-gray-300 rounded-md bg-white hover:bg-gray-50 transition">
+          <svg class="w-5 h-5 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <span class="text-gray-800 font-medium">Search for vacuum reviews & guides</span>
+        </a>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Popular Content You Might Like</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {recommendations.map(item => (
+            <a href={item.url} class="bg-white p-6 rounded-lg shadow-sm hover:shadow transition border border-gray-100 flex flex-col items-center justify-center">
+              <span class="text-primary-600 mb-2">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 6h-4a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3zm-8-1h2a1 1 0 0 1 1 1H10a1 1 0 0 1 1-1zm8 13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3h9a1 1 0 0 0 0-2H7V6a1 1 0 0 1 1-1h.997A2.999 2.999 0 0 0 12 8h4a1 1 0 0 1 1 1v3h-1a1 1 0 0 0 0 2h1v5z"></path>
+                </svg>
+              </span>
+              <span class="font-medium text-center">{item.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="bg-primary-50 rounded-xl p-8 max-w-3xl mx-auto border border-primary-100">
+        <h3 class="text-2xl font-bold mb-3">Still Need Help Finding the Perfect Vacuum?</h3>
+        <p class="text-gray-700 mb-6">Our experts have tested dozens of vacuum cleaners to help you find the right one.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/buying-guide" class="btn-primary">Read Buying Guide</a>
+          <a href="/" class="btn-outline">Return to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .vacuum-container {
+    position: relative;
+    overflow: visible;
+  }
+
+  .vacuum-svg {
+    animation: hover 3s ease-in-out infinite;
+    transform-origin: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .dust-particle {
+    position: absolute;
+    background-color: #0ea5e9; /* primary-500 color */
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 5s infinite ease-in-out, fadeInOut 5s infinite ease-in-out;
+    z-index: 5;
+  }
+
+  /* Animation for the dust particles floating around */
+  @keyframes float {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-15px, 15px) rotate(90deg);
+    }
+    50% {
+      transform: translate(15px, 30px) rotate(180deg);
+    }
+    75% {
+      transform: translate(30px, 15px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+
+  /* Animation for the dust particles fading in and out */
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.6; }
+  }
+
+  /* Animation for the vacuum cleaner hovering effect */
+  @keyframes hover {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Animation for dust particles being sucked towards the vacuum */
+  .vacuum-container:hover .dust-particle {
+    animation: suckIn 1.5s forwards ease-in-out;
+  }
+
+  @keyframes suckIn {
+    to {
+      left: 50%;
+      top: 50%;
+      opacity: 0;
+      transform: scale(0.1);
+    }
+  }
+</style>

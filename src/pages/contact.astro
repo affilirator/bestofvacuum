@@ -1,0 +1,68 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ContactHero from '../components/ContactHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import ContactFAQ from '../components/ContactFAQ.astro';
+import ContactSEOSchema from '../components/ContactSEOSchema.astro';
+import { type FAQItem } from '../components/FAQ.astro';
+
+// Page SEO metadata
+const pageTitle = "Contact Us - Vacuum Expert Reviews";
+const pageDescription = "Have questions about vacuum cleaners or our reviews? Contact our team of experts for personalized advice, review requests, or partnership opportunities.";
+
+// Contact information
+const contactInfo = {
+  email: "contact@vacuum-expert-reviews.com",
+  phone: "+1 (555) 123-4567",
+  address: "123 Vacuum Testing Lab, Suite 456, New York, NY 10001"
+};
+
+// Extract FAQs for schema
+const contactFaqs: FAQItem[] = [
+  {
+    question: "What's the typical response time for email inquiries?",
+    answer: "We aim to respond to all email inquiries within 1-2 business days. For urgent matters, we recommend calling our office directly during business hours."
+  },
+  {
+    question: "How can I request a specific vacuum cleaner to be reviewed?",
+    answer: "You can submit a vacuum cleaner review request using our contact form. Select 'Vacuum Cleaner Review Request' from the dropdown menu and provide as much detail as possible about the model you'd like us to review."
+  },
+  {
+    question: "Do you offer consulting services for vacuum cleaner manufacturers?",
+    answer: "Yes, our team offers consulting services for vacuum cleaner manufacturers focused on product testing, design improvement, and user experience optimization. Please select 'Partnership Opportunity' in the contact form for more information."
+  }
+];
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={new URL('/contact', Astro.site).toString()}
+>
+  <ContactSEOSchema
+    email={contactInfo.email}
+    phone={contactInfo.phone}
+    address={contactInfo.address}
+    faqs={contactFaqs}
+  />
+
+  <ContactHero
+    title="Contact Our Vacuum Expert Team"
+    subtitle="Have questions about vacuum cleaners or our review process? Our team is here to help."
+  />
+
+  <ContactForm
+    title="Get In Touch"
+    subtitle="Fill out the form below and our team will get back to you within 48 hours."
+    submitEndpoint="/api/contact"
+  />
+
+  <ContactInfo
+    email={contactInfo.email}
+    phone={contactInfo.phone}
+    address={contactInfo.address}
+  />
+
+  <ContactFAQ />
+</MainLayout>

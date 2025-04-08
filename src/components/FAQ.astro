@@ -1,0 +1,80 @@
+---
+import { generateFAQSchema } from '../utils/schema';
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs: FAQItem[];
+  includeSchema?: boolean;
+  bgColor?: 'white' | 'gray';
+}
+
+const {
+  title = "Frequently Asked Questions",
+  subtitle = "Find answers to the most common questions about our vacuum cleaner reviews and testing methodology.",
+  faqs,
+  includeSchema = true,
+  bgColor = 'gray'
+} = Astro.props;
+
+// Generate FAQ Schema
+const faqSchema = includeSchema ? generateFAQSchema(faqs) : null;
+const bgClass = bgColor === 'gray' ? 'bg-gray-50' : 'bg-white';
+---
+
+<section class={`py-16 ${bgClass}`}>
+  <div class="container">
+    <div class="max-w-3xl mx-auto">
+      {title && (
+        <div class="text-center mb-10">
+          <h2 class="mb-4">{title}</h2>
+          {subtitle && <p class="text-lg text-gray-600">{subtitle}</p>}
+        </div>
+      )}
+
+      <div class="space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+            <details class="group" id={`faq-${index}`}>
+              <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6">
+                <h3 class="text-lg font-semibold leading-tight">{faq.question}</h3>
+                <span class="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
+              </summary>
+              <div class="text-gray-600 px-6 pb-6 pt-0">
+                <p set:html={faq.answer}></p>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {includeSchema && faqSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  )}
+</section>
+
+<style>
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] summary {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  details:not([open]) {
+    border-bottom: none;
+  }
+</style>

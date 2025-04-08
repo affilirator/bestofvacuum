@@ -1,0 +1,35 @@
+---
+import FAQ, { type FAQItem } from './FAQ.astro';
+
+const contactFaqs: FAQItem[] = [
+  {
+    question: "What's the typical response time for email inquiries?",
+    answer: "We aim to respond to all email inquiries within 1-2 business days. For urgent matters, we recommend calling our office directly during business hours."
+  },
+  {
+    question: "How can I request a specific vacuum cleaner to be reviewed?",
+    answer: "You can submit a vacuum cleaner review request using our contact form. Select 'Vacuum Cleaner Review Request' from the dropdown menu and provide as much detail as possible about the model you'd like us to review."
+  },
+  {
+    question: "Do you offer consulting services for vacuum cleaner manufacturers?",
+    answer: "Yes, our team offers consulting services for vacuum cleaner manufacturers focused on product testing, design improvement, and user experience optimization. Please select 'Partnership Opportunity' in the contact form for more information."
+  },
+  {
+    question: "Can I speak with a specific team member or expert?",
+    answer: "Yes, if you'd like to speak with a specific team member, please mention their name in your message. If they're available, they'll be assigned to respond to your inquiry directly."
+  },
+  {
+    question: "Do you handle technical support for vacuum cleaners?",
+    answer: "While we don't provide official technical support for vacuum manufacturers, our team can often offer general troubleshooting advice for common vacuum cleaner issues. For warranty or official support, we recommend contacting the manufacturer directly."
+  }
+];
+---
+
+<section id="faq" class="py-16 bg-white">
+  <FAQ
+    title="Frequently Asked Contact Questions"
+    subtitle="Find quick answers to common questions about contacting our team"
+    faqs={contactFaqs}
+    bgColor="white"
+  />
+</section>

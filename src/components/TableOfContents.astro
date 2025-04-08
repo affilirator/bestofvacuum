@@ -1,0 +1,92 @@
+---
+// TableOfContents.astro - Component for generating a table of contents
+interface Props {
+  headings: Array<{
+    depth: number;
+    slug: string;
+    text: string;
+  }>;
+  title?: string;
+}
+
+const { headings, title = "Table of Contents" } = Astro.props;
+
+// Filter headings to only include h2 and h3
+const filteredHeadings = headings.filter(
+  (heading) => heading.depth >= 2 && heading.depth <= 3
+);
+
+// Exit early if no headings
+if (filteredHeadings.length === 0) {
+  return null;
+}
+---
+
+<nav class="toc bg-gray-50 p-5 rounded-lg my-8 shadow-sm" aria-labelledby="toc-heading">
+  <h2 id="toc-heading" class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">{title}</h2>
+  <ul class="space-y-2">
+    {filteredHeadings.map((heading) => (
+      <li class={`pl-${(heading.depth - 2) * 4} ${heading.depth === 3 ? "ml-4" : ""}`}>
+        <a
+          href={`#${heading.slug}`}
+          class={`block text-${heading.depth === 2 ? "base font-medium" : "sm"} text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-150`}
+        >
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  // Highlight active section on scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc a');
+    const headingElements = Array.from(tocLinks).map(link => {
+      const id = link.getAttribute('href')?.substring(1);
+      return document.getElementById(id || '');
+    }).filter(Boolean);
+
+    const observerOptions = {
+      rootMargin: '-80px 0px -40% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
+
+        if (entry.isIntersecting) {
+          // Remove active class from all links
+          tocLinks.forEach(link => {
+            link.classList.remove('font-bold', 'text-blue-800');
+            link.classList.add('text-blue-600');
+          });
+
+          // Add active class to current link
+          if (tocLink) {
+            tocLink.classList.add('font-bold', 'text-blue-800');
+            tocLink.classList.remove('text-blue-600');
+          }
+        }
+      });
+    }, observerOptions);
+
+    headingElements.forEach(element => {
+      if (element) observer.observe(element);
+    });
+  });
+</script>
+
+<style>
+  .toc {
+    border-left: 4px solid #3b82f6;
+  }
+
+  @media (max-width: 640px) {
+    .toc {
+      padding: 1rem;
+    }
+  }
+</style>
