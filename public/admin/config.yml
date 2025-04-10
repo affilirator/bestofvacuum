@@ -1,11 +1,93 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: "affilirator/bestofvacuum" # Replace with your GitHub username and repository name
   branch: main
 
-media_folder: "public/uploads"
-public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+media_folder: "/public/images"
+public_folder: "/images"
 
 collections:
+  - name: "categories"
+    label: "Categories"
+    folder: "src/content/categories"
+    identifier_field: "slug"
+    slug: "{{slug}}"
+    create: true
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+
+  - name: "authors"
+    label: "Authors"
+    folder: "src/content/authors"
+    identifier_field: "slug"
+    slug: "{{slug}}"
+    create: true
+    fields:
+      - { label: "Full Name", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - {
+          label: "Profile Image",
+          name: "image",
+          widget: "image",
+          media_folder: "/public/images/authors",
+          public_folder: "/images/authors"
+        }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+  - name: "posts"
+    label: "Blog Posts 2"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{originalUrl}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Author, name: author, widget: string }
+      - { label: "Author Bio", name: authorBio, widget: text }
+      - {
+          label: "Author Image",
+          name: authorImage,
+          widget: image,
+          media_folder: "/public/images/authors",
+          public_folder: "/images/authors"
+        }
+      - { label: "Author Image Alt Text", name: authorImageAlt, widget: string }
+      - {
+          label: "Show Table of Contents",
+          name: showTableOfContents,
+          widget: boolean,
+          default: true
+        }
+      - { label: "Featured Image", name: image, widget: image }
+      - { label: "Cover Alt Text", name: coverAlt, widget: string }
+      - {
+          label: "Publish Date",
+          name: pubDate,
+          widget: datetime,
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false
+        }
+      - {
+          label: "Modified Date",
+          name: modDate,
+          widget: datetime,
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false
+        }
+      - { label: "URL Slug", name: originalUrl, widget: string }
+      - {
+          label: Category,
+          name: category,
+          widget: select,
+          options: ["Vacuum Reviews", "Cleaning Tips", "Product Guides"]
+        }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Body, name: body, widget: markdown }
   - name: "blog"
     label: "Blog"
     folder: "src/content/blog"
