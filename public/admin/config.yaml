@@ -184,7 +184,7 @@ collections:
     label_singular: "Review"
     folder: "src/content/reviews"
     create: true
-    format: "frontmatter"
+    # format: "frontmatter"
     slug: "{{slug}}"
     fields:
       - {label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/MainLayout.astro"}
