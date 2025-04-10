@@ -127,6 +127,7 @@ collections:
     filter: { field: "source", value: "wordpress" }
     description: "Blog posts and articles fetched from Wordpress. No additionals can be made here."
     create: false
+    publish: false
     slug: "{{originalUrl}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
