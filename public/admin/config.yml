@@ -1,9 +1,9 @@
-#local_backend: true
+local_backend: true
 
 backend:
-  name: github
+  name: git-gateway
   repo: "affilirator/bestofvacuum" # Replace with your GitHub username and repository name
-  branch: main
+  branch: local.dev
 
 
 site_url: https://bestofvacuum.com
@@ -121,9 +121,10 @@ collections:
 
 
   - name: "blog"
-    label: "Blog"
+    label: "WordPress Posts"
     preview_path: "/blog/{{slug}}/"
     folder: "src/content/blog"
+    filter: { field: "source", value: "wordpress" }
     description: "Blog posts and articles fetched from Wordpress. No additionals can be made here."
     create: false
     slug: "{{originalUrl}}"
@@ -131,6 +132,33 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - { label: "Publish Date", name: "date", widget: "hidden", default: "{{fields.pubDate}}" }
       - { label: "Source", name: "source", widget: "string", default: "wordpress" }
+      - {label: "URL Slug", name: "originalUrl", widget: "string"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/BlogLayout.astro" }
+      - {label: "Publication Date", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, }
+      - {label: "Modified Date", name: "modDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Description", name: "excerpt", widget: "text"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Show Table of Contents", name: "showTableOfContents", widget: "boolean", default: true}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Author Bio", name: "authorBio", widget: "text"}
+      - {label: "Author Image", name: "authorImage", widget: "image", required: false}
+      - {label: "Author Image Alt Text", name: "authorImageAlt", widget: "string", required: false}
+      - {label: "Cover Alt Text", name: "coverAlt", widget: "string", required: false}
+
+  - name: "cmsblog"
+    label: "CMS Posts"
+    preview_path: "/blog/{{slug}}/"
+    folder: "src/content/blog"
+    filter: { field: "source", value: "decap" }
+    description: "Blog posts and articles fetched from Wordpress. No additionals can be made here."
+    create: true
+    slug: "{{originalUrl}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - { label: "Publish Date", name: "date", widget: "hidden", default: "{{fields.pubDate}}" }
+      - { label: "Source", name: "source", widget: "string", default: "decap" }
       - {label: "URL Slug", name: "originalUrl", widget: "string"}
       - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/BlogLayout.astro" }
       - {label: "Publication Date", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, }
