@@ -22,6 +22,12 @@ cons:
   - Heavier than some competing models
 featured: true
 ---
+<<<<<<< HEAD
+=======
+
+## Dyson V15 Detect Review: Laser-Guided Cleaning Precision
+
+>>>>>>> 77f2623 (author images)
 The Dyson V15 Detect represents the pinnacle of Dyson's cordless vacuum technology, combining powerful suction with innovative features that truly elevate the cleaning experience. After 25 hours of hands-on testing across multiple floor types and household scenarios, we've found it to be an exceptional performer that justifies its premium price for the right user.
 
 ## Design and Build Quality

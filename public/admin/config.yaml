@@ -193,8 +193,8 @@ collections:
       - {label: "Model", name: "model", widget: "string"}
       - {label: "Category", name: "category", widget: "select", options: ["Upright", "Stick", "Robot", "Canister", "Handheld", "Wet/Dry", "Commercial"]}
       - {label: "Price", name: "price", widget: "number", required: false}
-      - {label: "Pros", name: "pros", widget: "list"}
-      - {label: "Cons", name: "cons", widget: "list"}
+      - {label: "Pros", name: "pros", widget: "list", hint: "Comma-separated list of pros."}
+      - {label: "Cons", name: "cons", widget: "list", hint: "Comma-separated list of cons."}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Featured", name: "featured", widget: "boolean", default: false}
 
