@@ -4,7 +4,7 @@ source: wordpress
 originalUrl: best-backpack-vacuum
 pubDate: 2025-04-10
 modDate: 2025-04-10
-image: /images/default-image.jpg
+image: /src/content/blog/images/default-image.jpg
 excerpt: Finding the best backpack vacuum that fit your cleaning needs can be a
   daunting task. With all those brands in the market today promising heaven, not
   all of them actually deliver. Let&#8217;s review the top best to help you

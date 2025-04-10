@@ -120,12 +120,10 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
     <ArticleHeader
       title={title}
       image={image}
-      imageAlt={coverAlt}
+      coverAlt={coverAlt}
       pubDate={pubDate}
-      author={{
-        name: author,
-        image: authorImage,
-      }}
+      author={author}
+      authorImage={authorImage}
       readTime={readingTime}
       headings={extractedHeadings}
       showTableOfContents={showTableOfContents}
