@@ -24,7 +24,6 @@ product:
   url: "https://www.amazon.com/dp/B0925VDWK2?tag=vacuumexpert-20"
   features:
     - "Laser Dust Detection Technology"
-    # ... rest of the features
 rating:
   overall: 4.8
   suction: 5.0
@@ -35,10 +34,8 @@ rating:
   valueForMoney: 4.3
 pros:
   - "Revolutionary laser dust detection reveals hidden dust"
-  # ... rest of the pros
 cons:
   - "Premium price point"
-  # ... rest of the cons
 verdict: "An exceptional premium cordless vacuum with innovative features that justify its high price for those who want the absolute best in cleaning technology."
 alternatives:
   - name: "Shark Vertex Pro"
@@ -46,11 +43,9 @@ alternatives:
     image: "/images/shark-vertex-pro.png"
     rating: 4.6
     price: 349.99
-  # ... rest of the alternatives
 faqs:
   - question: "How effective is the laser dust detection feature?"
     answer: "The laser dust detection is remarkably effective at revealing fine dust particles that are typically invisible to the naked eye..."
-  # ... rest of the FAQs
 ---
 
 ## Introduction: The Next Generation of Dyson Vacuums
