@@ -2,7 +2,7 @@
 title: Publish Status This Post is Created for Decap CMS Filtering
 date: "{{fields.pubDate}}"
 source: decap
-originalUrl: post-for-decap-cms-publish-status
+originalUrl: in-review-post-for-decap-cms-publish-status
 layout: ../../layouts/BlogLayout.astro
 pubDate: 2025-04-09
 modDate: 2025-04-10
