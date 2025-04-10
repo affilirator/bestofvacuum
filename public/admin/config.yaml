@@ -195,7 +195,7 @@ collections:
       - {label: "Publication Date", name: "date", widget: "datetime"}
       - {label: "Modified Date", name: "modDate", widget: "datetime", default: "{{now}}"}
 
-      - {label: "Content", name: "content", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown"}
       - label: "Author"
         name: "author"
         widget: "relation"

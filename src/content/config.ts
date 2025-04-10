@@ -31,7 +31,7 @@ const reviewsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
+    slug: z.string().optional(),
     subtitle: z.string(),
     excerpt: z.string(),
     date: z.string().datetime().optional(),
