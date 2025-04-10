@@ -68,6 +68,8 @@ collections:
           public_folder: "/images/authors"
         }
       - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+
+
   - name: "posts"
     label: "Blog Posts 2"
     folder: "src/content/posts"
