@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
 
   return blogEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.data.originalUrl },
     props: { entry },
   }));
 }
@@ -23,7 +23,7 @@ const { Content } = await entry.render();
 // Get related posts (same category, excluding current post)
 const allPosts = await getCollection('blog');
 const relatedPosts = allPosts
-  .filter(post => post.data.category === entry.data.category && post.slug !== entry.slug)
+  .filter(post => post.data.category === entry.data.category && post.data.originalUrl !== entry.data.originalUrl)
   .slice(0, 3);
 
 // Extract pros and cons from markdown if available
