@@ -1,7 +1,7 @@
-local_backend: true
+#local_backend: true
 
 backend:
-  name: git-gateway
+  name: github
   repo: "affilirator/bestofvacuum" # Replace with your GitHub username and repository name
   branch: local.dev
 
