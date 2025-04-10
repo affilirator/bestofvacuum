@@ -1,5 +1,32 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "compilerOptions": {
+    "target": "ESNext", // Use the latest ECMAScript features
+    "module": "ESNext", // Use ES module syntax
+    "moduleResolution": "Node", // Resolve modules in Node.js style
+    "baseUrl": ".", // Base directory for non-relative module names
+    "paths": {
+      "@components/*": ["src/components/*"], // Aliases for cleaner imports
+      "@layouts/*": ["src/layouts/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@content/*": ["src/content/*"]
+    },
+    "jsx": "preserve", // Keep JSX as-is for frameworks like React
+    "jsxImportSource": "solid-js", // Specify the JSX factory if using a library like Solid.js
+    "resolveJsonModule": true, // Allow importing JSON files
+    "esModuleInterop": true, // Enable interoperability between CommonJS and ES Modules
+    "skipLibCheck": true, // Skip type-checking of declaration files for faster builds
+    "forceConsistentCasingInFileNames": true, // Ensure consistent casing in imports
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "strict": true // Enable all strict type-checking options
+  },
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

@@ -11,6 +11,7 @@ pubDate: "2022-10-03"
 modDate: "2022-10-04"
 originalUrl: "why-does-my-vacuum-stink-when-i-use-it"
 category: "Blog"
+source: "wordpress"
 excerpt: "There’s nothing worse in a home you’re trying to keep clean and fresh than a smelling vacuum cleaner. If you think about it, though, even the best vac, especially the bagged type, will start to smell after a period of use. Pet hair clogs, mold coffee grinds, dust from shag carpets and stairs, food articles vacuumed from hardwood floors, all these and many &#8230; Read more"
 ---
 

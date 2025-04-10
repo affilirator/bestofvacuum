@@ -11,6 +11,7 @@ pubDate: "2023-06-13"
 modDate: "2023-08-28"
 originalUrl: "best-vacuum-for-pet-hair"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "As a pet keeper, you love your pet to bits but hate the fact that their hair is everywhere – on the floor, over furniture sets, on the carpet, on the stairs and many other spots. This not only ruins the overall ambience of your home, but emits bad odor as well. This can be unhygienic, and even dangerous to breathe in for your &#8230; Read more"
 ---
 

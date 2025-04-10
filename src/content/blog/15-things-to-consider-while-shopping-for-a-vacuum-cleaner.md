@@ -11,6 +11,7 @@ pubDate: "2021-02-13"
 modDate: "2021-03-17"
 originalUrl: "15-things-to-consider-while-shopping-for-a-vacuum-cleaner"
 category: "Blog"
+source: "wordpress"
 excerpt: "If you are looking for a fantastic vacuum cleaner, then you have come to the right place. Just read on. While shopping for a vacuum cleaner, you should know the things to consider for to get a fair deal in the market and to ensure that you purchase the best cleaner that is efficient and cost effective. Visible vacuum lines on a carpet &#8230; Read more"
 ---
 

@@ -11,6 +11,7 @@ pubDate: "2022-02-03"
 modDate: "2022-02-03"
 originalUrl: "can-you-use-a-vacuum-without-a-roller-brush"
 category: "Blog"
+source: "wordpress"
 excerpt: "Vacuum cleaning is arguably the most effective way to keep your home spotless, as it sucks debris and dirt that a mopper wouldn’t eliminate. Vacuum cleaners feature essential components that are vital, such as a brush roll, but can you use a vacuum without a roller brush? Yes, you can use a vacuum without a roller brush to clean delicate surfaces like vinyl &#8230; Read more"
 ---
 

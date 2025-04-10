@@ -1,4 +1,8 @@
 ---
+import { Picture } from "astro:assets";
+
+import AuthorImg from "../assets/images/authors/emma-johnson.jpg"
+
 const buyingFactors = [
   {
     title: "Cleaning Needs",
@@ -79,30 +83,29 @@ const buyingFactors = [
       <div class="flex flex-col gap-8">
         <!-- FAQ Teaser -->
         <div class="bg-white rounded-xl shadow-md p-8">
-          <h3 class="text-xl font-bold mb-6 text-gray-900">Common Questions</h3>
+          <h3 class="text-xl font-bold mb-6 text-gray-900">Common Questions About Vacuum Cleaners</h3>
 
           <div class="space-y-4">
+             <div>
+              <h4 class="text-lg font-semibold text-primary-700 mb-2">Are cordless vacuums as powerful as corded?</h4>
+              <p class="text-gray-600 text-sm">
+                Cordless vacuums have improved significantly in power and battery life. However, corded models generally offer more consistent suction and longer run times, especially for larger cleaning tasks.
+                <a href="/blog/best-corded-stick-vacuum" class="text-primary-600 font-medium hover:underline">Learn more →</a>
+              </p>
+            </div>
             <div>
               <h4 class="text-lg font-semibold text-primary-700 mb-2">What's better: bagged or bagless vacuums?</h4>
               <p class="text-gray-600 text-sm">
-                Bagged vacuums offer better dust containment and are preferred for allergy sufferers, while bagless models save on recurring costs and let you see when they need emptying.
-                <a href="/buying-guide#bagged-vs-bagless" class="text-primary-600 font-medium hover:underline">Learn more →</a>
+                Bagged vacuums are often better for allergy sufferers as they contain dust and allergens more effectively. Bagless models are more convenient and cost-effective in the long run, but require regular emptying and cleaning.
+                <a href="/blog/best-bagged-vacuum/" class="text-primary-600 font-medium hover:underline">Learn more →</a>
               </p>
             </div>
 
             <div>
-              <h4 class="text-lg font-semibold text-primary-700 mb-2">Are cordless vacuums as powerful as corded?</h4>
+              <h4 class="text-lg font-semibold text-primary-700 mb-2">Can I recycle a vacuum cleaner?</h4>
               <p class="text-gray-600 text-sm">
-                Modern premium cordless vacuums now match mid-range corded models in power, but with limited runtime. For deep cleaning of large carpeted areas, corded models still have an edge.
-                <a href="/buying-guide#corded-vs-cordless" class="text-primary-600 font-medium hover:underline">Learn more →</a>
-              </p>
-            </div>
-
-            <div>
-              <h4 class="text-lg font-semibold text-primary-700 mb-2">What does suction power measured in "AW" mean?</h4>
-              <p class="text-gray-600 text-sm">
-                Air Watts (AW) measures cleaning power, combining airflow and suction. Most homes need 100-200 AW for effective cleaning, with higher ratings needed for deep carpets.
-                <a href="/buying-guide#understanding-specifications" class="text-primary-600 font-medium hover:underline">Learn more →</a>
+                Yes, many parts of a vacuum cleaner can be recycled. Check with your local recycling center for specific guidelines. Some manufacturers also offer take-back programs.
+                <a href="/blog/can-i-recycle-a-vacuum-cleaner/" class="text-primary-600 font-medium hover:underline">Learn more →</a>
               </p>
             </div>
           </div>
@@ -115,13 +118,22 @@ const buyingFactors = [
             When choosing between similar models, pay close attention to the warranty terms. Vacuums with 5+ year warranties often reflect manufacturer confidence in their product's durability, potentially saving you money in the long run.
           </p>
           <div class="mt-4 flex">
-            <img
-              src="/images/placeholder.svg"
-              alt="Dr. Sarah Johnson"
+            <Picture
+              src={AuthorImg}
+              alt="Dr. Christie Winston of Best of Vacuum"
               class="w-10 h-10 rounded-full mr-3"
+              width={40}
+              height={40}
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              formats={["avif", "webp", "jpeg"]}
+
+
             />
+
             <div>
-              <p class="font-medium text-gray-900">Dr. Sarah Johnson</p>
+              <p class="font-medium text-gray-900">Dr. Christie Winston</p>
               <p class="text-xs text-gray-600">Lead Product Tester</p>
             </div>
           </div>
@@ -140,3 +152,33 @@ const buyingFactors = [
     </div>
   </div>
 </section>
+
+<style>
+  .btn-primary {
+    display: inline-block;
+    width: 100%;
+   /*/ max-width: 300px; /* Set a maximum width for larger screens */
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* White text color for contrast */
+    background-color: #007bff; /* Primary blue color */
+    border: none;
+    border-radius: 8px; /* Rounded corners for better aesthetics */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.btn-primary:hover {
+    background-color: rgba(146, 64, 14, 1); /* Specified hover color with full opacity */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.btn-primary:active {
+    background-color: #004494; /* Even darker shade when active */
+    transform: translateY(1px); /* Button press effect */
+}
+
+
+</style>

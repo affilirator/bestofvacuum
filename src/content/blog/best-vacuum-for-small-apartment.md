@@ -11,6 +11,7 @@ pubDate: "2021-03-08"
 modDate: "2021-04-08"
 originalUrl: "best-vacuum-for-small-apartment"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "We talk a lot about vacuum cleaners here at Best of Vacuum. And we’ve covered quite a lot over time. However, we realized that we don’t have a guide for people who’re looking for the best vacuum for small apartment. So if you’re looking for a guide on vacs for small apartments, this article is for you. Best Vacuums for Small Apartment.  The &#8230; Read more"
 ---
 

@@ -1,0 +1,38 @@
+---
+const { email } = Astro.props;
+---
+
+<section class="contact-section">
+  <div class="container">
+    <h2 class="contact-title">Contact Us</h2>
+    <p class="contact-text">
+      For privacy-related inquiries, please contact us at:
+      <a href={`mailto:${email}`} class="contact-link">{email}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background: #f8f9fa;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .contact-title {
+    color: #2b2d42;
+    margin-bottom: 1rem;
+  }
+
+  .contact-link {
+    color: #4cc9f0;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .contact-link:hover {
+    opacity: 0.8;
+  }
+</style>

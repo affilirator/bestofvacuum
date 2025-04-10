@@ -11,6 +11,7 @@ pubDate: "2021-02-13"
 modDate: "2021-06-10"
 originalUrl: "best-vacuum-under-100"
 category: "Budget Vacuums"
+source: "wordpress"
 excerpt: "Are you looking for the best vacuum under $100?  You will be in for a pleasant surprise when you see the types of cleaners that the market has on offer. There is a wide variety of cleaners that come in varied configurations and boast of different features. The market abounds in upright models, canister models, handheld models and more. These models have varied capabilities &#8230; Read more"
 ---
 

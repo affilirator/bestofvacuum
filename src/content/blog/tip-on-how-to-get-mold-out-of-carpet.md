@@ -11,6 +11,7 @@ pubDate: "2021-03-09"
 modDate: "2021-09-09"
 originalUrl: "tip-on-how-to-get-mold-out-of-carpet"
 category: "Blog"
+source: "wordpress"
 excerpt: "Scrubbing mold from tiled and hardwood floor with water and laundry detergent is easy. But if you have the mildew building up and sticking on your carpet, it can be somewhat difficult to clean. Since mold spores are as small as three microns, they can easily find their ways into the tiniest spaces in soft surfaces. If anything, simply scrubbing the carpet won’t &#8230; Read more"
 ---
 

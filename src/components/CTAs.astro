@@ -1,4 +1,6 @@
 ---
+import { Picture } from "astro:assets";
+import PlaceholderImg from "../assets/images-2/placeholder.svg";
 ---
 
 <section class="py-16 bg-white">
@@ -85,11 +87,18 @@
                 The buying guide was incredibly helpful. I followed the recommendations for a pet-friendly vacuum and couldn't be happier with my purchase. This site saved me hours of research!
               </p>
               <div class="flex items-center">
-                <img
-                  class="h-10 w-10 rounded-full mr-3"
-                  src="/images/testimonials/jennifer-p.jpg"
-                  alt="Jennifer P."
+                <Picture
+                src={PlaceholderImg}
+                alt="pet owner bought a vacuum cleaner"
+                class="h-10 w-10 rounded-full mr-3"
+                width={40}
+                height={40}
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                formats={["avif", "webp", "jpeg"]}
                 />
+
                 <div>
                   <h4 class="text-sm font-medium text-gray-900">Jennifer P.</h4>
                   <p class="text-sm text-gray-500">Pet Owner, Chicago</p>
@@ -101,12 +110,13 @@
           <!-- As Seen In -->
           <div class="mt-8">
             <p class="text-sm text-gray-500 text-center mb-4">As Seen In</p>
-            <div class="flex flex-wrap justify-center items-center gap-6 grayscale opacity-70">
+           <!--  <div class="flex flex-wrap justify-center items-center gap-6 grayscale opacity-70">
               <img src="/images/media/cnn.svg" alt="CNN" class="h-6 object-contain" />
               <img src="/images/media/wired.svg" alt="Wired" class="h-5 object-contain" />
               <img src="/images/media/techcrunch.svg" alt="TechCrunch" class="h-6 object-contain" />
               <img src="/images/media/housekeeping.svg" alt="Good Housekeeping" class="h-6 object-contain" />
             </div>
+            -->
           </div>
         </div>
       </div>

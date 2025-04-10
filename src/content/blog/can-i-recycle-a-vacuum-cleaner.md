@@ -11,6 +11,7 @@ pubDate: "2021-09-09"
 modDate: "2021-09-09"
 originalUrl: "can-i-recycle-a-vacuum-cleaner"
 category: "Blog"
+source: "wordpress"
 excerpt: "Everything you’ve ever bought with your own money or received as a gift has an expiry date, and a vacuum cleaner isn’t an exception. When the time to itch for replacement comes, you’ll have to ditch the old vacuum in favor for a new one. But even before you go as far as to evaluate the options that you currently have, it’s important &#8230; Read more"
 ---
 

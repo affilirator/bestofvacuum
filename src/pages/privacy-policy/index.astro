@@ -1,0 +1,64 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import HeroSection from '@components/PrivacyPolicy/HeroSection.astro';
+import PolicySection from '@components/PrivacyPolicy/PolicySection.astro';
+import TOC from '@components/PrivacyPolicy/TOC.astro';
+import ContactSection from '@components/PrivacyPolicy/ContactSection.astro';
+
+import { getEntry } from 'astro:content';
+
+const policyEntry = await import.meta.glob('../../content/legal/privacy-policy.md/');
+
+const { data } = policyEntry;
+console.log(policyEntry);
+
+const sections = [
+  {
+    id: 'data-collection',
+    title: 'Data Collection',
+    content: `We collect information to provide better services to all our users`
+  },
+  {
+    id: 'data-usage',
+    title: 'Data Usage',
+    content: `The information we collect is used to`
+  },
+  // Add more sections as needed
+];
+---
+<MainLayout
+  title="Privacy Policy - BestOfVacuum"
+  description="BestOfVacuum's Privacy Policy"
+  canonicalURL={new URL('/privacy-policy/', Astro.site).toString()}
+  schemaData={[]}
+  >
+
+
+    <HeroSection
+      title="Privacy Policy"
+      subtitle="Your privacy is important to us. This policy explains our practices regarding data collection and use."
+    />
+
+    <main class="container">
+      <TOC headings={sections.map(s => ({ id: s.id, title: s.title }))} />
+
+      {sections.map(section => (
+        <PolicySection
+          sectionTitle={section.title}
+          content={section.content}
+          id={section.id}
+        />
+      ))}
+
+      <ContactSection email="privacy@bestofvacuum.com" />
+    </main>
+
+</MainLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+</style>

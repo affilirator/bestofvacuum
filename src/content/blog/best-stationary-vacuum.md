@@ -11,6 +11,7 @@ pubDate: "2021-11-17"
 modDate: "2024-01-08"
 originalUrl: "best-stationary-vacuum"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "Stationary vacuums, are the modern-day answer especially to those tired of bending over with a handheld dustpan when cleaning. People love touchless stationary vacuums because of their incredible suction power which gets rid of pet hair, long and short human hair, dirt and dust from wooden floors without making the user bend over. Although these vacuums are a common fixture in commercial places like &#8230; Read more"
 ---
 
@@ -241,7 +242,7 @@ Whether you have a busy schedule, many pets, a hair salon to run, kids in the ho
 
 ## ****How do I clean an eye vac filter?**** 
 
-The first step is to turn the control dial off. You then need to unplug the unit from the power source. To locate the filter, pull out the bin and lift the grip away from the main unit.  
+The first step is to turn the control dial off. You then need to unplug the unit from the power source. To locate the filter, pull out the bin and lift the grip away from the main unit.
 Twist the filter to the unlock position by turning it in an anti-clockwise motion. You will then pull the filter out, wash it with mild soap and water.
 
 After cleaning, ensure the filter is completely dry before putting it back. Once it dries up, slide the filter back into the collection bin and lock it. Then return the bin in place.
@@ -254,5 +255,5 @@ The machine is for excellent in cleaning up pet hair, dust, pollen and any other
 
 ## ****Can I use a regular broom with home stationary vacuum?****
 
-Yes! You can use a regular broom to sweep the dirt to the vacuum cleaner be it a salon vacuum or home vacuum. This has no effect on the functionality of the vacuum cleaner.  
+Yes! You can use a regular broom to sweep the dirt to the vacuum cleaner be it a salon vacuum or home vacuum. This has no effect on the functionality of the vacuum cleaner.
 You can use also use a Swiffer sweeper or anything else, as long as it will get the dirt closer to the cleaner.

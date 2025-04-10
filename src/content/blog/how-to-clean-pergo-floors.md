@@ -11,6 +11,7 @@ pubDate: "2022-01-02"
 modDate: "2022-01-02"
 originalUrl: "how-to-clean-pergo-floors"
 category: "Blog"
+source: "wordpress"
 excerpt: "Homeowners love to praise Pergo floors because they’re compact and harder than hardwood. And given that it’s an option that doesn’t demand a difficult installation process, this flooring option is more than likely to grow into popularity as new homes continue to come up. To the eyes, Pergo floors look beautiful and inviting. Its strength not only makes it robust against damages. Also, &#8230; Read more"
 ---
 

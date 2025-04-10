@@ -11,6 +11,7 @@ pubDate: "2022-01-28"
 modDate: "2023-02-08"
 originalUrl: "best-vacuum-for-tile-floors"
 category: "Hard Floors Vacuums"
+source: "wordpress"
 excerpt: "If you’re looking for the best vacuum for tile floors, this guide is for you. To be clear, there isn’t a specific vacuum for tile flooring. But that doesn’t mean that the available options can’t get the job done. When it comes to tiles, you need a vacuum cleaner that can wipe and suck up all dirt particles with just a few passes. &#8230; Read more"
 ---
 

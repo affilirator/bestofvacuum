@@ -11,6 +11,7 @@ pubDate: "2021-01-15"
 modDate: "2022-01-02"
 originalUrl: "best-lightweight-vacuum-cleaner-for-the-elderly"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "Cleaning chores that were once easy, now pose difficulties as individuals step into their senior years. Loss of muscular strength and other health concerns like bad back pose daunting challenges as they perform their everyday routine. Unless you get the best lightweight vacuum cleaner for the elderly, it will be difficult for the elderly to take part in maintaining cleanliness of their environment. &#8230; Read more"
 ---
 

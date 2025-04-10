@@ -1,14 +1,44 @@
+#local_backend: true
+
 backend:
   name: github
   repo: "affilirator/bestofvacuum" # Replace with your GitHub username and repository name
   branch: main
 
 
+site_url: https://bestofvacuum.com
+display_url: bestofvacuum.com
+logo_url: https://www.bestofvacuum.com/images/logo.svg
+show_preview_links: true
 publish_mode: editorial_workflow
-media_folder: "/public/images"
-public_folder: "/images"
+media_folder: "src/content/blog/images"
+public_folder: "src/content/blog/images"
 
 collections:
+
+  - name: "legalpages"
+    label: "Legal Pages"
+    publish: false
+    files:
+      - name: "privacy_policy"
+        label: "Privacy Policy"
+        file: "src/content/legal/privacy-policy.md"
+        fields:
+          - { name: "title", label: "Page Title", widget: "string" }
+          - { name: "last_updated", label: "Last Updated", widget: "datetime" }
+          - name: "sections"
+            label: "Policy Sections"
+            widget: "list"
+            fields:
+              - { name: "id", label: "Section ID", widget: "string", description: "Unique identifier for the section" }
+              - { name: "title", label: "Section Title", widget: "string" }
+              - { name: "content", label: "Content", widget: "markdown" }
+          - name: "contact"
+            label: "Contact Information"
+            widget: "object"
+            fields:
+              - { name: "email", label: "Contact Email", widget: "string" }
+              - { name: "address", label: "Mailing Address", widget: "text" }
   - name: "categories"
     label: "Categories"
     folder: "src/content/categories"
@@ -88,20 +118,34 @@ collections:
         }
       - { label: Excerpt, name: excerpt, widget: text }
       - { label: Body, name: body, widget: markdown }
+
+
   - name: "blog"
     label: "Blog"
+    preview_path: "/blog/{{slug}}/"
     folder: "src/content/blog"
-    create: true
-    slug: "{{slug}}"
+    description: "Blog posts and articles fetched from Wordpress. No additionals can be made here."
+    create: false
+    slug: "{{originalUrl}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publication Date", name: "pubDate", widget: "datetime"}
+      - { label: "Publish Date", name: "date", widget: "hidden", default: "{{fields.pubDate}}" }
+      - { label: "Source", name: "source", widget: "string", default: "wordpress" }
+      - {label: "URL Slug", name: "originalUrl", widget: "string"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/BlogLayout.astro" }
+      - {label: "Publication Date", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, }
+      - {label: "Modified Date", name: "modDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
       - {label: "Featured Image", name: "image", widget: "image", required: false}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Category", name: "category", widget: "select", options: ["Upright", "Stick", "Robot", "Canister", "Handheld", "Wet/Dry", "Commercial"]}
-      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Description", name: "excerpt", widget: "text"}
+      - {label: "Category", name: "category", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Show Table of Contents", name: "showTableOfContents", widget: "boolean", default: true}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Author Bio", name: "authorBio", widget: "text"}
+      - {label: "Author Image", name: "authorImage", widget: "image", required: false}
+      - {label: "Author Image Alt Text", name: "authorImageAlt", widget: "string", required: false}
+      - {label: "Cover Alt Text", name: "coverAlt", widget: "string", required: false}
+
 
   - name: "reviews"
     label: "Vacuum Reviews"

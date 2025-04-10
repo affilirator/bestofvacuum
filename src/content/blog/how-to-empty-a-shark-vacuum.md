@@ -11,6 +11,7 @@ pubDate: "2021-02-20"
 modDate: "2021-03-17"
 originalUrl: "how-to-empty-a-shark-vacuum"
 category: "Blog"
+source: "wordpress"
 excerpt: "Shark vacuums have a plastic dust bin that contains debris and dirt instead of making use of disposable vacuum bags. There is no need to buy new bags for the vacuum but you are supposed to empty its dust bin from time to time to prevent the loss of suction or the cleaner getting clogged. The vacuum, according its manufacturer, Shark, must be &#8230; Read more"
 ---
 

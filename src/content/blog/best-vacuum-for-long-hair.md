@@ -11,6 +11,7 @@ pubDate: "2021-02-09"
 modDate: "2022-02-03"
 originalUrl: "best-vacuum-for-long-hair"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "Long human hair or pet hair can be a hassle to vacuum. Well, unless you have the best vacuum for long hair. Long hair &#8211; just like pet fur, pollen, lint, and skin flakes shed by humans and pets, are source of food for dust mites. Those nasty creatures are the most common cause of allergy from house dust. Certainly not the type &#8230; Read more"
 ---
 

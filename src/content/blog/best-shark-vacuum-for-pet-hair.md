@@ -11,6 +11,7 @@ pubDate: "2020-09-10"
 modDate: "2021-05-02"
 originalUrl: "best-shark-vacuum-for-pet-hair"
 category: "Brands"
+source: "wordpress"
 excerpt: "Pets play important roles in our lives, and no matter how much we love our furry friends, they tend to shed their fur. Researchers have found out that in some instances, animal fur is the base cause of respiratory problems by people living with pets. To avoid such predicaments it is important to equip yourself with proper tools to rid off pet hair &#8230; Read more"
 ---
 

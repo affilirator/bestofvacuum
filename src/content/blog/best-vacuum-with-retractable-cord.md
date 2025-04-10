@@ -11,6 +11,7 @@ pubDate: "2021-09-22"
 modDate: "2024-01-08"
 originalUrl: "best-vacuum-with-retractable-cord"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "If you’re in the market for a vacuum with retractable cord, this review is for you. This guide includes 6 best vacuum with retractable cord. And, if you think about it, you really can’t go wrong with this kind of a vacuum cleaner. Unlike vacuum cleaners with standard cords, a retractable cord vacuum is easy to store away after use. That’s because the &#8230; Read more"
 ---
 
@@ -220,18 +221,18 @@ Understand that a vacuum cleaner that has a standard cord work well, just like t
 
 ## **Which upright vacuums have retractable cords?**
 
-1**. Eureka NEU202 PowerSpeed Cord Rewind Vacuum.  
-2\. Hoover WindTunnel 2 Rewind Corded Bagless Upright Vacuum.  
-3\. BISSELL Cleanview Swivel Rewind Pet Vacuum.  
+1**. Eureka NEU202 PowerSpeed Cord Rewind Vacuum.
+2\. Hoover WindTunnel 2 Rewind Corded Bagless Upright Vacuum.
+3\. BISSELL Cleanview Swivel Rewind Pet Vacuum.
 4\. Bissell CleanView Vacuum With a Retractable Cord.**
 
 ## Which vacuum has a retractable cord?
 
 **Here is a list of vacuums that have a retractable cord:**
 
-**1\. Bissell CleanView Vacuum With a Retractable Cord.  
-2\. Miele Complete C2 Hard Floor Canister Vacuum.  
-3\. BISSELL Cleanview Swivel Rewind Pet Vacuum.  
-4\. Kenmore 22614 Pet Friendly Lightweight Vacuum.  
-5\. Hoover WindTunnel 2 Rewind Upright Vacuum.  
+**1\. Bissell CleanView Vacuum With a Retractable Cord.
+2\. Miele Complete C2 Hard Floor Canister Vacuum.
+3\. BISSELL Cleanview Swivel Rewind Pet Vacuum.
+4\. Kenmore 22614 Pet Friendly Lightweight Vacuum.
+5\. Hoover WindTunnel 2 Rewind Upright Vacuum.
 6\. Bissell CleanView Rewind Bagless Vacuum With Retractable Cord**.

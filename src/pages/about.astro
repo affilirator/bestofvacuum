@@ -19,7 +19,7 @@ const { Content } = await aboutPage.render();
 <MainLayout
   title={title}
   description={description}
-  canonicalURL={new URL('/about', Astro.site).toString()}
+  canonicalURL={new URL('/about/', Astro.site).toString()}
 >
   <AboutSEOSchema />
 

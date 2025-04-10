@@ -11,6 +11,7 @@ pubDate: "2021-09-10"
 modDate: "2021-09-10"
 originalUrl: "how-to-unclog-a-vacuum-hose"
 category: "Blog"
+source: "wordpress"
 excerpt: "Cleaning dirt and debris manually can be a pain in the butt. Just imagine how long it would take to get rid of pet hair from carpets, stubborn dust stuck on stairs, or food particles littered all over hardwood floors. Using just a broom, the task could take hours to complete, especially if you live in a bigger house. But when you bring &#8230; Read more"
 ---
 

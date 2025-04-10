@@ -1,0 +1,30 @@
+---
+const { title, subtitle } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">{title}</h1>
+    <p class="hero-subtitle">{subtitle}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    color: #2b2d42;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #4a4e69;
+    max-width: 800px;
+  }
+</style>

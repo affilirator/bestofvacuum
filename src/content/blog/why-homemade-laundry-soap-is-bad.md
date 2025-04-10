@@ -11,6 +11,7 @@ pubDate: "2021-03-02"
 modDate: "2021-03-02"
 originalUrl: "why-homemade-laundry-soap-is-bad"
 category: "Blog"
+source: "wordpress"
 excerpt: "Isn’t it amazing just how popular homemade laundry detergents are these days? There isn’t a time I’ve read about detergents that this DIY solution didn’t for once surface. To be frank, I completely understand why anyone would resort to homemade detergent soaps instead of the conventional option. First, and probably the most obvious of reasons is that, unlike chemical detergents, homemade soaps are &#8230; Read more"
 ---
 

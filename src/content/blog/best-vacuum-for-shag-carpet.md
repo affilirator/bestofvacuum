@@ -11,6 +11,7 @@ pubDate: "2022-12-08"
 modDate: "2022-12-15"
 originalUrl: "best-vacuum-for-shag-carpet"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "Shag carpets  are smooth and nice, offer a warm sensation to touch and add a nice accent to homes. However, you have to maintain this high pile carpet or thick pile carpet properly to ensure that the appearance and texture continues to last for a long time.  For that, you will need to find the best vacuum for shag carpet to keep them &#8230; Read more"
 ---
 

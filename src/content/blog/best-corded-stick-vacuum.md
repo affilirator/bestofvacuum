@@ -11,6 +11,7 @@ pubDate: "2024-01-16"
 modDate: "2024-01-17"
 originalUrl: "best-corded-stick-vacuum"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "Everybody knows how stick vacuums work: they suck in dirt from your floors. However, what many people may not know is that only the best corded stick vacuum will ensure the sucked-in dirt doesn’t escape back into the air. A study by researchers from Queensland University of Technology in Brisbane, Australia, showed that poor quality and old vacuum cleaners are likely to release dirt &#8230; Read more"
 ---
 

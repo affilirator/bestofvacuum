@@ -11,6 +11,7 @@ pubDate: "2021-07-04"
 modDate: "2021-09-10"
 originalUrl: "best-leaf-vacuum-mulcher"
 category: "Vacuum Reviews"
+source: "wordpress"
 excerpt: "A leaf vacuum mulcher is a device that vacuums the leaves that have fallen. It uses internal blades for slicing leaves into smaller pieces and bits. The mulch that is created can be thrown away or used for fertilizing or composting the yard. This saves money to buy costly mulch from local gardening stores. You can easily use a leaf vacuum and convert &#8230; Read more"
 ---
 

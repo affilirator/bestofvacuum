@@ -1,38 +1,43 @@
 ---
+import { Picture, getImage } from "astro:assets";
+// import type { ImageMetadata } from "astro";
+import AuthorImg from "../assets/images/authors/emma-johnson.jpg";
+import PlaceholderImg from "../assets/images-2/placeholder.svg";
+
 const team = [
   {
-    name: "Dr. Sarah Johnson",
+    name: "Dr. Christie Winston",
     title: "Founder & Lead Product Tester",
     credentials: "PhD in Mechanical Engineering",
-    bio: "With over 15 years of experience in product testing and mechanical engineering, Sarah founded Vacuum Expert Reviews to provide consumers with scientifically-backed vacuum cleaner recommendations. She previously worked as a product development engineer for Dyson.",
-    image: "/images/placeholder.svg",
+    bio: "With over 15 years of experience in product testing and mechanical engineering, Christie founded Best of Vacuum Reviews to provide consumers with scientifically-backed vacuum cleaner recommendations. She previously worked as a product development engineer for Dyson.",
+    image: AuthorImg,
     expertise: ["Suction Power Testing", "Filtration Analysis", "Motor Efficiency"],
     linkedin: "https://linkedin.com/in/sarahjohnsonphd"
   },
   {
-    name: "Michael Chen",
+    name: "Michael Wood",
     title: "Technical Director",
     credentials: "MSc in Electrical Engineering",
     bio: "Michael specializes in evaluating the electronic components and power systems of vacuum cleaners. His background in electrical engineering gives him unique insight into battery performance, motor longevity, and smart features.",
-    image: "/images/placeholder.svg",
+    image: PlaceholderImg,
     expertise: ["Battery Technology", "Smart Home Integration", "Power Management"],
     linkedin: "https://linkedin.com/in/michaelchen"
   },
   {
-    name: "Amanda Rodriguez",
+    name: "Amanda Quinlan",
     title: "Chief Home Editor",
     credentials: "Certified Interior Designer",
     bio: "Amanda brings a practical perspective to our testing methodology. With a background in interior design and as a mother of three, she evaluates vacuums based on real-world usability, ergonomics, and effectiveness in different home environments.",
-    image: "/images/placeholder.svg",
+    image: PlaceholderImg,
     expertise: ["Ergonomics", "Multi-Surface Testing", "Noise Assessment"],
     linkedin: "https://linkedin.com/in/amandarodriguez"
   },
   {
-    name: "James Wilson",
+    name: "James Pena",
     title: "Allergen & Filtration Specialist",
     credentials: "Certified Indoor Air Quality Professional",
     bio: "James focuses on evaluating the filtration effectiveness of vacuum cleaners, especially for allergy sufferers. His certification in indoor air quality gives him expertise in assessing HEPA filters and allergen capture rates.",
-    image: "/images/placeholder.svg",
+    image: PlaceholderImg,
     expertise: ["HEPA Filtration", "Allergen Capture", "Air Quality Impact"],
     linkedin: "https://linkedin.com/in/jameswilson"
   }
@@ -42,9 +47,9 @@ const team = [
 <section class="py-16 bg-gray-50">
   <div class="container">
     <div class="text-center mb-12">
-      <h2 class="mb-4">Meet Our Expert Review Team</h2>
+      <h2 class="mb-4">Meet Our Expert Vacuum Cleaner Review Team</h2>
       <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-        Our reviews and recommendations come from a dedicated team of cleaning technology experts with decades of combined experience in testing and evaluating vacuum cleaners.
+        Our vacuum reviews and recommendations come from a dedicated team of cleaning technology experts with decades of combined experience in testing and evaluating vacuum cleaners.
       </p>
     </div>
 
@@ -59,7 +64,7 @@ const team = [
         <div>
           <h3 class="text-2xl font-bold text-gray-900 mb-2">Our Testing Methodology</h3>
           <p class="text-gray-600 mb-4">
-            Every vacuum review is based on at least 20 hours of hands-on testing across multiple floor types, with standardized tests for suction power, filtration efficiency, noise levels, and real-world cleaning performance.
+            Every vacuum cleaner review that we do is based on at least 20 hours of hands-on testing across multiple floor types, with standardized tests for suction power, filtration efficiency, noise levels, and real-world cleaning performance.
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
             <div class="flex items-center text-sm">
@@ -96,10 +101,13 @@ const team = [
       {team.map((member) => (
         <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
           <div class="md:w-1/3 bg-gray-200">
-            <img
-              src={member.image}
-              alt={member.name}
-              class="w-full h-full object-cover"
+            <Picture
+            src={member.image}
+            alt={member.name}
+            width={300}
+            height={300}
+            formats={["webp", "avif", "jpeg"]}
+            class="w-full h-full object-cover"
             />
           </div>
           <div class="md:w-2/3 p-6">
