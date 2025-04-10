@@ -104,7 +104,7 @@ const formatDate = (date) => {
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {sortedPosts.map(post => (
             <article class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-              <a href={`/blog/${post.slug}/`} class="block">
+              <a href={`/blog/${post.data.originalUrl}/`} class="block">
                 <div class="relative pb-[56.25%]">
                   <img
                     src={post.data.image}
