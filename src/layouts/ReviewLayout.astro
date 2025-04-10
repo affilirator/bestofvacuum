@@ -1,0 +1,17 @@
+---
+import MainLayout from './MainLayout.astro';
+import ReviewDetail from '../components/ReviewDetail.astro';
+import { getCollection } from 'astro:content';
+
+const { frontmatter } = Astro.props;
+---
+
+<MainLayout
+  title={frontmatter.title}
+  description={frontmatter.excerpt}
+  type="article"
+  image={frontmatter.product.image}
+  pubDate={frontmatter.date}
+>
+  <ReviewDetail review={frontmatter} />
+</MainLayout>
