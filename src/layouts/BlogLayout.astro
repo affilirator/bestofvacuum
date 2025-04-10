@@ -81,8 +81,9 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
   title={title}
   description={description}
   image={image}
-  canonicalUrl={finalCanonicalUrl}
+  canonicalURL={finalCanonicalUrl}
   keywords={keywords}
+  type="article"
 >
   <ViewTransitions slot="head" />
 
@@ -120,7 +121,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
       title={title}
       image={image}
       imageAlt={coverAlt}
-      publishDate={pubDate}
+      pubDate={pubDate}
       author={{
         name: author,
         image: authorImage,
