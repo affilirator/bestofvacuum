@@ -57,7 +57,8 @@ const showTOC = showTableOfContents && filteredHeadings.length > 1;
 // Import the image dynamically using glob import
 const images = import.meta.glob<{ default: ImageMetadata }>([
   'src/content/blog/images/*.{jpeg,jpg,png,gif,webp}',
-  '/public/images/*.{jpeg,jpg,png,gif,webp}'
+  '/public/images/*.{jpeg,jpg,png,gif,webp}',
+  '/public/images/authors/*.{jpeg,jpg,png,gif,webp}'
 ]);
 
 // Ensure the image path exists in our glob imports
@@ -76,18 +77,27 @@ try {
   console.error('Error loading image:', error);
 }
 
-// Get the image metadata
-// const imageData = await images[image]();
+// Get author image data
+let authorImageData;
+try {
+  if (authorImage && images[authorImage]) {
+    authorImageData = await images[authorImage]();
+  } else if (images['/public/images/authors/default-author.jpg']) {
+    authorImageData = await images['/public/images/authors/default-author.jpg']();
+  }
+} catch (error) {
+  console.error('Error loading author image:', error);
+}
 
 ---
 
 <div class="article-header mb-6">
   <!-- Full-width image container with negative margins to extend beyond parent -->
   <div class="image-container relative h-[250px] md:h-[280px] -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 overflow-hidden">
-    {image && (
+    {imageData && (
       <Image
         src={imageData.default || '/images/default-image.jpg'}
-        alt={coverAlt || ''}
+        alt={coverAlt ||`Image of the article titled ${title}`}
         class="w-full h-full object-cover rounded-lg"
         loading="eager"
       />
@@ -104,13 +114,15 @@ try {
 
       <!-- Compact author info -->
       <div class="flex items-center gap-2 text-white">
-        {authorImage && (
-          <img
-            src={authorImage}
-            alt={author || `Image of ${author}`}
-            class="w-6 h-6 rounded-full object-cover border border-white/20"
-          />
-        )}
+        {authorImageData && (
+        <Image
+          src={authorImageData.default}
+          alt={author || `Image of ${author} author at Best of Vacuum`}
+          width={24}
+          height={24}
+          class="w-6 h-6 rounded-full object-cover border border-white/20"
+        />
+      )}
         <div class="text-xs">
           <span class="font-medium">{author}</span>
           <span class="opacity-75 mx-1">•</span>

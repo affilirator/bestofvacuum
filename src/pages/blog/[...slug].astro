@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntryBySlug } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import ProsConsTable from '../../components/ProsConsTable.astro';
 import ProductRating from '../../components/ProductRating.astro';
@@ -27,8 +27,8 @@ const relatedPosts = allPosts
   .slice(0, 3);
 
 // Extract pros and cons from markdown if available
-let pros = [];
-let cons = [];
+let pros: string[] = [];
+let cons: string[] = [];
 
 if (entry.body.includes('### Pros') && entry.body.includes('### Cons')) {
   const prosMatch = entry.body.match(/### Pros\s+([\s\S]*?)(?=###|$)/);
@@ -96,7 +96,7 @@ const productName = entry.data.title.split(':')[0];
   authorBio={entry.data.authorBio}
   authorImage={entry.data.authorImage}
   authorImageAlt={entry.data.authorImageAlt}
-  image={entry.data.image}
+  image={entry.data.image ?? '/images/default-image.jpg'}
   coverAlt={entry.data.coverAlt}
   readingTime={entry.data.readingTime}
   category={entry.data.category}
