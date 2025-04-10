@@ -52,16 +52,32 @@ const showTOC = showTableOfContents && filteredHeadings.length > 1;
 
 // Import the image dynamically
 // Import the image dynamically using glob import
-const images = import.meta.glob<{ default: ImageMetadata }>('src/content/blog/images/*.{jpeg,jpg,png,gif,webp}');
+//const images = import.meta.glob<{ default: ImageMetadata }>('src/content/blog/images/*.{jpeg,jpg,png,gif,webp}');
+
+// Import the image dynamically using glob import
+const images = import.meta.glob<{ default: ImageMetadata }>([
+  'src/content/blog/images/*.{jpeg,jpg,png,gif,webp}',
+  '/public/images/*.{jpeg,jpg,png,gif,webp}'
+]);
 
 // Ensure the image path exists in our glob imports
 
-if (!images[image]) {
-  throw new Error(`Image ${image} not found! Make sure it exists in /src/content/blog/images/`);
+// Try to get the main image or use default
+let imageData;
+try {
+  if (images[image]) {
+    imageData = await images[image]();
+  } else if (images['/public/images/default-image.jpg']) {
+    imageData = await images['/public/images/default-image.jpg']();
+  } else {
+    throw new Error('Neither main image nor default image found');
+  }
+} catch (error) {
+  console.error('Error loading image:', error);
 }
 
 // Get the image metadata
-const imageData = await images[image]();
+// const imageData = await images[image]();
 
 ---
 
@@ -70,7 +86,7 @@ const imageData = await images[image]();
   <div class="image-container relative h-[250px] md:h-[280px] -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 overflow-hidden">
     {image && (
       <Image
-        src={imageData.default}
+        src={imageData.default || '/images/default-image.jpg'}
         alt={coverAlt || ''}
         class="w-full h-full object-cover rounded-lg"
         loading="eager"

@@ -13,7 +13,7 @@ category: Upright Vacuum Cleaners
 showTableOfContents: true
 author: Patrick Mahinge
 authorBio: Patrick Mahinge is an author
-authorImage: src/content/blog/images/best-multi-purpose-steam-cleaner.jpg
+authorImage: /src/content/blog/images/best-multi-purpose-steam-cleaner.jpg
 authorImageAlt: Author alt
 coverAlt: Cover alt
 ---
