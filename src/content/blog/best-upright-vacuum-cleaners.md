@@ -6,7 +6,7 @@ originalUrl: best-upright-vacuum-cleaners
 layout: ../../layouts/BlogLayout.astro
 pubDate: 2025-04-10
 modDate: 2025-04-10
-image: src/content/blog/images/best-rated-shark-vacuum.jpg
+image: /src/content/blog/images/best-rated-shark-vacuum.jpg
 excerpt: "Upright vacuums are known for their powerful suction, ease of use, and
   ability to clean large spaces quickly. "
 category: Upright Vacuum Cleaners
