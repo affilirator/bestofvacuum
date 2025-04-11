@@ -1,0 +1,14 @@
+---
+import type { ReviewSchema, BreadcrumbSchema } from '../types';
+import { generateReviewSchema, generateBreadcrumbSchema } from '../../utils/schema';
+
+interface Props {
+  reviewSchema: ReviewSchema;
+  breadcrumbSchema: BreadcrumbSchema;
+}
+
+const { reviewSchema, breadcrumbSchema } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

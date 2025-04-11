@@ -2,8 +2,23 @@
 import MainLayout from './MainLayout.astro';
 import ReviewDetail from '../components/ReviewDetail.astro';
 import { getCollection } from 'astro:content';
+import AuthorBio from '@components/ReviewDetail/AuthorBio.astro';
+import Breadcrumbs from '@components/ReviewDetail/Breadcrumbs.astro';
+import RatingSummary from '@components/ReviewDetail/RatingSummary.astro';
+import ProsCons from '@components/ReviewDetail/ProsCons.astro';
+import ProductOverview from '@components/ReviewDetail/ProductOverview.astro';
 
 const { frontmatter } = Astro.props;
+
+// Format date
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
 ---
 
 <MainLayout
@@ -13,5 +28,69 @@ const { frontmatter } = Astro.props;
   image={frontmatter.product.image}
   pubDate={frontmatter.date}
 >
-  <ReviewDetail review={frontmatter} />
+
+  <Breadcrumbs
+    category={frontmatter.category}
+    title={frontmatter.title}
+  />
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8"> <!-- Added better responsive padding -->
+    <div class="max-w-5xl mx-auto"> <!-- Increased max-width for better readability -->
+      <!-- Header -->
+      <header class="mb-10">
+        <div class="mb-4">
+          <a
+            href={`/category/${frontmatter.category.slug}`}
+            class="inline-block bg-primary-100 text-primary-700 text-sm font-medium px-3 py-1 rounded-full"
+          >
+            {frontmatter.category.name}
+          </a>
+        </div>
+
+        <h1 class="mb-4">{frontmatter.title}</h1>
+
+        {frontmatter.subtitle && (
+          <p class="text-xl md:text-2xl text-gray-600 mb-6">{frontmatter.subtitle}</p>
+        )}
+
+        <!-- Meta Info -->
+        <div class="flex items-center text-sm text-gray-500 mb-6">
+          <time datetime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
+          <span class="mx-2">•</span>
+          <span>
+            By <a href={`/author/${frontmatter.author.slug}`} class="text-primary-600 hover:underline">{frontmatter.author.name}</a>
+          </span>
+        </div>
+        </header>
+
+        <RatingSummary
+          rating={frontmatter.rating}
+          verdict={frontmatter.verdict}
+
+        />
+
+        <ProsCons
+          pros={frontmatter.pros}
+          cons={frontmatter.cons}
+        />
+
+        <ProductOverview
+          product={frontmatter.product}
+
+        />
+        <div >
+          <hr class="my-8 border-gray-300" />
+          <h2 class="text-2xl font-semibold mb-4">
+            Editor's Review
+          </h2>
+
+        </div>
+
+        <slot />
+
+
+
+
+  <AuthorBio author={frontmatter.author} date={frontmatter.date} />
+  <!-- Add slot here to render the markdown content -->
+
 </MainLayout>

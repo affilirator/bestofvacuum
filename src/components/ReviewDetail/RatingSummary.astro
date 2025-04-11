@@ -1,0 +1,51 @@
+---
+interface Props {
+  rating: {
+    overall: number;
+    suction: number;
+    maneuverability: number;
+    noise: number;
+    batteryLife?: number;
+    filtration: number;
+    valueForMoney: number;
+  };
+  verdict: string;
+}
+
+const { rating, verdict } = Astro.props;
+---
+
+<div class="bg-gray-50 rounded-xl p-6 sm:p-8 flex flex-col md:flex-row gap-8 mb-10">
+  <div class="text-center">
+    <div class="w-28 h-28 rounded-full bg-white shadow-md flex items-center justify-center mb-3">
+      <span class="text-5xl font-bold text-primary-600">{rating.overall.toFixed(1)}</span>
+    </div>
+    <div class="text-sm font-medium">Overall Score</div>
+  </div>
+
+  <div class="flex-grow mx-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+    {Object.entries(rating)
+      .filter(([key]) => key !== 'overall')
+      .map(([key, value]) => (
+        <div>
+          <div class="text-sm font-medium text-gray-700 mb-1 capitalize">
+            {key.replace(/([A-Z])/g, ' $1')}
+          </div>
+          <div class="flex items-center">
+            <div class="w-full bg-gray-200 rounded-full h-2 mr-2">
+              <div
+                class="bg-primary-600 h-2 rounded-full"
+                style={`width: ${(value / 5) * 100}%`}
+              ></div>
+            </div>
+            <span class="text-sm font-semibold">{value.toFixed(1)}</span>
+          </div>
+        </div>
+      ))}
+  </div>
+
+  <div class="md:border-l md:border-gray-300 md:pl-6 text-center md:text-left">
+    <div class="text-sm font-medium text-gray-700 mb-2">Verdict</div>
+    <div class="font-medium">{verdict}</div>
+  </div>
+</div>

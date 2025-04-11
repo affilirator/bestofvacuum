@@ -1,0 +1,25 @@
+---
+interface Props {
+  category: {
+    name: string;
+    slug: string;
+  };
+  title: string;
+}
+
+const { category, title } = Astro.props;
+---
+
+<div class="bg-gray-50 py-3 mb-8">
+  <div class="container">
+    <nav class="flex text-sm">
+      <a href="/" class="text-gray-500 hover:text-primary-700">Home</a>
+      <span class="mx-2 text-gray-400">/</span>
+      <a href="/reviews" class="text-gray-500 hover:text-primary-700">Reviews</a>
+      <span class="mx-2 text-gray-400">/</span>
+      <a href={`/category/${category.slug}`} class="text-gray-500 hover:text-primary-700">{category.name}</a>
+      <span class="mx-2 text-gray-400">/</span>
+      <span class="text-gray-700 truncate">{title}</span>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+---
+// src/components/ReviewDetail/Footer.astro
+const { review } = Astro.props;
+---
+
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <!-- Specifications -->
+    <div class="mb-12">
+      <!-- ... specifications content ... -->
+    </div>
+
+    <!-- FAQs -->
+    {review.faqs?.length > 0 && (
+      <div class="mb-12">
+        <!-- ... FAQs content ... -->
+      </div>
+    )}
+
+    <!-- Alternatives -->
+    {review.alternatives?.length > 0 && (
+      <div class="mb-12">
+        <!-- ... alternatives content ... -->
+      </div>
+    )}
+
+    <!-- Author Bio -->
+    <div class="mb-12">
+      <!-- ... author bio content ... -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+---
+interface Props {
+  author: {
+    name: string;
+    slug: string;
+    image: string;
+    title: string;
+    bio: string;
+  };
+  date: string;
+}
+
+const { author, date } = Astro.props;
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<div class="mb-12">
+  <div class="bg-gray-50 rounded-xl p-6 flex flex-col sm:flex-row gap-6">
+    <div class="shrink-0">
+      <img
+        src={author.image}
+        alt={author.name}
+        class="w-24 h-24 rounded-full object-cover mx-auto sm:mx-0"
+      />
+    </div>
+    <div>
+      <div class="flex items-center text-sm text-gray-500 mb-3">
+        <time datetime={date}>{formatDate(date)}</time>
+        <span class="mx-2">•</span>
+        <span>
+          By <a href={`/author/${author.slug}`} class="text-primary-600 hover:underline">{author.name}</a>
+        </span>
+      </div>
+      <p class="font-semibold text-lg mb-1">{author.name}</p>
+      <p class="text-primary-600 text-sm mb-3">{author.title}</p>
+      <p class="text-gray-600 text-sm">{author.bio}</p>
+      <a
+        href={`/author/${author.slug}`}
+        class="inline-block mt-3 text-primary-600 hover:text-primary-800 text-sm font-medium"
+      >
+        View all reviews by {author.name.split(' ')[0]}
+      </a>
+    </div>
+  </div>
+</div>

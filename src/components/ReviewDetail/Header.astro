@@ -1,0 +1,68 @@
+---
+// src/components/ReviewDetail/Header.astro
+import { generateReviewSchema, generateBreadcrumbSchema } from '../../utils/schema';
+const { review } = Astro.props;
+
+// Generate schema markup
+const reviewSchema = generateReviewSchema({
+  name: review.title,
+  reviewBody: review.excerpt,
+  datePublished: review.date,
+  ratingValue: review.rating.overall,
+  author: {
+    name: review.author.name,
+    url: `https://vacuum-expert-reviews.com/author/${review.author.slug}`
+  },
+  product: {
+    name: review.product.name,
+    image: new URL(review.product.image, Astro.site).toString(),
+    description: review.product.description,
+    brand: review.product.brand,
+    sku: review.product.model,
+    url: review.product.url
+  }
+});
+
+// Generate breadcrumbs
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://vacuum-expert-reviews.com/' },
+  { name: 'Reviews', url: 'https://vacuum-expert-reviews.com/reviews/' },
+  { name: review.category.name, url: `https://vacuum-expert-reviews.com/category/${review.category.slug}/` },
+  { name: review.title, url: `https://vacuum-expert-reviews.com/reviews/${review.slug}/` }
+]);
+---
+
+<div>
+  <!-- Schema.org Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Breadcrumbs -->
+  <div class="bg-gray-50 py-3 mb-8">
+    <!-- ... breadcrumbs content ... -->
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+      <!-- Header -->
+      <header class="mb-10">
+        <!-- ... header content ... -->
+      </header>
+
+      <!-- Rating Summary -->
+      <div class="bg-gray-50 rounded-xl p-6 sm:p-8 flex flex-col md:flex-row gap-8 mb-10">
+        <!-- ... rating summary content ... -->
+      </div>
+
+      <!-- Product Overview -->
+      <div class="mb-12 bg-white rounded-xl shadow-md overflow-hidden">
+        <!-- ... product overview content ... -->
+      </div>
+
+      <!-- Pros & Cons -->
+      <div class="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- ... pros and cons content ... -->
+      </div>
+    </div>
+  </div>
+</div>
