@@ -1,5 +1,5 @@
 ---
-import heroImg from '../content/blog/images/default-image.jpg'
+import heroImg from '../content/blog/images/default-image.jpg';
 import { Picture } from 'astro:assets';
 ---
 
@@ -49,24 +49,18 @@ import { Picture } from 'astro:assets';
 
         <!-- Trust Badges -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-gray-200">
-          <div class="flex items-center">
-            <svg class="w-5 h-5 mr-2 text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-            </svg>
-            <span>100+ Models Tested</span>
-          </div>
-          <div class="flex items-center">
-            <svg class="w-5 h-5 mr-2 text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-            </svg>
-            <span>Certified Cleaning Experts</span>
-          </div>
-          <div class="flex items-center">
-            <svg class="w-5 h-5 mr-2 text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-            </svg>
-            <span>Updated Monthly</span>
-          </div>
+          {[
+            "100+ Models Tested",
+            "Certified Cleaning Experts",
+            "Updated Monthly"
+          ].map((badge) => (
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2 text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>{badge}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -84,10 +78,7 @@ import { Picture } from 'astro:assets';
           width={800}
           height={600}
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-
         />
-
-
       </div>
     </div>
   </div>
@@ -95,7 +86,7 @@ import { Picture } from 'astro:assets';
 
 <style>
   @keyframes blob {
-    0% {
+    0%, 100% {
       transform: translate(0px, 0px) scale(1);
     }
     33% {
@@ -103,9 +94,6 @@ import { Picture } from 'astro:assets';
     }
     66% {
       transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
     }
   }
 
