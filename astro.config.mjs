@@ -19,5 +19,5 @@ export default defineConfig({
     assets: '_assets'
   },
 
-  adapter: netlify(),
+  // adapter: netlify(),
 });
