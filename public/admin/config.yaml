@@ -3,7 +3,7 @@
 backend:
   name: github
   repo: "affilirator/bestofvacuum" # Replace with your GitHub username and repository name
-  branch: local.dev
+  branch: client.dev
 
 
 site_url: https://bestofvacuum.com
