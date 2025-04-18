@@ -2,9 +2,9 @@
 
 backend:
   name: git-gateway
-  repo: "affilirator/bestofvacuum" # Replace with your GitHub username and repository name
+  repo: affilirator/bestofvacuum # Replace with your GitHub username and repository name
   branch: main
-  base_url: "https://bestofvacuum.com" # Replace with your website's URL
+  base_url: https://bestofvacuum.com # Replace with your website's URL
 
 site_url: https://bestofvacuum.com
 display_url: https://bestofvacuum.com
