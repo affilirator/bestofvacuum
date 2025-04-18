@@ -26,12 +26,7 @@ collections:
     slug: "{{originalUrl}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - {
-          label: "Publish Date",
-          name: "date",
-          widget: "hidden",
-          default: "{{fields.pubDate}}",
-        }
+
       - {
           label: "Source",
           name: "source",
