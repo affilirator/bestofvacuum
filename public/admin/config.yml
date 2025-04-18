@@ -7,8 +7,8 @@ backend:
   base_url: https://bestofvacuum.com # Replace with your website's URL
 
 site_url: https://bestofvacuum.com
-display_url: https://bestofvacuum.com
-logo_url: https://bestofvacuum.com/images/logo.svg
+display_url: bestofvacuum.com
+#logo_url: https://bestofvacuum.com/images/logo.svg
 show_preview_links: true
 publish_mode: editorial_workflow
 media_folder: "src/content/blog/images"

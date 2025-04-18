@@ -4,16 +4,6 @@
   Referrer-Policy: no-referrer
   cache-control: no-cache, no-store, must-revalidate
 
-https://bestofvacuum.com/*
-  X-Robots-Tag: noindex, nofollow
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: no-referrer
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Cross-Origin-Embedder-Policy: require-corp
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: same-origin
-
 https://*.netlify.app/*
   X-Robots-Tag: noindex, nofollow
   X-Frame-Options: DENY
