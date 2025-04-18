@@ -12,7 +12,6 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   integrations: [tailwind(), sitemap()],
   site: "https://bestofvacuum.com",
-  base: "/",
   output: "static",
 
   //trailingSlash: 'never',
