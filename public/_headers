@@ -2,7 +2,8 @@
   X-Robots-Tag: noindex, nofollow
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
-  cache-control: no-cache, no-store, must-revalidate
+  Cross-Origin-Resource-Policy: cross-origin
+  Access-Control-Allow-Origin: *
 
 https://*.netlify.app/*
   X-Robots-Tag: noindex, nofollow
