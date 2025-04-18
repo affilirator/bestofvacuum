@@ -16,10 +16,6 @@ export default defineConfig({
 
   //trailingSlash: 'never',
   // adapter: netlify(),
-  build: {
-    format: "file",
-    assets: "_assets",
-  },
 
   adapter: netlify(),
 });
