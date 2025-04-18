@@ -1,10 +1,10 @@
 #local_backend: true
 
 backend:
-  name: github
+  name: git-gateway
   repo: "affilirator/bestofvacuum" # Replace with your GitHub username and repository name
   branch: main
-
+  base_url: "https://bestofvacuum.com/admin" # Replace with your website's URL
 
 site_url: https://bestofvacuum.com
 display_url: https://bestofvacuum.com
@@ -25,26 +25,83 @@ collections:
     #publish: false
     slug: "{{originalUrl}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - { label: "Publish Date", name: "date", widget: "hidden", default: "{{fields.pubDate}}" }
-      - { label: "Source", name: "source", widget: "string", default: "wordpress" }
-      - {label: "URL Slug", name: "originalUrl", widget: "string"}
-      - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/BlogLayout.astro" }
-      - {label: "Publication Date", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, }
-      - {label: "Modified Date", name: "modDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
-      - {label: "Featured Image", name: "image", widget: "image", required: false}
-      - {label: "Description", name: "excerpt", widget: "text"}
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Show Table of Contents", name: "showTableOfContents", widget: "boolean", default: true}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Author Bio", name: "authorBio", widget: "text"}
-      - {label: "Author Image", name: "authorImage", widget: "image", required: false}
-      - {label: "Author Image Alt Text", name: "authorImageAlt", widget: "string", required: false}
-      - {label: "Cover Alt Text", name: "coverAlt", widget: "string", required: false}
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "hidden",
+          default: "{{fields.pubDate}}",
+        }
+      - {
+          label: "Source",
+          name: "source",
+          widget: "string",
+          default: "wordpress",
+        }
+      - { label: "URL Slug", name: "originalUrl", widget: "string" }
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "../../layouts/BlogLayout.astro",
+        }
+      - {
+          label: "Publication Date",
+          name: "pubDate",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+        }
+      - {
+          label: "Modified Date",
+          name: "modDate",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+        }
+      - {
+          label: "Featured Image",
+          name: "image",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Description", name: "excerpt", widget: "text" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Show Table of Contents",
+          name: "showTableOfContents",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Author Bio", name: "authorBio", widget: "text" }
+      - {
+          label: "Author Image",
+          name: "authorImage",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Author Image Alt Text",
+          name: "authorImageAlt",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Cover Alt Text",
+          name: "coverAlt",
+          widget: "string",
+          required: false,
+        }
 
   - name: "cmsblog"
     label: "New CMS Posts"
+    label_singular: "Article"
+    editor:
+      preview: false
+      preview_url: "/blog/{{slug}}/"
+      preview_path: "/blog/{{slug}}/"
     preview_path: "/blog/{{slug}}/"
     folder: "src/content/blog"
     filter: { field: "source", value: "decap" }
@@ -52,23 +109,70 @@ collections:
     create: true
     slug: "{{originalUrl}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - { label: "Publish Date", name: "date", widget: "hidden", default: "{{fields.pubDate}}" }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "hidden",
+          default: "{{fields.pubDate}}",
+        }
       - { label: "Source", name: "source", widget: "string", default: "decap" }
-      - {label: "URL Slug", name: "originalUrl", widget: "string"}
-      - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/BlogLayout.astro" }
-      - {label: "Publication Date", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, }
-      - {label: "Modified Date", name: "modDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
-      - {label: "Featured Image", name: "image", widget: "image", required: false}
-      - {label: "Description", name: "excerpt", widget: "text"}
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Show Table of Contents", name: "showTableOfContents", widget: "boolean", default: true}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Author Bio", name: "authorBio", widget: "text"}
-      - {label: "Author Image", name: "authorImage", widget: "image", required: false}
-      - {label: "Author Image Alt Text", name: "authorImageAlt", widget: "string", required: false}
-      - {label: "Cover Alt Text", name: "coverAlt", widget: "string", required: false}
+      - { label: "URL Slug", name: "originalUrl", widget: "string" }
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "../../layouts/BlogLayout.astro",
+        }
+      - {
+          label: "Publication Date",
+          name: "pubDate",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+        }
+      - {
+          label: "Modified Date",
+          name: "modDate",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+        }
+      - {
+          label: "Featured Image",
+          name: "image",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Description", name: "excerpt", widget: "text" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Show Table of Contents",
+          name: "showTableOfContents",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Author Bio", name: "authorBio", widget: "text" }
+      - {
+          label: "Author Image",
+          name: "authorImage",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Author Image Alt Text",
+          name: "authorImageAlt",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Cover Alt Text",
+          name: "coverAlt",
+          widget: "string",
+          required: false,
+        }
 
   - name: "legalpages"
     label: "Legal Pages"
@@ -84,7 +188,12 @@ collections:
             label: "Policy Sections"
             widget: "list"
             fields:
-              - { name: "id", label: "Section ID", widget: "string", description: "Unique identifier for the section" }
+              - {
+                  name: "id",
+                  label: "Section ID",
+                  widget: "string",
+                  description: "Unique identifier for the section",
+                }
               - { name: "title", label: "Section Title", widget: "string" }
               - { name: "content", label: "Content", widget: "markdown" }
           - name: "contact"
@@ -103,8 +212,22 @@ collections:
     create: true
     fields:
       - { label: "Name", name: "name", widget: "string" }
-      - {label: "Slug", name: "slug", widget: "string", pattern: ['^[a-zA-Z0-9-]+$', "Only alphanumeric characters and hyphens allowed"]}
-      - { label: "Description", name: "description", widget: "text", required: false }
+      - {
+          label: "Slug",
+          name: "slug",
+          widget: "string",
+          pattern:
+            [
+              "^[a-zA-Z0-9-]+$",
+              "Only alphanumeric characters and hyphens allowed",
+            ],
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: false,
+        }
 
   - name: "authors"
     label: "Authors"
@@ -114,73 +237,24 @@ collections:
     create: true
     fields:
       - { label: "Full Name", name: "name", widget: "string" }
-      - {label: "Slug", name: "slug", widget: "string", pattern: ['^[a-zA-Z0-9-]+$', "Only alphanumeric characters and hyphens allowed"]}
+      - {
+          label: "Slug",
+          name: "slug",
+          widget: "string",
+          pattern:
+            [
+              "^[a-zA-Z0-9-]+$",
+              "Only alphanumeric characters and hyphens allowed",
+            ],
+        }
       - { label: "Bio", name: "bio", widget: "text" }
       - {
           label: "Profile Image",
           name: "image",
           widget: "image",
           media_folder: "/public/images/authors",
-          public_folder: "/images/authors"
+          public_folder: "/images/authors",
         }
-
-
-  - name: "posts"
-    label: "Blog Posts 2"
-    folder: "src/content/posts"
-    create: true
-    slug: "{{originalUrl}}"
-    fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Author, name: author, widget: string }
-      - { label: "Author Bio", name: authorBio, widget: text }
-      - {
-          label: "Author Image",
-          name: authorImage,
-          widget: image,
-          media_folder: "/public/images/authors",
-          public_folder: "/images/authors"
-        }
-      - { label: "Author Image Alt Text", name: authorImageAlt, widget: string }
-      - {
-          label: "Show Table of Contents",
-          name: showTableOfContents,
-          widget: boolean,
-          default: true
-        }
-      - { label: "Featured Image", name: image, widget: image }
-      - { label: "Cover Alt Text", name: coverAlt, widget: string }
-      - {
-          label: "Publish Date",
-          name: pubDate,
-          widget: datetime,
-          format: "YYYY-MM-DD",
-          date_format: "YYYY-MM-DD",
-          time_format: false
-        }
-      - {
-          label: "Modified Date",
-          name: modDate,
-          widget: datetime,
-          format: "YYYY-MM-DD",
-          date_format: "YYYY-MM-DD",
-          time_format: false
-        }
-      - { label: "URL Slug", name: originalUrl, widget: string }
-      - {
-          label: Category,
-          name: category,
-          widget: select,
-          options: ["Vacuum Reviews", "Cleaning Tips", "Product Guides"]
-        }
-      - { label: Excerpt, name: excerpt, widget: text }
-      - { label: Body, name: body, widget: markdown }
-
-
-
-
-
-
 
   - name: "reviews"
     label: "Reviews"
@@ -190,15 +264,34 @@ collections:
     # format: "frontmatter"
     slug: "{{slug}}"
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/MainLayout.astro"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string", pattern: ['^[a-zA-Z0-9-]+$', "Only alphanumeric characters and hyphens allowed"]}
-      - {label: "Subtitle", name: "subtitle", widget: "string"}
-      - {label: "Excerpt", name: "excerpt", widget: "text"}
-      - {label: "Publication Date", name: "date", widget: "datetime"}
-      - {label: "Modified Date", name: "modDate", widget: "datetime", default: "{{now}}"}
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "../../layouts/MainLayout.astro",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Slug",
+          name: "slug",
+          widget: "string",
+          pattern:
+            [
+              "^[a-zA-Z0-9-]+$",
+              "Only alphanumeric characters and hyphens allowed",
+            ],
+        }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Publication Date", name: "date", widget: "datetime" }
+      - {
+          label: "Modified Date",
+          name: "modDate",
+          widget: "datetime",
+          default: "{{now}}",
+        }
 
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Body", name: "body", widget: "markdown" }
       - label: "Author"
         name: "author"
         widget: "relation"
@@ -217,43 +310,118 @@ collections:
         name: "product"
         widget: "object"
         fields:
-          - {label: "Name", name: "name", widget: "string"}
-          - {label: "Brand", name: "brand", widget: "string"}
-          - {label: "Model", name: "model", widget: "string"}
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "Description", name: "description", widget: "text"}
-          - {label: "Price", name: "price", widget: "number", value_type: "float"}
-          - {label: "Sale Price", name: "salePrice", widget: "number", value_type: "float", required: false}
-          - {label: "Product URL", name: "url", widget: "string"}
-          - {label: "Features", name: "features", widget: "list"}
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Brand", name: "brand", widget: "string" }
+          - { label: "Model", name: "model", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "text" }
+          - {
+              label: "Price",
+              name: "price",
+              widget: "number",
+              value_type: "float",
+            }
+          - {
+              label: "Sale Price",
+              name: "salePrice",
+              widget: "number",
+              value_type: "float",
+              required: false,
+            }
+          - { label: "Product URL", name: "url", widget: "string" }
+          - { label: "Features", name: "features", widget: "list" }
           - label: "Specifications"
             name: "specs"
             widget: "object"
             fields:
-              - {label: "Dimensions", name: "dimensions", widget: "string"}
-              - {label: "Weight", name: "weight", widget: "string"}
-              - {label: "Suction Power", name: "suctionPower", widget: "string"}
-              - {label: "Bin Capacity", name: "binCapacity", widget: "string"}
-              - {label: "Battery Type", name: "batteryType", widget: "string"}
-              - {label: "Battery Life", name: "batteryLife", widget: "string"}
-              - {label: "Charging Time", name: "chargingTime", widget: "string"}
-              - {label: "Filtration", name: "filtration", widget: "string"}
-              - {label: "Noise Level", name: "noiseLevel", widget: "string"}
-              - {label: "Warranty", name: "warranty", widget: "string"}
+              - { label: "Dimensions", name: "dimensions", widget: "string" }
+              - { label: "Weight", name: "weight", widget: "string" }
+              - {
+                  label: "Suction Power",
+                  name: "suctionPower",
+                  widget: "string",
+                }
+              - { label: "Bin Capacity", name: "binCapacity", widget: "string" }
+              - { label: "Battery Type", name: "batteryType", widget: "string" }
+              - { label: "Battery Life", name: "batteryLife", widget: "string" }
+              - {
+                  label: "Charging Time",
+                  name: "chargingTime",
+                  widget: "string",
+                }
+              - { label: "Filtration", name: "filtration", widget: "string" }
+              - { label: "Noise Level", name: "noiseLevel", widget: "string" }
+              - { label: "Warranty", name: "warranty", widget: "string" }
       - label: "Rating"
         name: "rating"
         widget: "object"
         fields:
-          - {label: "Overall", name: "overall", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-          - {label: "Suction", name: "suction", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-          - {label: "Maneuverability", name: "maneuverability", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-          - {label: "Noise", name: "noise", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-          - {label: "Battery Life", name: "batteryLife", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-          - {label: "Filtration", name: "filtration", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-          - {label: "Value for Money", name: "valueForMoney", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-      - {label: "Pros", name: "pros", widget: "list"}
-      - {label: "Cons", name: "cons", widget: "list"}
-      - {label: "Verdict", name: "verdict", widget: "text"}
+          - {
+              label: "Overall",
+              name: "overall",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+          - {
+              label: "Suction",
+              name: "suction",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+          - {
+              label: "Maneuverability",
+              name: "maneuverability",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+          - {
+              label: "Noise",
+              name: "noise",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+          - {
+              label: "Battery Life",
+              name: "batteryLife",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+          - {
+              label: "Filtration",
+              name: "filtration",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+          - {
+              label: "Value for Money",
+              name: "valueForMoney",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+      - { label: "Pros", name: "pros", widget: "list" }
+      - { label: "Cons", name: "cons", widget: "list" }
+      - { label: "Verdict", name: "verdict", widget: "text" }
       - label: "Alternatives"
         name: "alternatives"
         widget: "list"
@@ -266,16 +434,28 @@ collections:
             value_field: "{{slug}}"
             display_fields: ["title"]
 
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "Rating", name: "rating", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1}
-          - {label: "Price", name: "price", widget: "number", value_type: "float"}
+          - { label: "Image", name: "image", widget: "image" }
+          - {
+              label: "Rating",
+              name: "rating",
+              widget: "number",
+              value_type: "float",
+              min: 0,
+              max: 5,
+              step: 0.1,
+            }
+          - {
+              label: "Price",
+              name: "price",
+              widget: "number",
+              value_type: "float",
+            }
       - label: "FAQs"
         name: "faqs"
         widget: "list"
         fields:
-          - {label: "Question", name: "question", widget: "string"}
-          - {label: "Answer", name: "answer", widget: "text"}
-
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
 
   - name: "team"
     label: "Team Members"
@@ -283,13 +463,24 @@ collections:
     create: true
     slug: "{{fields.name | slug}}"
     fields:
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Credentials", name: "credentials", widget: "string"}
-      - {label: "Bio", name: "bio", widget: "text"}
-      - {label: "Image", name: "image", widget: "image", required: false, default: "/images/placeholder.svg"}
-      - {label: "Expertise", name: "expertise", widget: "list"}
-      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Credentials", name: "credentials", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - {
+          label: "Image",
+          name: "image",
+          widget: "image",
+          required: false,
+          default: "/images/placeholder.svg",
+        }
+      - { label: "Expertise", name: "expertise", widget: "list" }
+      - {
+          label: "LinkedIn",
+          name: "linkedin",
+          widget: "string",
+          required: false,
+        }
 
   - name: "pages"
     label: "Pages"
@@ -298,21 +489,27 @@ collections:
         label: "About Page"
         name: "about"
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Description", name: "description", widget: "text"}
-          - {label: "Founded Year", name: "foundedYear", widget: "number"}
-          - {label: "Content", name: "body", widget: "markdown"}
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Founded Year", name: "foundedYear", widget: "number" }
+          - { label: "Content", name: "body", widget: "markdown" }
 
       - file: "src/content/pages/contact.md"
         label: "Contact Page"
         name: "contact"
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Description", name: "description", widget: "text"}
-          - {label: "Email", name: "email", widget: "string"}
-          - {label: "Phone", name: "phone", widget: "string"}
-          - {label: "Address", name: "address", widget: "string"}
-          - {label: "Office Hours", name: "officeHours", widget: "list", fields: [
-              {label: "Day", name: "day", widget: "string"},
-              {label: "Hours", name: "hours", widget: "string"}
-            ]}
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - {
+              label: "Office Hours",
+              name: "officeHours",
+              widget: "list",
+              fields:
+                [
+                  { label: "Day", name: "day", widget: "string" },
+                  { label: "Hours", name: "hours", widget: "string" },
+                ],
+            }
