@@ -120,8 +120,6 @@ With its specialized pet tools, large capacity dirt tank, and multi-level filtra
 
 ![Best Vacuum for Hardwood floors](/src/content/blog/images/Tineco-Floor-ONE-S3-Cordless-Hardwood-Floors-Cleaner.jpg "Tineco Floor ONE S3 Cordless Hardwood Floors Cleaner")
 
-
-
 Tineco Floor ONE S3 cordless vacuum is an excellent choice for cleaning your hardwood floors. It’s lightweight, making it easy to maneuver around your home, and it’s a wet/dry vacuum, so you can use it on a variety of surfaces. **[Click here to see today’s price on Amazon.](https://www.amazon.com/Tineco-Cordless-Lightweight-Powerful-Multi-Surface/dp/B082VRFWB8?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=fab3af5438df9fd3ac566b05aff974b0&language=en_US&ref_=as_li_ss_tl)**
 
 Plus, it has a smart control system that allows you to customize your cleaning experience.
