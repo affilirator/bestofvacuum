@@ -48,7 +48,7 @@ Don’t settle for a subpar cleaning experience – read our guide and find the 
 
 [](https://www.amazon.com/Shark-AZ1002-Self-Cleaning-Brushroll-Upholstery/dp/B07FX5PCMN?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=ff219357d945e706c17d3f82610ba728&language=en_US&ref_=as_li_ss_tl)
 
-![](/src/content/blog/images/Shark-AZ1002-Apex-Powered-Lift-Away-Vacuum.jpg)
+![Best vacuum cleaner for home](/src/content/blog/images/Shark-AZ1002-Apex-Powered-Lift-Away-Vacuum.jpg "Shark AZ1002 Apex Vacuum")
 
 Shark AZ1002 Apex Powered Lift-Away upright vacuum is a versatile and powerful cleaning tool that can tackle a wide variety of surfaces and messes. **[Click here to see today’s price on Amazon.](https://www.amazon.com/Shark-AZ1002-Self-Cleaning-Brushroll-Upholstery/dp/B07FX5PCMN?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=ff219357d945e706c17d3f82610ba728&language=en_US&ref_=as_li_ss_tl)**
 
