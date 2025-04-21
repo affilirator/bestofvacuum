@@ -87,7 +87,7 @@ Although cleaning the corners is very easy, the vacuum has a tendency to stick t
 
 **Review**
 
-* This restaurant vacuum has been specially designed to help cater to the cleaning requirements of the hospitality and food service industry. **[Click here to see latest price on Amazon.](https://www.amazon.com/gp/offer-listing/B00GM50P9S/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00GM50P9S&linkCode=am2&tag=bestofvacuum2-20&linkId=cf9fada804798837a303cee208f6a1da)** 
+* This restaurant vacuum has been specially designed to help cater to the cleaning requirements of the hospitality and food service industry.*** [Click here to see latest price on Amazon.](https://www.amazon.com/gp/offer-listing/B00GM50P9S/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00GM50P9S&linkCode=am2&tag=bestofvacuum2-20&linkId=cf9fada804798837a303cee208f6a1da)*** 
 * This backpack vacuum cleaner is commercial-grade and has been designed without brushes, belts or beater bars.
 * It is used in school cafeterias, motels, hotels, kitchens, bars, nightclubs, eateries, restaurants etc.
 * The cleaning tool is integrated with a HEPA media filter, which combats poor quality air in the indoor environment, in order to increase mobility and comfort. If you have asthmatic patients or small kids or babies at home, this can be a good equipment to ensure safety for their health.
