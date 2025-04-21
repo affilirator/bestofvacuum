@@ -68,7 +68,9 @@ It is perfect for deep cleaning on both floors and above-floor surfaces, making 
 
 ## **2. iRobot Roomba j7+ (7550) Self-Emptying Robot Vacuum – Best Robot Vacuum**
 
-[![best robot vacuum](images/iRobot-Roomba-j7-7550-Self-Emptying-Robot-Vacuum.jpg)](https://www.amazon.com/iRobot-Roomba-Self-Emptying-Robot-Vacuum/dp/B094NYHTMF?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=c1f21272f574492b7f4625f5d960e699&language=en_US&ref_=as_li_ss_tl)
+[](https://www.amazon.com/iRobot-Roomba-Self-Emptying-Robot-Vacuum/dp/B094NYHTMF?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=c1f21272f574492b7f4625f5d960e699&language=en_US&ref_=as_li_ss_tl)
+
+![Best Robot Vacuum](/src/content/blog/images/iRobot-Roomba-j7-7550-Self-Emptying-Robot-Vacuum.jpg "iRobot Roomba j7+ (7550) Self-Emptying Robot Vacuum")
 
 The iRobot Roomba j7+ (7550) is a self-emptying robot vacuum that can operate for up to 60 days without requiring manual emptying.
 
