@@ -81,7 +81,7 @@ Although cleaning the corners is very easy, the vacuum has a tendency to stick t
 
 ### 2. ProTeam ProVac FS 6 Commercial Backpack Vacuum
 
-### [![best backpack vacuum for home use](images/ProTeam-Backpack-Vacuums-ProVac-FS-6-Commercial-Backpack-Vacuum.jpg)](https://www.amazon.com/gp/offer-listing/B00GM50P9S/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00GM50P9S&linkCode=am2&tag=bestofvacuum2-20&linkId=cf9fada804798837a303cee208f6a1da)
+![](/src/content/blog/images/ProTeam-Backpack-Vacuums-ProVac-FS-6-Commercial-Backpack-Vacuum.jpg)
 
 **Review**
 
@@ -297,7 +297,7 @@ While most of those in the market have 500W to 3,000W, I’d advise you go for a
 
 Weight is a big factor. If you have a heavy backpack vacuum, then you know how tedious it is to move around with it. Ideally, you need a vacuum that is below 10 lbs. If you find a powerful, vacuum cleaner weighing around 7 or 7.5 lbs, the better.
 
-### **3. Comfort, Easy To Carry [![best backpack vacuum cleaner](images/backpack-vacuum-cleaner.jpg)](https://www.bestofvacuum.com/best-backpack-vacuum/)**
+### **3. Comfort, Easy To Carry** [**![best backpack vacuum cleaner](images/backpack-vacuum-cleaner.jpg)**](https://www.bestofvacuum.com/best-backpack-vacuum/)
 
 Nobody doesn’t want to be comfortable. With a backpack, you are assured of the comfort. You will not even feel the 10 lbs on your back. Besides, a backpack vacuum comes with straps to ensure firmness and stability.
 
