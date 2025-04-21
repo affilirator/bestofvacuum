@@ -83,6 +83,8 @@ Although cleaning the corners is very easy, the vacuum has a tendency to stick t
 
 ![](/src/content/blog/images/ProTeam-Backpack-Vacuums-ProVac-FS-6-Commercial-Backpack-Vacuum.jpg)
 
+![]()
+
 **Review**
 
 * This restaurant vacuum has been specially designed to help cater to the cleaning requirements of the hospitality and food service industry. **[Click here to see latest price on Amazon.](https://www.amazon.com/gp/offer-listing/B00GM50P9S/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00GM50P9S&linkCode=am2&tag=bestofvacuum2-20&linkId=cf9fada804798837a303cee208f6a1da)** 
