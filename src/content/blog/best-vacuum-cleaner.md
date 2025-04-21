@@ -94,7 +94,9 @@ Its self-emptying capabilities, obstacle avoidance, smart mapping, and compatibi
 
 ## **3. BISSELL 2254 CleanView Swivel Rewind Pet Bagless Vacuum – Best Vacuum for Pet Hair**
 
-[![Best Vacuum for Pet Hair](images/BISSELL-2254-CleanView-Swivel-Rewind-Pet-Upright-Bagless-Vacuum-_E2_80_93-Best-Vacuum-for-Pet-Hair.jpg)](https://www.amazon.com/2254-CleanView-Automatic-Steering-Specialized/dp/B07F6MXJ9X?&linkCode=ll1&tag=bestofvacuum2-20&linkId=4f0e1126b8f5688d656ea10d3ec4fb5b&language=en_US&ref_=as_li_ss_tl)
+![The best vacuum for pet hair ](/src/content/blog/images/BISSELL-2254-CleanView-Swivel-Rewind-Pet-Upright-Bagless-Vacuum-_E2_80_93-Best-Vacuum-for-Pet-Hair.jpg "BISSELL 2254 CleanView Swivel Rewind Pet Bagless Vacuum")
+
+[](https://www.amazon.com/2254-CleanView-Automatic-Steering-Specialized/dp/B07F6MXJ9X?&linkCode=ll1&tag=bestofvacuum2-20&linkId=4f0e1126b8f5688d656ea10d3ec4fb5b&language=en_US&ref_=as_li_ss_tl)
 
 BISSELL 2254 CleanView Swivel Rewind pet vacuum is designed specifically for pet owners. **[Click here to see today’s price on Amazon.](https://www.amazon.com/2254-CleanView-Automatic-Steering-Specialized/dp/B07F6MXJ9X?&linkCode=ll1&tag=bestofvacuum2-20&linkId=4f0e1126b8f5688d656ea10d3ec4fb5b&language=en_US&ref_=as_li_ss_tl)**
 
@@ -194,7 +196,7 @@ Plus, with its compact size, it’s easy to maneuver around your home and store 
 
 ## **8. Tineco A11 Hero Cordless Stick Vacuum Cleaner- Best Cordless Vacuum Cleaner**
 
-**[![best vacuum cleaner](images/Tineco-A11-Hero-Cordless-.jpg)](https://www.amazon.com/Tineco-Cordless-Handheld-Charging-Hardwood/dp/B07R9KDNKL?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=dc6216a2cee34c28443aa50a1f6064d8&language=en_US&ref_=as_li_ss_tl)**
+[**![best vacuum cleaner](images/Tineco-A11-Hero-Cordless-.jpg)**](https://www.amazon.com/Tineco-Cordless-Handheld-Charging-Hardwood/dp/B07R9KDNKL?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=dc6216a2cee34c28443aa50a1f6064d8&language=en_US&ref_=as_li_ss_tl)
 
 Tineco A11 Hero cordless stick vacuum is truly a top-of-the-line option when it comes to cordless vacuums.
 
