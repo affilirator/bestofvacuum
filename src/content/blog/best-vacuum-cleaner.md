@@ -204,7 +204,7 @@ Plus, with its compact size, it’s easy to maneuver around your home and store 
 
 ## **8. Tineco A11 Hero Cordless Stick Vacuum Cleaner- Best Cordless Vacuum Cleaner**
 
-[**![best vacuum cleaner](images/Tineco-A11-Hero-Cordless-.jpg)**](https://www.amazon.com/Tineco-Cordless-Handheld-Charging-Hardwood/dp/B07R9KDNKL?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=dc6216a2cee34c28443aa50a1f6064d8&language=en_US&ref_=as_li_ss_tl)
+![Best Cordless Vacuum ](/src/content/blog/images/Tineco-A11-Hero-Cordless-.jpg "Tineco A11 Hero Cordless Lightweight Stick Vacuum")
 
 Tineco A11 Hero cordless stick vacuum is truly a top-of-the-line option when it comes to cordless vacuums.
 
