@@ -184,7 +184,9 @@ It’s easy to use, effective at cleaning, and has features that make it particu
 
 ## **7. Miele Compact C1 Turbo Team Bagged Canister Vacuum – Best Vacuum for Carpet**
 
-[![best vacuum for carpet](images/Miele-Classic-C1-Limited-Edition-Canister-Vacuum-Cleaner-Graphite-Grey.jpg)](https://www.amazon.com/Miele-Compact-Bagged-Canister-Obsidian/dp/B08L5NN6QV?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=75383e2028195147210db204145fb744&language=en_US&ref_=as_li_ss_tl)
+[](https://www.amazon.com/Miele-Compact-Bagged-Canister-Obsidian/dp/B08L5NN6QV?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=75383e2028195147210db204145fb744&language=en_US&ref_=as_li_ss_tl)
+
+![The best vacuum for carpet ](/src/content/blog/images/Miele-Blizzard-CX1-Pure-Suction-Bagless-Canister-Vacuum-Cleaner.jpg "Miele Compact C1 Turbo Team Bagged Canister Vacuum")
 
 If you’re looking for a vacuum that can handle carpet, then I would recommend the Miele Compact C1 Turbo Team. This [bagged canister vacuum](https://www.bestofvacuum.com/best-bagged-vacuum/) is specifically designed to clean carpets, and it does an excellent job. **[Click here to see today’s price on Amazon](https://www.amazon.com/Miele-Compact-Bagged-Canister-Obsidian/dp/B08L5NN6QV?th=1&linkCode=ll1&tag=bestofvacuum2-20&linkId=75383e2028195147210db204145fb744&language=en_US&ref_=as_li_ss_tl)**
 
