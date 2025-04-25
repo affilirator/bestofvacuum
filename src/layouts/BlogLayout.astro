@@ -274,6 +274,13 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
       font-size: 1.25rem;
     }
   }
+  .blog-content .pros-container {
+  @apply bg-green-50 p-4 rounded-lg border border-green-500
+}
+
+.blog-content .pros-heading, .blog-content .cons-heading {
+  @apply font-mono font-thin prose prose-lg
+}
 </style>
 
 
@@ -379,86 +386,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
 */
 document.addEventListener('DOMContentLoaded', function() {
-  const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6, strong, em, p, p em, p strong');
-  
-  headings.forEach(heading => {
-    const text = heading.textContent?.toLowerCase();
+  // Helper function to create container elements
+  const createContainer = (isPros, element) => {
+    const container = document.createElement('div');
+    container.className = isPros 
+      ? 'pros-container bg-green-50 p-4 rounded-lg border border-green-200' 
+      : 'cons-container bg-red-50 p-4 rounded-lg border border-red-200';
     
-    if (text?.includes('pros') || text?.includes('cons')) {
-      let sibling = heading.nextElementSibling;
-      let listElement = null;
-      
-      // Look for a UL in the next 3 siblings
-      for (let i = 0; i < 1 && sibling; i++) {
-        if (sibling.tagName === 'UL') {
-          listElement = sibling;
-          break;
-        }
-        sibling = sibling.nextElementSibling;
+    element.parentNode?.insertBefore(container, element);
+    return container;
+  };
+
+  // Process headings and lists
+  document.querySelectorAll('h1, h2, h3, h4, h5, h6, strong, em').forEach(heading => {
+    const text = heading.textContent?.toLowerCase();
+    if (!text?.includes('pros') && !text?.includes('cons')) return;
+
+    // Find associated UL within next 3 siblings
+    let listElement;
+    let sibling = heading.nextElementSibling;
+    for (let i = 0; i < 3 && sibling; i++) {
+      if (sibling.tagName === 'UL') {
+        listElement = sibling;
+        break;
       }
-      
-      if (listElement) {
-        
-        const wrapper = document.createElement('div');
-        const isPros = text.includes('pros');
-        listElement.classList.add(isPros ? 'pros-list' : 'cons-list'); 
-        
-        // Add Tailwind classes to containers
-        wrapper.className = isPros 
-          ? 'pros-container  bg-green-50 p-4 rounded-lg border border-green-200' 
-          : 'cons-container  bg-red-50 p-4 rounded-lg border border-red-200';
-        
-        // Add Tailwind classes to headings
-        heading.className += isPros 
-          ? ' pros-heading text-green-500 font-bold mb-2' 
-          : ' cons-heading text-red-500 font-bold mb-2';
-        
-        // Wrap elements
-        heading.parentNode?.insertBefore(wrapper, heading);
-        wrapper.appendChild(heading);
-        
-        // Move elements between heading and list
-        let current = heading.nextElementSibling;
-        while (current && current !== listElement) {
-          const next = current.nextElementSibling;
-          wrapper.appendChild(current);
-          current = next;
-        }
-        
-        wrapper.appendChild(listElement);
-      }
+      sibling = sibling.nextElementSibling;
     }
+
+    if (!listElement) return;
+
+    // Create container and move elements
+    const isPros = text.includes('pros');
+    const container = createContainer(isPros, heading);
+    
+    // Style elements
+    heading.classList.add(isPros ? 'pros-heading' : 'cons-heading', 'font-bold', 'mb-2');
+    listElement.classList.add(isPros ? 'pros-list' : 'cons-list');
+    
+    // Move elements into container
+    container.append(heading, listElement);
   });
 
-  // Create flex container for pros/cons pairs
-  function createFlexContainer() {
-    const containers = document.querySelectorAll('.pros-container, .cons-container');
+  // Pair adjacent pros/cons containers
+  const pairContainers = () => {
+    const containers = [...document.querySelectorAll('.pros-container, .cons-container')];
     
-    containers.forEach(container => {
-      // Check if already wrapped
-      if (container.parentElement?.classList.contains('pros-cons-flex')) return;
+    while (containers.length) {
+      const current = containers.shift();
+      const next = containers[0];
       
-      const sibling = container.nextElementSibling;
-      const flexParent = document.createElement('div');
-      flexParent.className = 'flex flex-col md:flex-row gap-4 my-4 w-full';
-      
-      // Insert flex container before first element
-      container.parentNode?.insertBefore(flexParent, container);
-      
-      // Add current container
-      flexParent.appendChild(container);
-      
-      // Add adjacent counterpart if exists
-      if (sibling && (
-          (container.classList.contains('pros-container') && sibling.classList.contains('cons-container')) ||
-          (container.classList.contains('cons-container') && sibling.classList.contains('pros-container'))
-      )) {
-        flexParent.appendChild(sibling);
+      if (next && current?.classList.contains('pros-container') !== next.classList.contains('pros-container')) {
+        const flexContainer = document.createElement('div');
+        flexContainer.className = 'pros-cons-section flex flex-col md:flex-row gap-4 my-4 w-full';
+        
+        current?.replaceWith(flexContainer);
+        flexContainer.append(current, containers.shift());
       }
-    });
-  }
+    }
+  };
 
-  createFlexContainer();
+  pairContainers();
 });
 
 
