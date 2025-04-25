@@ -10,15 +10,15 @@ import AuthorInfo from '../components/AuthorInfo.astro';
 
 interface Props {
   title: string;
-  description?: string;
+  excerpt?: string;
   pubDate: Date;
   modDate: Date;
   author: string;
   authorBio: string;
   authorImage: string;
   authorImageAlt: string;
-  image: string;
-  coverAlt: string;
+  image?: string;
+  coverAlt?: string;
   readingTime?: string;
   category: string;
   tags?: string[];
@@ -33,7 +33,7 @@ interface Props {
 
 const {
   title,
-  description = '',
+  excerpt = '',
   pubDate,
   modDate,
   author,
@@ -79,7 +79,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
 
 <MainLayout
   title={title}
-  description={description}
+  description={excerpt}
   image={image}
   canonicalURL={finalCanonicalUrl}
   keywords={keywords}
@@ -90,7 +90,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
   {/* Add schema markup for SEO */}
   <BlogSchemaMarkup
     title={title}
-    description={description}
+    description={excerpt}
     pubDate={pubDate}
     modDate={modDate}
     author={author}
@@ -107,21 +107,15 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
 
   <article class="blog-article max-w-4xl mx-auto px-4">
     {/* Category link */}
-    <div class="my-4">
-      <a
-        href={`/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
-        class="text-blue-600 font-medium hover:underline text-sm uppercase tracking-wider"
-      >
-        {category}
-      </a>
-    </div>
+   
 
     {/* Integrated Article Header Component */}
     <ArticleHeader
       title={title}
       image={image}
       coverAlt={coverAlt}
-      pubDate={pubDate}
+      category={category}
+      modDate={modDate}
       author={author}
       authorImage={authorImage}
       readTime={readingTime}
@@ -148,7 +142,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
       <ShareButtons
         url={currentUrl}
         title={title}
-        description={description}
+        description={excerpt}
       />
     )}
 
@@ -164,7 +158,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
         <ShareButtons
           url={currentUrl}
           title={title}
-          description={description}
+          description={excerpt}
         />
       </div>
     )}
@@ -235,7 +229,8 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
   }
 
   .blog-content a {
-    color: #2563eb;
+    color: #c3050e;
+    font-weight: bold;
     text-decoration: none;
     transition: color 0.2s;
   }

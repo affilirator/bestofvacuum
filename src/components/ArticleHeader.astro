@@ -3,10 +3,11 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 interface Props {
   title: string;
-  image: string;
+  image?: string;
   coverAlt?: string;
-  pubDate: Date;
+  modDate: Date;
   author: string;
+  category?: string;
   authorImage?: string;
   readTime?: string;
   headings?: Array<{
@@ -21,8 +22,9 @@ const {
   title,
   image,
   coverAlt,
-  pubDate,
+  modDate,
   author,
+  category,
   authorImage,
   readTime = "5 min read",
   headings = [],
@@ -41,7 +43,7 @@ const {
     year: 'numeric',
     month: 'short',
     day: 'numeric'
-  }).format(pubDate);
+  }).format(modDate);
 
   // console.log(formattedDate);
 
@@ -91,9 +93,9 @@ try {
 
 ---
 
-<div class="article-header mb-6">
+<div class="article-header ">
   <!-- Full-width image container with negative margins to extend beyond parent -->
-  <div class="image-container relative h-[250px] md:h-[280px] -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 overflow-hidden">
+  {/* <div class="image-container relative h-[250px] md:h-[280px] -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 overflow-hidden">
     {imageData && (
       <Image
         src={imageData.default || '/images/default-image.jpg'}
@@ -103,32 +105,40 @@ try {
       />
     )}
   </div>
+  */}
     <!-- Gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
+    <div class="inset-0 bg-gradient-to-t from-primary-100 via-secondary-100/60 to-transparent image-container relative   overflow-hidden">
+    
 
     <!-- Content overlay -->
-    <div class="absolute bottom-0 left-0 w-full p-4 md:p-5 flex flex-col items-start justify-end">
-      <h1 class="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-2 drop-shadow-sm leading-tight">
+    <div class=" bottom-0 left-0 w-full p-4 md:p-5 flex flex-col items-start justify-end">
+      <h1 class="text-gray-800 text-xl md:text-2xl lg:text-3xl font-bold mb-2 drop-shadow-sm leading-relaxed">
         {title}
       </h1>
 
       <!-- Compact author info -->
-      <div class="flex items-center gap-2 text-white">
+      <div class="flex items-center gap-2 text-gray-700 mt-6">
         {authorImageData && (
         <Image
           src={authorImageData.default}
           alt={author || `Image of ${author} author at Best of Vacuum`}
           width={24}
           height={24}
+      
           class="w-6 h-6 rounded-full object-cover border border-white/20"
         />
       )}
-        <div class="text-xs">
+        <div class="text-xs ">
           <span class="font-medium">{author}</span>
           <span class="opacity-75 mx-1">•</span>
-           <time datetime={pubDate instanceof Date ? pubDate.toISOString() : pubDate} class="opacity-75">{formattedDate}</time>
-          <span class="opacity-75 mx-1">•</span>
-          <span class="opacity-75">{readTime}</span>
+           <time datetime={modDate instanceof Date ? modDate.toISOString() :modDate} class="opacity-75">{formattedDate}</time>
+           <span class="opacity-75 mx-1">•</span>
+           <span class="opacity-75"><a
+        href={`/blog/category/${category?.toLowerCase().replace(/\s+/g, '-')}`}
+        class="text-secondary-100 btn-primary font-thin hover:text-secondary-50 text-xs tracking-wider"
+      >
+        {category}
+      </a></span>
         </div>
       </div>
     </div>
@@ -136,7 +146,7 @@ try {
 
   <!-- Table of Contents Dropdown -->
   {showTOC && (
-    <div class="toc-dropdown mt-4 relative z-10">
+    <div class="toc-dropdown  relative z-10">
       <button
         id="toc-toggle"
         class="flex items-center gap-2 text-sm bg-gray-50 hover:bg-gray-100 px-4 py-2 rounded-md border border-gray-200 transition-colors duration-200 w-full sm:w-auto"
