@@ -50,7 +50,7 @@
   }
 
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply btn bg-primary-700 text-white hover:bg-primary-400 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
 
   .btn-secondary {
@@ -58,6 +58,73 @@
   }
 
   .btn-outline {
-    @apply btn border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply btn border border-primary-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
+
+
+/* Base styles for markdown content container 
+.blog-content {
+  @apply prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl max-w-none;
+}
+  */
+
+/* Unordered lists */
+.blog-content ul {
+  @apply list-none pl-0 space-y-2 my-6;
+}
+
+.blog-content ul li:not(:has(h1, h2, h3, h4, h5, h6)) {
+  @apply relative pl-6 prose ;
+}
+
+/* Custom bullet styles */
+.blog-content ul li:not(:has(h1, h2, h3, h4, h5, h6))::before {
+  @apply absolute left-0 top-0 w-2 h-2 rounded-full bg-primary-200 mt-2;
+  content: '';
+}
+
+/* Ordered lists */
+.blog-content ol {
+  @apply list-none pl-0 space-y-2 my-6;
+  counter-reset: ordered-list;
+}
+
+.blog-content ol li {
+  @apply relative pl-8;
+  counter-increment: ordered-list;
+}
+
+.blog-content ol li::before {
+  @apply absolute left-0 top-0 w-6 h-6 rounded-full bg-indigo-100 text-primary-700 font-bold text-sm flex items-center justify-center;
+  content: counter(ordered-list);
+}
+
+/* Nested lists */
+.blog-content ul ul,
+.blog-content ol ul {
+  @apply pl-4 mt-2;
+}
+
+.blog-content ol ol,
+.blog-content ul ol {
+  @apply pl-4 mt-2;
+}
+
+/* Special list variations */
+.blog-content .list-checkmarks li::before {
+  @apply bg-green-100 text-green-600;
+  content: '✓';
+}
+
+.blog-content .list-arrows li::before {
+  @apply bg-blue-100 text-blue-600;
+  content: '→';
+}
+
+.blog-content .list-stars li::before {
+  @apply bg-yellow-100 text-yellow-600;
+  content: '★';
+}
+
+
 }

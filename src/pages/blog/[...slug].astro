@@ -89,7 +89,7 @@ const productName = entry.data.title.split(':')[0];
 
 <BlogLayout
   title={entry.data.title}
-  description={entry.data.description}
+  description={entry.data.excerpt}
   pubDate={entry.data.pubDate}
   modDate={entry.data.modDate}
   author={entry.data.author}
@@ -163,3 +163,8 @@ const productName = entry.data.title.split(':')[0];
     </div>
   )}
 </BlogLayout>
+<style is:inline>
+  .blog-content a{
+    color:#ff0000 !important;
+  }
+</style>
