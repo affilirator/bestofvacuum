@@ -8,7 +8,11 @@
   }
 
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-gray-50 text-gray-900 ;
+  }
+
+  article {
+   @apply  container prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl  dark:prose-invert max-w-none overflow-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -38,9 +42,18 @@
   a {
     @apply text-primary-600 hover:text-primary-800 transition-colors;
   }
+
+  ul.pros li::before{
+    @apply absolute left-2 text-green-500 font-bold;
+    content: "✓";
+  }
 }
 
 @layer components {
+
+
+  
+
   .container {
     @apply px-4 mx-auto max-w-7xl;
   }
@@ -111,8 +124,8 @@
 }
 
 /* Special list variations */
-.blog-content .list-checkmarks li::before {
-  @apply bg-green-100 text-green-600;
+.blog-content .list-checkmarks li::before, .blog-content ul.pros li::before {
+  @apply bg-primary-100 text-green-600;
   content: '✓';
 }
 
@@ -124,6 +137,77 @@
 .blog-content .list-stars li::before {
   @apply bg-yellow-100 text-yellow-600;
   content: '★';
+}
+
+/* Target headings that contain "Pros" or "Cons" */
+.blog-content h2:has(+ ul),
+.blog-content strong:has(+ ul),
+.blog-content h3:has(+ ul),
+.blog-content h4:has(+ ul) {
+  position: relative;
+}
+
+/* Style for Pros lists */
+.blog-content h2:contains("Pros") + ul,
+.blog-content strong:contains("Pros") + ul,
+.blog-content h3:contains("Pros") + ul,
+.blog-content h4:contains("Pros") + ul {
+  @apply pl-0 my-4 border-l-4 border-green-500 bg-green-50 rounded-r-lg;
+}
+
+
+.blog-content h2:contains("Pros") + ul li,
+.blog-content strong:contains("Pros") + ul li,
+.blog-content h3:contains("Pros") + ul li,
+.blog-content h4:contains("Pros") + ul li {
+  @apply relative pl-8 py-2;
+}
+
+.blog-content h2:contains("Pros") + ul li::before,
+.blog-content strong:contains("Pros") + ul li::before,
+.blog-content h3:contains("Pros") + ul li::before,
+.blog-content h4:contains("Pros") + ul li::before {
+  @apply absolute left-2 text-green-900 font-bold;
+  content: "✓";
+}
+
+
+.blog-content ul.pros {
+  @apply pl-2 my-4 border-l-4 border-accent-300/80 bg-green-100 rounded-r-lg font-thin;
+}
+.blog-content ul.pros li::before{
+  @apply absolute left-1 text-green-500 font-bold -top-2;
+  content: "✓";
+}
+.blog-content ul.cons{
+  @apply bg-primary-100 pl-0 border-l-4 border-red-200/80 font-mono font-thin; 
+}
+
+.blog-content ul.cons li::before{
+  @apply absolute left-1 -top-2 text-red-500 font-bold text-base;
+  content: "✗";
+}
+
+/* Style for elements containing 'pros' */
+.pros-heading {
+  @apply text-green-800 font-bold bg-green-50 py-1 px-2 border-l-4 border-green-800;
+}
+
+.cons-heading {
+  @apply text-red-800 font-bold bg-red-50 py-1 px-2 border-l-4 border-red-800;
+}
+
+.pros-container {
+  @apply border-l-4 border-green-500 bg-green-50 rounded-lg p-4 mb-6;
+}
+.cons-container {
+  @apply border-l-4 border-red-500 bg-red-50 rounded-lg p-4 mb-6;
+}
+.pros-heading {
+  @apply text-green-800 font-bold mb-2;
+}
+.cons-heading {
+  @apply text-red-800 font-bold mb-2;
 }
 
 
