@@ -188,6 +188,12 @@
   content: "✗";
 }
 
+.pros-container, .cons-container{
+  @apply flex-1 rounded-lg border
+}
+
+
+
 /* Style for elements containing 'pros' */
 .pros-heading {
   @apply text-green-800 font-bold bg-green-50 py-1 px-2 border-l-4 border-green-800;
