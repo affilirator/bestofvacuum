@@ -105,7 +105,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
     logoUrl={logoUrl}
   />
 
-  <article class="blog-article max-w-4xl mx-auto px-4">
+  <article class="blog-article max-w-4xl mx-auto px-4 prose lg:prose-xl">
     {/* Category link */}
    
 
@@ -275,3 +275,249 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
     }
   }
 </style>
+
+
+<script>
+  /*
+  document.addEventListener('DOMContentLoaded', () => {
+  // Find all headings containing Pros/Cons
+  const headings = document.querySelectorAll('.blog-content h2, .blog-content, article, .blog-content h3, .blog-content h4, .blog-content strong, .blog-content em, .blog-content p');
+  
+  headings.forEach(heading => {
+    const text = heading.textContent?.toLowerCase();
+    const nextEl = heading.nextElementSibling;
+    
+    if (text?.includes('pros') && nextEl?.tagName === 'UL') {
+      nextEl.classList.add('pros');
+    }
+    else if (text?.includes('cons') && nextEl?.tagName === 'UL') {
+      nextEl.classList.add('cons');
+    }
+  });
+});
+
+// Add this to your client-side JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all unordered lists in the document
+    const allUnorderedLists = document.querySelectorAll('ul');
+    
+    allUnorderedLists.forEach(ul => {
+        // Get the previous element sibling
+        let previousElement = ul.previousElementSibling;
+        
+        // Check if the previous element is a heading, strong, or em
+        if (previousElement && 
+            (previousElement.matches('h1, h2, h3, h4, h5, h6, strong, em'))) {
+            
+            const elementText = previousElement.textContent?.toLowerCase();
+            
+            // Check if the text contains 'pros' or 'cons'
+            if (elementText?.includes('pros') || elementText?.includes('cons')) {
+                // Add a class based on content
+                if (elementText.includes('pros')) {
+                    previousElement.classList.add('pros-heading');
+                } else if (elementText.includes('cons')) {
+                    previousElement.classList.add('cons-heading');
+                }
+            }
+        }
+    });
+});
+*/
+
+/*
+
+document.addEventListener('DOMContentLoaded', function() {
+  const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6, strong, em, p, p em, p strong');
+  
+  headings.forEach(heading => {
+    const text = heading.textContent?.toLowerCase();
+    
+    if (text?.includes('pros') || text?.includes('cons')) {
+      let sibling = heading.nextElementSibling;
+      let listElement = null;
+      
+      // Look for a UL in the next 3 siblings
+      for (let i = 0; i < 3 && sibling; i++) {
+        if (sibling.tagName === 'UL') {
+          listElement = sibling;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      
+      if (listElement) {
+        const wrapper = document.createElement('div');
+        const isPros = text.includes('pros');
+        
+        wrapper.className = isPros 
+          ? 'pros-container' 
+          : 'cons-container';
+        
+        heading.className += isPros 
+          ? ' pros-heading' 
+          : ' cons-heading';
+        
+        // Wrap elements
+        heading.parentNode?.insertBefore(wrapper, heading);
+        wrapper.appendChild(heading);
+        
+        // Move all elements between heading and list into wrapper
+        let current = heading.nextElementSibling;
+        while (current && current !== listElement) {
+          const next = current.nextElementSibling;
+          wrapper.appendChild(current);
+          current = next;
+        }
+        
+        // Finally add the list
+        wrapper.appendChild(listElement);
+      }
+    }
+  });
+});
+
+*/
+document.addEventListener('DOMContentLoaded', function() {
+  const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6, strong, em, p, p em, p strong');
+  
+  headings.forEach(heading => {
+    const text = heading.textContent?.toLowerCase();
+    
+    if (text?.includes('pros') || text?.includes('cons')) {
+      let sibling = heading.nextElementSibling;
+      let listElement = null;
+      
+      // Look for a UL in the next 3 siblings
+      for (let i = 0; i < 1 && sibling; i++) {
+        if (sibling.tagName === 'UL') {
+          listElement = sibling;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      
+      if (listElement) {
+        
+        const wrapper = document.createElement('div');
+        const isPros = text.includes('pros');
+        listElement.classList.add(isPros ? 'pros-list' : 'cons-list'); 
+        
+        // Add Tailwind classes to containers
+        wrapper.className = isPros 
+          ? 'pros-container  bg-green-50 p-4 rounded-lg border border-green-200' 
+          : 'cons-container  bg-red-50 p-4 rounded-lg border border-red-200';
+        
+        // Add Tailwind classes to headings
+        heading.className += isPros 
+          ? ' pros-heading text-green-500 font-bold mb-2' 
+          : ' cons-heading text-red-500 font-bold mb-2';
+        
+        // Wrap elements
+        heading.parentNode?.insertBefore(wrapper, heading);
+        wrapper.appendChild(heading);
+        
+        // Move elements between heading and list
+        let current = heading.nextElementSibling;
+        while (current && current !== listElement) {
+          const next = current.nextElementSibling;
+          wrapper.appendChild(current);
+          current = next;
+        }
+        
+        wrapper.appendChild(listElement);
+      }
+    }
+  });
+
+  // Create flex container for pros/cons pairs
+  function createFlexContainer() {
+    const containers = document.querySelectorAll('.pros-container, .cons-container');
+    
+    containers.forEach(container => {
+      // Check if already wrapped
+      if (container.parentElement?.classList.contains('pros-cons-flex')) return;
+      
+      const sibling = container.nextElementSibling;
+      const flexParent = document.createElement('div');
+      flexParent.className = 'flex flex-col md:flex-row gap-4 my-4 w-full';
+      
+      // Insert flex container before first element
+      container.parentNode?.insertBefore(flexParent, container);
+      
+      // Add current container
+      flexParent.appendChild(container);
+      
+      // Add adjacent counterpart if exists
+      if (sibling && (
+          (container.classList.contains('pros-container') && sibling.classList.contains('cons-container')) ||
+          (container.classList.contains('cons-container') && sibling.classList.contains('pros-container'))
+      )) {
+        flexParent.appendChild(sibling);
+      }
+    });
+  }
+
+  createFlexContainer();
+});
+
+
+function wrapFeaturesSection() {
+    const headings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+    
+    headings.forEach(heading => {
+        const headingText = heading.textContent?.toLowerCase();
+        if (headingText?.includes('features')) {
+            const nextSibling = heading.nextElementSibling;
+            
+            if (nextSibling && nextSibling.tagName === 'UL') {
+                const section = document.createElement('section');
+                
+                section.className = [
+                    'glass-container',
+                    'max-w-4xl',        // Increased max-width for better columns
+                    'mx-auto',
+                    'p-8',               // Increased padding
+                    'rounded-2xl',
+                    'mb-8',
+                    'shadow-xl',
+                    'backdrop-blur-lg',
+                    'bg-white/10',
+                    'border',
+                    'border-white/20',
+                    'hover:bg-white/20',
+                    'transition-all'
+                ].join(' ');
+
+                heading.parentNode?.insertBefore(section, heading);
+                section.appendChild(heading);
+                section.appendChild(nextSibling);
+
+                const list = nextSibling;
+                list.className = [
+                    'space-y-4',         // Increased spacing
+                    'text-white/90',
+                    'pl-6',
+                    'list-disc',
+                    'md:columns-2',      // Responsive columns
+                    'md:column-gap-12',  // Space between columns
+                    'md:column-rule',   // Column divider
+                    'md:column-rule-white/20' // Divider color
+                ].join(' ');
+
+                heading.className = [
+                    'text-3xl',          // Larger heading
+                    'font-bold',
+                    'mb-6',              // Increased margin
+                    'text-white',
+                    'tracking-tight',
+                    'drop-shadow-md'     // Text shadow
+                ].join(' ');
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', wrapFeaturesSection);
+
+  </script>
