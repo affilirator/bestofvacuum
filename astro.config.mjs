@@ -6,11 +6,13 @@ import sitemap from "@astrojs/sitemap";
 
 import netlify from "@astrojs/netlify";
 
+import icon from "astro-icon";
+
 // import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind(), sitemap(), icon()],
   site: "https://bestofvacuum.com",
   output: "static",
 

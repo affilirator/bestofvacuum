@@ -188,9 +188,7 @@
   content: "✗";
 }
 
-.pros-container, .cons-container{
-  @apply flex-1 rounded-lg border
-}
+
 
 
 

@@ -8,6 +8,8 @@ import AboutTeam from '../components/AboutTeam.astro';
 import BuyingGuidePreview from '../components/BuyingGuidePreview.astro';
 import CTAs from '../components/CTAs.astro';
 import { generateWebsiteSchema, generateOrganizationSchema } from '../utils/schema';
+import RecentPosts from "../components/RecentPosts.astro";
+import WeDo from "../components/WhatWeDo.astro"
 
 // Create structured data
 const websiteSchema = generateWebsiteSchema();
@@ -25,6 +27,8 @@ const schemas = [websiteSchema, organizationSchema];
   <Hero />
   <!-- <FeaturedProducts /> -->
   <!-- <VacuumCategories /> -->
+   <WeDo />
+   <RecentPosts />
 <!-- <RecentReviews /> -->
   <BuyingGuidePreview />
   <AboutTeam />
