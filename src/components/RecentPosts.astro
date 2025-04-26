@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => new Date(b.data.modDate) - new Date(a.data.modDate));
+
+const recentPostsByCategory = [];
+const categoriesSeen = new Set();
+
+for (const post of sortedPosts) {
+    const category = post.data.category;
+    if (!categoriesSeen.has(category)) {
+        recentPostsByCategory.push(post);
+        categoriesSeen.add(category);
+    }
+}
+
+const categoryColors = {
+    'Vacuum Reviews': 'bg-red-900/70',
+    'Hard Floor Vacuums': 'bg-indigo-900/70',
+    'Budget Vacuums': 'bg-yellow-900/80',
+    'Blog': 'bg-cyan-600/80',
+    'Brands': 'bg-slate-600/60',
+    // Add more categories as needed
+};
+
+const getCategoryClass = (category) => categoryColors[category] || 'bg-gray-600';
+---
+
+<section class="relative min-h-screen bg-[url('/src/assets/images-2/default-image.jpg')] bg-cover bg-fixed bg-repeat-y py-12">
+    <div class="absolute inset-0 bg-cyan-700/50 backdrop-blur-md"></div> <!-- Semi-transparent overlay with blur -->
+    <div class="container mx-auto p-8 relative">
+        <!-- Title and Subtitle -->
+        <div class="text-center  py-12">
+            <h2 class="text-4xl font-bold text-cyan-200 mb-4 drop-shadow-lg">Latest Insights</h2>
+            <p class="text-xl text-gray-200 drop-shadow-md">Explore our newest blog posts across various categories.</p>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            {recentPostsByCategory.map(post => (
+                <a href={`/blog/${post.slug}`} class="block group w-full max-w-md">
+                    <div class="flex bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <div class={`${getCategoryClass(post.data.category)} w-12 flex items-center justify-center`}>
+                            <span class="transform -rotate-90 whitespace-nowrap text-white font-bold text-sm">{post.data.category}</span>
+                        </div>
+                        <div class="flex-1 p-5">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">{post.data.title}</h3>
+                            <p class="text-gray-600 text-base leading-relaxed mb-4">
+                                {post.data.excerpt.length > 50 ? post.data.excerpt.slice(0, 50) + '...' : post.data.excerpt}
+                            </p>
+                            <p class="text-xs bg-cyan-400 inline-block text-gray-700">Published on {new Date(post.data.modDate).toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center mt-12">
+            <h3 class="text-2xl font-semibold text-white mb-4 drop-shadow-lg">Want more?</h3>
+            <p class="text-lg text-gray-200 mb-6 drop-shadow-md">Check out our full blog archive for more articles.</p>
+            <a href="/blog" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">View All Posts</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (max-width: 768px) {
+        section {
+            background-attachment: scroll; /* Adjust for mobile devices */
+        }
+    }
+</style>

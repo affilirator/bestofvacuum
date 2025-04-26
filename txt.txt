@@ -1,0 +1,23 @@
+// Sample data for "What We Do" sections
+const services = [
+  {
+    title: "Vacuum Technology Reviews",
+    description: "In-depth analysis and reviews of the latest vacuum technologies to help you choose the best.",
+    icon: "mdi:vacuum",
+  },
+  {
+    title: "Hard Floor Cleaning Solutions",
+    description: "Expert guidance on vacuums optimized for hard floors, ensuring spotless results.",
+    icon: "mdi:floor-plan",
+  },
+  {
+    title: "Budget-Friendly Options",
+    description: "Curated recommendations for high-performance vacuums that fit your budget.",
+    icon: "mdi:cash",
+  },
+  {
+    title: "Blog & Insights",
+    description: "Stay updated with tips, trends, and insights from our vacuum and cleaning blog.",
+    icon: "mdi:blog",
+  },
+];

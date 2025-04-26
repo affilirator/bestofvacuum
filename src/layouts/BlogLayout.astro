@@ -1,6 +1,6 @@
 ---
 // BlogLayout.astro - Comprehensive blog layout for vacuum reviews
-import { ViewTransitions } from 'astro:transitions';
+
 import MainLayout from './MainLayout.astro';
 import ArticleHeader from '../components/ArticleHeader.astro';
 import ShareButtons from '../components/ShareButtons.astro';
@@ -85,7 +85,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
   keywords={keywords}
   type="article"
 >
-  <ViewTransitions slot="head" />
+  
 
   {/* Add schema markup for SEO */}
   <BlogSchemaMarkup
@@ -105,7 +105,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
     logoUrl={logoUrl}
   />
 
-  <article class="blog-article max-w-4xl mx-auto px-4 prose lg:prose-xl">
+  <article class="container prose lg:prose-xl blog-article max-w-5xl mx-auto px-4 ">
     {/* Category link */}
    
 
@@ -147,7 +147,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
     )}
 
     {/* Main Content */}
-    <div class="blog-content prose prose-lg max-w-none mx-auto mt-8">
+    <div class="container blog-content prose prose-lg max-w-none mx-auto mt-8">
       <slot />
     </div>
 
@@ -274,6 +274,10 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
       font-size: 1.25rem;
     }
   }
+
+  .blog-content .pros-container, .blog-content .cons-container{
+  @apply flex-1 rounded-lg font-thin shadow-stone-500
+}
   .blog-content .pros-container {
   @apply bg-green-50 p-4 rounded-lg border border-green-500
 }
@@ -420,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = createContainer(isPros, heading);
     
     // Style elements
-    heading.classList.add(isPros ? 'pros-heading' : 'cons-heading', 'font-bold', 'mb-2');
+    heading.classList.add(isPros ? 'text-green-500' : 'text-red-500', 'font-bold', 'mb-2');
     listElement.classList.add(isPros ? 'pros-list' : 'cons-list');
     
     // Move elements into container
@@ -435,11 +439,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const current = containers.shift();
       const next = containers[0];
       
-      if (next && current?.classList.contains('pros-container') !== next.classList.contains('pros-container')) {
+      if (next && current.classList.contains('pros-container') !== next.classList.contains('pros-container')) {
         const flexContainer = document.createElement('div');
-        flexContainer.className = 'pros-cons-section flex flex-col md:flex-row gap-4 my-4 w-full';
+        flexContainer.className = 'flex flex-col md:flex-row gap-4 my-4 w-full';
         
-        current?.replaceWith(flexContainer);
+        current.replaceWith(flexContainer);
         flexContainer.append(current, containers.shift());
       }
     }

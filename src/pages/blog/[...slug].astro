@@ -135,12 +135,7 @@ const productName = entry.data.title.split(':')[0];
   {/* Main content */}
   <Content />
 
-  {/* Add pros/cons table if available */}
-  {pros.length > 0 && cons.length > 0 && (
-    <div class="my-10">
-      <ProsConsTable pros={pros} cons={cons} />
-    </div>
-  )}
+  
 
   {/* Buy button at bottom */}
   {retailers.length > 0 && (
