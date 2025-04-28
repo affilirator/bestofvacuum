@@ -1,12 +1,13 @@
 ---
-title: "About Vacuum Expert Reviews"
+title: "About Best of Vacuum Expert Reviews"
+slug: "about"
 description: "Meet the expert team behind Vacuum Expert Reviews. Learn about our rigorous testing process, scientific methodology, and commitment to unbiased vacuum cleaner reviews."
-foundedYear: 2010
+foundedYear: 2016
 ---
 
 # Our Mission & History
 
-Founded in 2010, Vacuum Expert Reviews has spent over a decade helping consumers make informed decisions about vacuum cleaners and cleaning technology. Our mission is to provide the most thorough, unbiased, and scientifically-backed vacuum cleaner reviews on the internet.
+Founded in 2016, Vacuum Expert Reviews has spent over a decade helping consumers make informed decisions about vacuum cleaners and cleaning technology. Our mission is to provide the most thorough, unbiased, and scientifically-backed vacuum cleaner reviews on the internet.
 
 ## Our Testing Methodology
 
