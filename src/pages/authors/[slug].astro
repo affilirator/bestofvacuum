@@ -4,36 +4,8 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import { Icon } from "astro-icon/components"
 import HeroSection from '@components/PrivacyPolicy/HeroSection.astro';
 
-interface Props {
-  title: string;
-  image?: string;
-  coverAlt?: string;
-  modDate: Date;
-  author: string;
-  category?: string;
-  authorImage?: string;
-  readTime?: string;
-  headings?: Array<{
-    depth: number;
-    slug: string;
-    text: string;
-  }>;
-  showTableOfContents?: boolean;
-}
 
-const {
-  title,
-  image,
-  coverAlt,
-  modDate,
-  author,
-  entry,
-  category,
-  authorImage,
-  readTime = "5 min read",
-  headings = [],
-  showTableOfContents = true
-} = Astro.props;
+
 
 // Define props type with params
 export async function getStaticPaths() {
@@ -45,7 +17,7 @@ export async function getStaticPaths() {
   }));
 }
 
-// const { entry } = Astro.props;
+const { entry } = Astro.props;
 const { Content } = await entry.render();
 const canonicalURL = new URL(Astro.request.url).toString();
 import { Image } from "astro:assets";
@@ -57,30 +29,10 @@ const { data } = entry;
 // Ensure the image path exists in our glob imports
 
 // Try to get the main image or use default
-let imageData;
-try {
-  if (images[image]) {
-    imageData = await images[image]();
-  } else if (images['/public/images/default-image.jpg']) {
-    imageData = await images['/public/images/default-image.jpg']();
-  } else {
-    throw new Error('Neither main image nor default image found');
-  }
-} catch (error) {
-  console.error('Error loading image:', error);
-}
+
 
 // Get author image data
-let authorImageData;
-try {
-  if (authorImage && images[authorImage]) {
-    authorImageData = await images[authorImage]();
-  } else if (images['/public/images/authors/default-author.jpg']) {
-    authorImageData = await images['/public/images/authors/default-author.jpg']();
-  }
-} catch (error) {
-  console.error('Error loading author image:', error);
-}
+
 ---
 <MainLayout
     title={entry.data.name}
@@ -100,24 +52,16 @@ try {
           <div class="absolute -bottom-24 left-1/2 -translate-x-1/2">
             <div class="relative group">
               <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-              {authorImageData && (
+              
+              {data.image && 
                 <Image
-                  src={authorImageData.default}
-                  alt={author || `Image of ${author} author at Best of Vacuum`}
-                  width={44}
-                  height={44}
-              
-                  class="w-8 h-8 rounded-full object-cover border border-cyan-500/20"
+                  src={data.image} 
+                  alt={data.name}
+                  width={256}
+                  height={256}
+                  class="rounded-full border-4 bg-cyan-400/80  blur-xs border-white/20 w-48 h-48 object-cover shadow-xl hover:scale-105 transition-transform duration-300 backdrop-blur-xl "
                 />
-              )}
-              
-              <img
-                src={data.image} 
-                alt={data.name}
-                width={256}
-                height={256}
-                class="rounded-full border-4  blur-xs border-white/20 w-48 h-48 object-cover shadow-xl hover:scale-105 transition-transform duration-300 backdrop-blur-xl "
-              />
+              }
             </div>
           </div>
         </div>
@@ -138,6 +82,8 @@ try {
             <h2 class="text-2xl font-semibold text-cyan-300 mb-4">Expert Profile</h2>
             <article class="prose prose-invert max-w-none">
               {data.bio}
+      
+              <Content />
             </article>
           </div>
   
@@ -169,7 +115,7 @@ try {
                     {social.platform === 'linkedin' && <Icon name="ri:linkedin-box-line" class="iconClass" />}
 {social.platform === 'facebook' && <Icon name="ri:facebook-box-line" class="iconClass" />}
 {social.platform === 'twitter' && <Icon name="ri:twitter-x-line" class="iconClass" />}
-{social.platform === 'website' && <Icon name="ri:global-line" class="iconClass" />}
+{social.platform === 'website' && <Icon name="ri:global-line" class="" />}
                   </a>
                 ))}
               </div>
