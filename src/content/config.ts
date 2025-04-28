@@ -94,9 +94,15 @@ const teamCollection = defineCollection({
     title: z.string(),
     credentials: z.string(),
     bio: z.string(),
-    image: z.string().default('/images/placeholder.svg'),
+    image: z.string().optional(),
     expertise: z.array(z.string()),
     linkedin: z.string().optional(),
+    socials: z.array(
+      z.object({
+        platform: z.enum(['facebook', 'linkedin', 'twitter', 'youtube', 'website']),
+        url: z.string().url()
+      })
+    ).optional()
   }),
 });
 
