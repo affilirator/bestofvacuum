@@ -1,48 +1,144 @@
-# Astro Starter Kit: Basics
+# Best of Vacuum: Expert Vacuum Cleaner Reviews & Buying Guides
 
-```sh
-npm create astro@latest -- --template basics
+Best of Vacuum is a comprehensive review platform that provides scientifically-backed vacuum cleaner reviews, detailed buying guides, and expert cleaning advice. Our team of certified experts conducts rigorous testing using laboratory-grade equipment to deliver unbiased, data-driven recommendations that help consumers make informed purchasing decisions.
+
+The platform features innovative testing methodologies including particle counting, suction power measurement, and long-term durability assessments. Our reviews cover all vacuum categories from cordless stick vacuums to commercial models, with detailed analysis of cleaning performance, filtration efficiency, noise levels, and value for money. The content is enhanced with structured data for improved search visibility and uses modern web technologies for optimal user experience.
+
+## Repository Structure
+```
+.
+├── src/                      # Source code directory
+│   ├── components/          # Reusable UI components
+│   │   ├── ReviewDetail/   # Review-specific components (ratings, pros/cons, etc.)
+│   │   └── PrivacyPolicy/  # Privacy policy page components
+│   ├── content/            # Content collections (blog posts, reviews, team info)
+│   ├── layouts/           # Page layout templates
+│   ├── pages/            # Route definitions and page components
+│   ├── styles/           # Global styles and Tailwind configuration
+│   └── utils/           # Utility functions and schema generators
+├── public/              # Static assets and admin configuration
+└── config files         # Project configuration (Astro, Tailwind, PostCSS)
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Usage Instructions
+### Prerequisites
+- Node.js version 18.17.1 or higher
+- Package manager (pnpm recommended)
+- Basic understanding of Astro and Tailwind CSS
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd vacuum-reviews
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+# Install dependencies using pnpm
+pnpm install
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+# Set up environment variables
+cp env.example.env .env
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Quick Start
+1. Start the development server:
+```bash
+pnpm dev
+```
 
-## 🧞 Commands
+2. Build for production:
+```bash
+pnpm build
+```
 
-All commands are run from the root of the project, from a terminal:
+3. Preview production build:
+```bash
+pnpm preview
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### More Detailed Examples
+1. Adding a new review:
+```markdown
+---
+title: "Vacuum Model Review"
+excerpt: "Detailed review description"
+pubDate: 2024-03-15
+author: "Expert Name"
+rating:
+  overall: 4.8
+  suction: 5.0
+  maneuverability: 4.6
+---
+```
 
-## 👀 Want to learn more?
+2. Creating a blog post:
+```markdown
+---
+title: "Vacuum Cleaning Tips"
+category: "Guides"
+tags: ["cleaning", "maintenance"]
+---
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Troubleshooting
+Common issues and solutions:
+
+1. Build Errors
+- Issue: Missing dependencies
+- Solution: Run `pnpm install` to ensure all dependencies are installed
+
+2. Content Not Updating
+- Issue: Cache-related issues
+- Solution: Clear the `.astro` directory and rebuild
+```bash
+rm -rf dist .astro
+pnpm build
+```
+
+3. Schema Validation Errors
+- Issue: Invalid content frontmatter
+- Solution: Verify content structure matches defined schemas in `src/content/config.ts`
+
+## Data Flow
+The application follows a content-driven architecture where markdown content is processed through Astro's content collections and rendered using reusable components.
+
+```ascii
+[Content Collections] -> [Astro Build] -> [Static Pages]
+     |                       |                |
+[Schema Generation] -> [Component Render] -> [HTML/CSS/JS]
+```
+
+Key interactions:
+- Content is organized in collections (blog, reviews, team)
+- Schema utilities generate structured data for SEO
+- Components render content with consistent styling
+- Build process generates static pages
+- Netlify handles deployment and hosting
+
+## Infrastructure
+
+![Infrastructure diagram](./docs/infra.svg)
+Netlify Configuration:
+- Build Command: `pnpm build`
+- Publish Directory: `dist`
+- Node Version: 18
+- Asset Processing: CSS/JS bundling and minification enabled
+- Custom Headers: Security headers configured
+- Cache Control: Long-term caching for static assets
+
+## Deployment
+1. Prerequisites:
+- Netlify account
+- Environment variables configured
+
+2. Deployment Steps:
+```bash
+# Build the site
+pnpm build
+
+# Deploy to Netlify
+netlify deploy --prod
+```
+
+3. Environment Configuration:
+- Set required environment variables in Netlify dashboard
+- Configure build settings and deploy contexts

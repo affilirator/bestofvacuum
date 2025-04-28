@@ -1,6 +1,10 @@
 ---
-import { Image } from "astro:assets";
+import { getEntry } from 'astro:content';
+import { Image, Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
+
+
+
 interface Props {
   title: string;
   image?: string;
@@ -59,6 +63,7 @@ const showTOC = showTableOfContents && filteredHeadings.length > 1;
 // Import the image dynamically using glob import
 const images = import.meta.glob<{ default: ImageMetadata }>([
   'src/content/blog/images/*.{jpeg,jpg,png,gif,webp}',
+  '/src/content/blog/images/*.{jpeg,jpg,png,gif,webp}',
   '/public/images/*.{jpeg,jpg,png,gif,webp}',
   '/public/images/authors/*.{jpeg,jpg,png,gif,webp}'
 ]);
@@ -95,47 +100,50 @@ try {
 
 <div class="article-header ">
   <!-- Full-width image container with negative margins to extend beyond parent -->
-  {/* <div class="image-container relative h-[250px] md:h-[280px] -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 overflow-hidden">
+  {/* <div class="image-container relative h-[630px] md:h-[630px] -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 overflow-hidden">
     {imageData && (
-      <Image
+      <Picture
         src={imageData.default || '/images/default-image.jpg'}
         alt={coverAlt ||`Image of the article titled ${title}`}
         class="w-full h-full object-cover rounded-lg"
         loading="eager"
+        height={630}
+        width={1200}
       />
     )}
   </div>
   */}
+  
     <!-- Gradient overlay -->
-    <div class="inset-0 bg-gradient-to-t from-primary-100 via-secondary-100/60 to-transparent image-container relative   overflow-hidden">
+    <div class="inset-0 bg-gradient-to-t from-primary-100 via-secondary-100/60 to-transparent image-container relative   overflow-hidden mx-auto">
     
 
     <!-- Content overlay -->
     <div class=" bottom-0 left-0 w-full p-4 md:p-5 flex flex-col items-start justify-end">
-      <h1 class="text-gray-800 text-xl md:text-2xl lg:text-3xl font-bold mb-2 drop-shadow-sm leading-relaxed">
+      <h1 class="text-gray-900 text-center text-xl md:text-2xl lg:text-3xl font-bold  lg:pt-4 drop-shadow-sm leading-relaxed mx-auto">
         {title}
       </h1>
 
       <!-- Compact author info -->
-      <div class="flex items-center gap-2 text-gray-700 mt-6">
+      <div class="flex items-center gap-2 text-gray-700  mx-auto">
         {authorImageData && (
         <Image
           src={authorImageData.default}
           alt={author || `Image of ${author} author at Best of Vacuum`}
-          width={24}
-          height={24}
+          width={44}
+          height={44}
       
-          class="w-6 h-6 rounded-full object-cover border border-white/20"
+          class="w-8 h-8 rounded-full object-cover border border-cyan-500/20"
         />
       )}
-        <div class="text-xs ">
-          <span class="font-medium">{author}</span>
-          <span class="opacity-75 mx-1">•</span>
+        <div class="text-sm ">
+          <span class="font-medium"><a href={`/authors/dr-christie-winston/`}>{author}</a></span>
+          <span class="opacity-75 mx-1 text-cyan-500/80">•</span><span>Last Updated: </span>
            <time datetime={modDate instanceof Date ? modDate.toISOString() :modDate} class="opacity-75">{formattedDate}</time>
            <span class="opacity-75 mx-1">•</span>
            <span class="opacity-75"><a
-        href={`/blog/category/${category?.toLowerCase().replace(/\s+/g, '-')}`}
-        class="text-secondary-100 btn-primary font-thin hover:text-secondary-50 text-xs tracking-wider"
+        href={`/blog/category/${category?.toLowerCase().replace(/\s+/g, '-')}/`}
+        class="text-cyan-500 prose prose-sm p-2 no-underline rounded-full bg-slate-800 font-thin hover:text-gray-100 hover:bg-gray-800 text-xs tracking-wider underline-offset-auto"
       >
         {category}
       </a></span>
@@ -171,7 +179,7 @@ try {
             <li class={`${heading.depth === 3 ? "ml-3 text-sm opacity-90" : "font-medium"}`}>
               <a
                 href={`#${heading.slug}`}
-                class="block py-1 text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                class="block text-blue-600 text-sm hover:text-blue-800 hover:underline transition-colors"
               >
                 {heading.text}
               </a>
@@ -183,7 +191,7 @@ try {
   )}
 </div>
 
-<script>
+<script is:inline>
   // Toggle table of contents dropdown
   document.addEventListener('DOMContentLoaded', () => {
     const tocToggle = document.getElementById('toc-toggle');

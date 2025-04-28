@@ -1,0 +1,30 @@
+digraph INFRA {
+  node [ color = "black", fillcolor = "#E6E6E6", height =1, style = "filled,bold,rounded", fontname = "Arial" ];
+  "Netlify Build" [ label = "Netlify Build
+(Netlify::Build)", shape =rectangle ];
+  "Netlify Deploy" [ label = "Netlify Deploy
+(Netlify::Deploy)", shape =rectangle ];
+  "Astro Site" [ label = "Astro Site
+(Astro::Site)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "Tailwind CSS" [ label = "Tailwind CSS
+(CSS::Framework)", shape =rectangle ];
+  "Sitemap" [ label = "Sitemap
+(Astro::Sitemap)", shape =rectangle ];
+  "Icon Integration" [ label = "Icon Integration
+(Astro::Icon)", shape =rectangle ];
+  "Custom 404 Page" [ label = "Custom 404 Page
+(Netlify::Redirect)", shape =rectangle ];
+  "Security Headers" [ label = "Security Headers
+(Netlify::Headers)", shape =rectangle ];
+  "Asset Caching" [ label = "Asset Caching
+(Netlify::Headers)", shape =rectangle ];
+  "Netlify Deploy" -> "Netlify Build";
+  "Astro Site" -> "Netlify Build";
+  "Astro Site" -> "Netlify Deploy";
+  "Tailwind CSS" -> "Astro Site";
+  "Sitemap" -> "Astro Site";
+  "Icon Integration" -> "Astro Site";
+  "Custom 404 Page" -> "Netlify Deploy";
+  "Security Headers" -> "Netlify Deploy";
+  "Asset Caching" -> "Netlify Deploy";
+}

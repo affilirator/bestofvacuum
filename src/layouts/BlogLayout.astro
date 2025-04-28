@@ -11,6 +11,7 @@ import AuthorInfo from '../components/AuthorInfo.astro';
 interface Props {
   title: string;
   excerpt?: string;
+  description?: string;
   pubDate: Date;
   modDate: Date;
   author: string;
@@ -147,7 +148,7 @@ const logoUrl = `${siteUrl}/images/logo.svg`;
     )}
 
     {/* Main Content */}
-    <div class="container blog-content prose prose-lg max-w-none mx-auto mt-8">
+    <div class="container blog-content prose font-sans prose-lg max-w-none mx-auto mt-8">
       <slot />
     </div>
 
