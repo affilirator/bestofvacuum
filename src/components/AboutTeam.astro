@@ -1,5 +1,6 @@
 ---
 import { Picture, getImage } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import { getCollection } from 'astro:content';
 // import type { ImageMetadata } from "astro";
 import AuthorImg from "../assets/images/authors/emma-johnson.jpg";
@@ -45,6 +46,15 @@ const ourTeam = [
     linkedin: "https://linkedin.com/in/jameswilson"
   }
 ];
+
+
+/*
+{social.platform === 'linkedin' && <Icon ri:linkedin-box-line class="iconClass" />}
+{social.platform === 'facebook' && <Icon ri:facebook-box-line class="iconClass" />}
+{social.platform === 'twitter' && <Icon ri:twitter-x-line class="iconClass" />}
+{social.platform === 'website' && <Icon ri:global-line class="iconClass" />}
+
+*/
 ---
 
 <section class="py-16 bg-gray-50">
@@ -118,7 +128,7 @@ const ourTeam = [
           <div class="md:w-2/3 p-6">
             <div class="mb-4">
               <h3 class="text-xl font-bold text-gray-900">{member.data.name}</h3>
-              <p class="text-primary-600 font-medium">{member.data.title}</p>
+              <p class="text-cyan-600 font-medium">{member.data.title}</p>
               <p class="text-gray-500 text-sm">{member.data.credentials}</p>
             </div>
 
@@ -130,7 +140,7 @@ const ourTeam = [
               <h4 class="text-sm font-semibold text-gray-700 mb-2">Areas of Expertise:</h4>
               <div class="flex flex-wrap gap-2">
                 {member.data.expertise.map((skill) => (
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-200/50 text-cyan-800">
                     {skill}
                   </span>
                 ))}
@@ -138,15 +148,19 @@ const ourTeam = [
             </div>
 
             {member.data.socials && (
-              <div class="social-links">
+              <div class="social-links mt-4 flex space-x-4">
                 {member.data.socials.map((social) => (
                   <a 
                     href={social.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     class={`social-${social.platform}`}
+                    aria-label={`${member.data.name}'s ${social.platform}`}
                   >
-                    {social.platform.charAt(0).toUpperCase() + social.platform.slice(1)}
+                    {social.platform === 'linkedin' && <Icon name="ri:linkedin-box-line" class="iconClass" />}
+{social.platform === 'facebook' && <Icon name="ri:facebook-box-line" class="iconClass" />}
+{social.platform === 'twitter' && <Icon name="ri:twitter-x-line" class="iconClass" />}
+{social.platform === 'website' && <Icon name="ri:global-line" class="iconClass" />}
                   </a>
                 ))}
               </div>
@@ -166,3 +180,9 @@ const ourTeam = [
     </div>
   </div>
 </section>
+<style>
+  .iconClass{
+    @apply w-6 h-6 text-gray-500 hover:text-primary-600 transition-colors
+
+  }
+  </style>
