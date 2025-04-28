@@ -72,9 +72,7 @@ Although cleaning the corners is very easy, the vacuum has a tendency to stick t
 
 ### 2. ProTeam ProVac FS 6 Commercial Backpack Vacuum
 
-![](/src/content/blog/images/ProTeam-Backpack-Vacuums-ProVac-FS-6-Commercial-Backpack-Vacuum.jpg)
-
-![Commercial Backpack Vacuum]( "ProTeam ProVac FS 6 Commercial Backpack Vacuum")
+![Commercial backpack vacuum](/src/content/blog/images/ProTeam-Backpack-Vacuums-ProVac-FS-6-Commercial-Backpack-Vacuum.jpg)
 
 **Review**
 
