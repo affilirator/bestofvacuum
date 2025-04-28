@@ -1,4 +1,7 @@
 ---
+
+import { Picture } from "astro:assets";
+import VacuumTesting from "../assets/images/vacuum-cleaner-testing.jpeg";
 interface Props {
   companyName?: string;
   foundedYear?: number;
@@ -39,12 +42,13 @@ const yearsOfExperience = currentYear - foundedYear;
 
       <div class="relative">
         <div class="bg-gray-200 rounded-lg aspect-[4/3] overflow-hidden">
-          <img
-            src="/images/lab-testing.jpg"
+          <Picture
+            src={VacuumTesting}
             alt="Vacuum cleaner laboratory testing environment"
-            class="w-full h-full object-cover"
-            width="600"
-            height="450"
+            class="w-full h-full object-cover blur-sm"
+            width={600}
+            height={450}
+            formats={['avif', 'webp']}
           />
         </div>
 

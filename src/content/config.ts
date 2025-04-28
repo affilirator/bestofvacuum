@@ -106,6 +106,9 @@ const pagesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    foundedYear: z.number().optional(),
+    lastUpdated: z.string().date().optional(),
+    // slug: z.string(),
     // Additional fields will be validated based on the specific page
   }),
 });

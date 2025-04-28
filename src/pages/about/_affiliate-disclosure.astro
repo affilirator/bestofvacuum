@@ -1,0 +1,29 @@
+---
+import { getEntry } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// Get the about page content from the CMS
+const disclosurePage = await getEntry('pages', 'affiliate-disclosure');
+const { title, description, foundedYear } = disclosurePage.data;
+// Render the markdown content
+const { Content } = await disclosurePage.render();
+const canonicalURL = new URL(Astro.request.url).toString();
+---
+
+<MainLayout
+    title={title}
+  description={description}
+  canonicalURL={canonicalURL}
+  >
+
+  <div class="container py-16 bg-white">
+    <div class="blog-content prose prose-lg mx-auto">
+        <h1 class="text-center">
+            {title}
+        </h1>
+      <Content />
+    </div>
+  </div>
+</MainLayout>
+
+

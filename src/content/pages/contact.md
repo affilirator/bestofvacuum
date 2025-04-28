@@ -1,9 +1,10 @@
 ---
 title: "Contact Our Vacuum Expert Team"
+slug: "contact"
 description: "Have questions about vacuum cleaners or our reviews? Contact our team of experts for personalized advice, review requests, or partnership opportunities."
-email: "contact@vacuum-expert-reviews.com"
+email: "contact@bestofvacuum.com"
 phone: "+1 (555) 123-4567"
-address: "123 Vacuum Testing Lab, Suite 456, New York, NY 10001"
+address: "123 Best of Vacuum Testing Lab, Suite 456, New York, NY 10001"
 officeHours:
   - day: "Monday - Friday"
     hours: "9:00 AM - 5:00 PM EST"
