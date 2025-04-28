@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import HeroSection from '@components/PrivacyPolicy/HeroSection.astro';
+
+// Define props type with params
+export async function getStaticPaths() {
+  const pageEntries = await getCollection('team');
+
+  return pageEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const canonicalURL = new URL(Astro.request.url).toString();
+---
+<MainLayout
+    title={entry.data.name}
+  description={entry.data.bio}
+  canonicalURL={canonicalURL}
+  type="website"
+  >
+
+  <div class="container py-16 bg-white">
+    <div class="blog-content prose prose-lg mx-auto">
+        <HeroSection
+      title={entry.data.name}
+      subtitle={entry.data.title}
+    />
+      <Content />
+    </div>
+  </div>
+</MainLayout>
