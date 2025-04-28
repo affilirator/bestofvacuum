@@ -5,12 +5,8 @@ credentials: "PhD in Mechanical Engineering"
 bio: "With over 15 years of experience in product testing and mechanical engineering, Christie founded Best of Vacuum Expert Reviews to provide consumers with scientifically-backed vacuum cleaner recommendations. She previously worked as a product development engineer for Dyson."
 
 socials:
-  - platform: "linkedin"
-    url: "https://linkedin.com/in/johndoe"
-  - platform: "facebook"
-    url: "https://github.com/johndoe"
   - platform: "website"
-    url: "https://johndoe.com"
+    url: "https://bestofvacuum.com"
 
 expertise:
   - "Suction Power Testing"
