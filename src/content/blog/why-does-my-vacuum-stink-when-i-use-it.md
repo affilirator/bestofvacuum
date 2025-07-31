@@ -1,18 +1,26 @@
 ---
-title: "Why Does My Vacuum Stink When I Use It?"
-author: "Christie Winston"
-authorBio: "Christie Winston is a home cleaning expert with over 10 years of experience testing and reviewing vacuum cleaners and cleaning products. She holds certifications in indoor air quality management and specializes in solutions for allergy sufferers. Christie has been featured in publications such as Good Housekeeping, Real Simple, and The Spruce."
-authorImage: "/images/authors/emma-johnson.jpg"
-authorImageAlt: "Christie Winston, Home Cleaning Expert"
+title: Why Does My Vacuum Stink When I Use It?
+source: wordpress
+originalUrl: why-does-my-vacuum-stink-when-i-use-it
+pubDate: 2022-10-03
+modDate: 2025-07-31
+image: /images/default-image.jpg
+excerpt: There’s nothing worse in a home you’re trying to keep clean and fresh
+  than a smelling vacuum cleaner. If you think about it, though, even the best
+  vac, especially the bagged type, will start to smell after a period of use.
+  Pet hair clogs, mold coffee grinds, dust from shag carpets and stairs, food
+  articles vacuumed from hardwood floors, all these and many &#8230; Read more
+category: Blog
 showTableOfContents: true
-image: "/images/default-image.jpg"
-coverAlt: "Why Does My Vacuum Stink When I Use It?"
-pubDate: "2022-10-03"
-modDate: "2022-10-04"
-originalUrl: "why-does-my-vacuum-stink-when-i-use-it"
-category: "Blog"
-source: "wordpress"
-excerpt: "There’s nothing worse in a home you’re trying to keep clean and fresh than a smelling vacuum cleaner. If you think about it, though, even the best vac, especially the bagged type, will start to smell after a period of use. Pet hair clogs, mold coffee grinds, dust from shag carpets and stairs, food articles vacuumed from hardwood floors, all these and many &#8230; Read more"
+author: Christie Winston
+authorBio: Christie Winston is a home cleaning expert with over 10 years of
+  experience testing and reviewing vacuum cleaners and cleaning products. She
+  holds certifications in indoor air quality management and specializes in
+  solutions for allergy sufferers. Christie has been featured in publications
+  such as Good Housekeeping, Real Simple, and The Spruce.
+authorImage: /images/authors/emma-johnson.jpg
+authorImageAlt: Christie Winston, Home Cleaning Expert
+coverAlt: Why Does My Vacuum Stink When I Use It?
 ---
 
 There’s nothing worse in a home you’re trying to keep clean and fresh than a smelling vacuum cleaner. If you think about it, though, even the best vac, especially the [bagged type](https://www.bestofvacuum.com/best-bagged-vacuum/), will start to smell after a period of use.
