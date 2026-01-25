@@ -2,7 +2,7 @@
 title: How to Unclog a Vacuum Hose
 source: wordpress
 originalUrl: how-to-unclog-a-vacuum-hose
-pubDate: 2024-11-30
+pubDate: 2025-04-10
 modDate: 2025-08-28
 image: /src/content/blog/images/How-to-Unclog-a-Vacuum-Hose-.jpg
 excerpt: "Cleaning dirt and debris manually can be a pain in the butt. Just
