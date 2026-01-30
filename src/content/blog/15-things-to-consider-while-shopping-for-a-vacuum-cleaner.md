@@ -2,8 +2,8 @@
 title: 15 Things to Consider While Shopping For a Vacuum Cleaner
 source: wordpress
 originalUrl: 15-things-to-consider-while-shopping-for-a-vacuum-cleaner
-pubDate: 2021-02-13
-modDate: 2025-04-28
+pubDate: 2025-04-01
+modDate: 2025-07-02
 image: /src/content/blog/images/Dyson-attachment-tools.jpg
 excerpt: If you are looking for a fantastic vacuum cleaner, then you have come
   to the right place. Just read on. While shopping for a vacuum cleaner, you
