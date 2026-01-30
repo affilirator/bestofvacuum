@@ -3,7 +3,7 @@ title: "The 5 Best Vacuum Cleaners for Hardwood Floors "
 source: wordpress
 originalUrl: best-vacuum-cleaner-for-hardwood-floors
 pubDate: 2025-07-03
-modDate: 2025-12-16
+modDate: 2026-01-28
 image: /images/default-image.jpg
 excerpt: Hardwood floors are a beautiful addition to any home, but keeping them
   clean and free of dust, dirt, and pet hair can be a real challenge. That’s why
